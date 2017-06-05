@@ -1,0 +1,821 @@
+\section{Kompakte Flächen}
+
+\begin{bemn}[Erinnerung:]
+Eine $n$-dimensionale (topologische) Mannigfaltigkeit ist ein Hausdorffraum,
+der lokal zum $\R^n$ homöomorph ist, d.h. jeder Punkt besitzt eine Umgebung,
+die zum $\R^n$ homöomorph ist.\maphere
+\end{bemn}
+
+Wir wissen bereits, dass jede jede $n$-Mannigfaltigkeit lokal kompakt ist.
+Unser Ziel ist es, alle zusammenhängenden, kompakten randlosen Flächen
+(=$2$-Mannigfaltigkeiten) zu finden.
+\begin{bemn}
+Punkte von ``Flächen''$\subseteq\R^2$ können keine zum $\R^2$ homöomorphe
+Umgebung besitzen:
+%TODO: Bild, Umgebung
+d.h. die Zylinderfläche ist keine Fläche!
+\end{bemn}
+\begin{bemn}[1. Annäherung:]
+Finde leicht zu behandelnde Beispielflächen: Simplizialkomplexe sind 
+topologische Invarianten, wie z.B. die Fundamentalgruppe, die leicht zu
+berechnen sind.
+\end{bemn}
+
+Wir wollen ein konkretes Resultat erzielen, z.B. die Klassifikation der Flächen.
+
+Unser Problem ist allerdings, dass die topologische Struktur alleine nicht viel
+hergibt, um ein solches Ergebnis zu beweisen. Auch algebraische  Invarianten
+nützen nicht viel, es sei denn, wir haben eine Methode zur Berechnung dieser
+Invarianten für eine genügend große Kollektion solcher Räume.\\
+Wir arbeiten also mit Räumen, die in Stücke zerlegt werden können, die wir
+schon hinreichend gut kennen, und die man schön zusammensetzen kann,
+\emph{triangulierbare Räume}.
+
+\begin{bspn}
+\begin{enumerate}[label=\arabic{*}.)]
+  \item %TODO: Bild
+Ein Homöomorphismus von der Oberfläche eines Tetraeders auf die 2-Spähre ergibt
+eine Zerlegung derselben in 4 Dreiecke, die an ihren Kanten verschweißt sind.
+\item %TODO: Triangulierung des Möbisubandes
+Wir können Flächen durch Dreiecke triangulieren. Für Mannigfaltigkeiten höherer
+Dimension brauchen wir entsprechende Bausteine höherer Dimension.\bsphere
+\end{enumerate}
+\end{bspn}
+
+\subsection{Simpliziale Komplexe und Triangulierungen}
+
+\begin{defn}
+\label{defn:4.1.1}
+Eine \emph{(affine) Hyperebene} $H$ des $\R^n$ der Dimension $k$ ist von der
+Form,
+\begin{align*}
+v_0 + U = H,\; U\leqslant \R^n,\; \dim_\R (U) = k.
+\end{align*}
+Ist $(x_1,\ldots,x_n)$ Basis von $U$ und $v_i = v_0+x_i\in H$ (für
+$i=1,\ldots,k$), so ist
+\begin{align*}
+H &= \setdef{v_0+\lambda_1(v_1-v_0)+\ldots+\lambda_k(v_k-v_0)}{\lambda_i\in\R}
+\\ &= \setdef{\mu_0v_0+\mu_1v_1+\ldots+\mu_k v_k}{\mu_i\in\R,
+\sum\limits_{i=0}^k \mu_i = 1}
+\end{align*}
+Seien $v_0,v_1,\ldots,v_k\in\R^n$, dann ist
+$H=\setdef{\sum\limits_{i=0}^{k}\mu_iv_i}{\sum\limits_{i=0}^k
+\mu_i=1,\;\mu_i\in\R}$ die von den Vektoren $v_0,\ldots,v_k$ aufgespannte
+\emph{Hyperebene}. Die Punkte $v_0,\ldots,v_k$ heißen \emph{in allgemeiner
+Position}, falls jede echte Teilmenge dieser Punkte eine echt kleinere
+Hyperebene aufspannt. Dies ist geanu dann der Fall, wenn die Vektoren
+$v_1-v_0,v_2-v_0,\ldots,v_k-v_0$ linear unabhängig sind.
+
+Seien $v_0,v_1,\ldots,v_k\in\R^n$. Dann ist die \emph{kleinste konvexe
+Teilmenge} vom $\R^n$, die $v_0,\ldots,v_k$ enthält, gegeben als,
+\begin{align*}
+\setdef{\mu_0v_0+\mu_1v_1+\ldots+\mu_kv_k}{\mu_i\in\R,\;\sum\limits_{i=0}^k
+\mu_i = 1,\;\mu_i\ge 0}.
+\end{align*}
+Sie heißt die \emph{konvexe Hülle} der Punkte $v_0,\ldots,v_k$.
+\begin{bspn}
+%TODO: Bild, Konvexe Hülle,
+\begin{align*}
+&T = \setdef{\mu_0x_0+\mu_1x_1+\mu_2x_2}{\mu_i\in\R, \mu_0+\mu_1+\mu_2 = 1},\\
+&S = \setdef{\mu_0x_0+\mu_1x_1+\mu_2x_2 \in T}{\mu_i \ge 0, \mu_0+\mu_1+\mu_2 =
+1}.
+\end{align*} 
+\end{bspn}
+Sind zudem $v_0,v_1,\ldots,v_k$ in allgemeiner Position, so heißt ihre konvexe
+Hülle das von $v_0,\ldots,v_k$ aufgespannte \emph{Simplex} $\sigma$, oder auch
+$k$-Simplex, wobei $k$ die Dimension des Simplex' ist.
+\begin{bspn}
+$0$-Simplex (Punkt), $1$-Simplex (Strecke), $2$-Simplex (Dreieck), $3$-Simplex
+(Tetraeder)
+%TODO: Bild der Simplexe.
+\end{bspn}
+Die Punkte $v_0,\ldots,v_k$ heißen \emph{Ecken} von $\simp$. (Punkte sind
+$0$-Simplizes)
+
+Simplizes haben \emph{Seiten}, nämlich die von den Teilmengen der Menge der
+Ecken aufgespannten Simplizes.
+
+Sei $\tau$ eine Seite von $\simp$, d.h. $\tau$ wird von
+$A\leqslant\{v_0,\ldots,v_k\}$ aufgespannt (und ist Simplex), dann schreiben
+wir $\tau\leqslant\simp$.\fishhere
+\end{defn}
+
+\begin{defn}
+\label{defn:4.1.2}
+Eine endliche Menge $K$ von Simplizes im $\R^n$ heißt \emph{simplizialer
+Komplex (Simplizalkomplex)}, wenn gilt:
+\begin{enumerate}[label=(\roman{*})]
+  \item Für jedes $\simp\in K$ und $\tau\leqslant\simp$ ist $\tau\in K$.
+  \item Sind $\simp$ und $\tau$ in $K$, so ist $\simp\cap\tau$ entweder leer
+  oder besteth aus einer gemeinsamen Seite von $\simp$ und $\tau$.\fishhere
+\end{enumerate}
+\end{defn}
+\begin{bspn}
+\begin{enumerate}[label=\arabic{*}.)]
+  \item $K=\{\simp, \overline{x_1x_2}, \overline{x_0x_1}, \overline{x_0x_2},
+ x_0,x_1,x_2\}$.
+%TODO: Bild, Simplex
+ \item $K=\{\simp, \overline{x_1x_2}, \overline{x_0x_1}, \overline{x_0x_2},
+ x_0,x_1,x_2, x_3, \overline{x_1x_3},\overline{x_1x_2},\overline{x_2x_3}\}$
+ %TODO: Bild, Simplex
+ \item Keine Simplizialkompexe.\bsphere
+ %TODO: Bild, keine Simpl.
+\end{enumerate}
+\end{bspn}
+
+\begin{bem}
+\label{bem:4.1.3}
+\begin{enumerate}[label=\arabic{*}.)]
+  \item Man kann (abstrakt) einen $k$-Simplex als Menge $\sigma
+  =\{v_0,v_1,\ldots,v_k\}$ auffassen. Der zu $\sigma$ gehörende
+  Simplizialkomplex ist dann gerade $\PP(\sigma)\setminus\{\varnothing\}$. Dies
+  ist der Vorteil beim Aufbau durch Dreiecke, denn für z.B. Rechtecke gilt dies
+  nicht
+  %TODO: Bild, Rechteck
+  die Diagonale $\{x_0,x_1\}$ spannt keine Seite auf.
+  \item Ebenso kann man abstrakte (kombinatorische) Simplizialkomplexe $K$
+  durch Angabe einiger Teilmengen von einer endlichen Punktmenge angeben:
+  \begin{align*}
+  &K_0 = \{v_0,\ldots,v_m\},\; \sigma_1,\ldots,\sigma_l\subseteq K_0
+  \text{ maximale Simplizes},\\
+  \sim & K=\setdef{v_0,\ldots,v_m,\;\sigma_1,\ldots,\sigma_l}{\tau\in K_0 \text{
+  mit }\tau \subseteq \sigma_i \exists i=1,\ldots,l}.\maphere
+  \end{align*}
+\end{enumerate}
+\end{bem}
+
+Eine Einbettung von $K$ in den $\R^n$ erhält man, indem man $m+1$ Punkte
+$v_0,\ldots,v_m$ in allgemeiner Position im $\R^n$ nimmt und die von den
+$\sigma_i, i=1,\ldots,l$ aufgespannten Simplizes und ihre Seiten dazu nimmt.
+Der so entstehende topologische Raum (Spurtologie im $\R^n$) heißt
+\emph{Realisierung} von $K$ und wird mit $\abs{K}$ bezeichnet.
+
+Alle Realisierungen eines Simplizialkomplexes sind homöomorph.
+
+\begin{defn}
+\label{defn:4.1.4}
+Eine \emph{Triangulierung} eines topologischen Raumes $X$ besteht aus einem
+Simplizialkomplex $K$ und einem Homöomorphismus $h: \abs{K}\to X$. $X$ heißt
+\emph{triangulierbar}, falls $X$ eine Triangulierung besitzt.\fishhere
+\end{defn}
+\begin{bemn}[Beachte:]
+\begin{enumerate}[label=\arabic{*}.)]
+  \item $\abs{K}$ in \ref{defn:4.1.4} ist kompakt und metrisierbar, also ist
+  auch $X$ kompakt und metrisierbar.
+  \item Triangulierungen von $X$, falls sie existieren, sind nicht eindeutig!
+\end{enumerate}
+\end{bemn}
+
+\begin{bspn}
+\begin{enumerate}[label=\arabic{*}.)]
+  \item Zwei verschiedene Triangulierungen der $2$-Sphäre.
+%TODO: Bild, Triangulierung 2-Sphäre
+\item Triangulierungen des Kreiszylinders und des Trous.\bsphere
+%TODO: Bild, Triangulierungen des Kreiszylinders und des Trous
+\end{enumerate}
+\end{bspn}
+
+\begin{propn}[Sätze]
+\begin{enumerate}[label=\arabic{*}.)]
+  \item Rado 1923:
+
+Jede kompakte Fläche ist triangulierbar.
+\item Moise 1952:
+
+Jede kompakte $3$-dimensionale Mannigfaltigkeit ist triangulierbar.
+\item Cairns, 1935:
+
+Jede kompakte, differenzierbare Mannigfaltigkeit ist triangulierbar.\fishhere
+\end{enumerate}
+\end{propn}
+\begin{propn}[Offenes Problem]
+Ist jede kompakte topologische Mannigfaltigkeit der Dimension $>3$
+triangulierbar?\fishhere
+\end{propn}
+
+\begin{defn}
+\label{defn:4.1.5}
+Für einen Simplex $\sigma=\{x_0,\ldots,x_k\}$ mit Ecken $x_0,\ldots,x_k$ sei
+die Menge
+\begin{align*}
+\setdef{\sum\limits_{i=0}^k \lambda_i x_i}{\sum\limits_{i=0}^k \lambda_i = 1,
+\lambda_i\in\R, \lambda_i > 0, \forall i=0,\ldots,k},
+\end{align*}
+das \emph{Innere} von $\abs{\sigma}\subseteq\R^n$.\fishhere
+\end{defn}
+Für $k\neq n$ unterscheidet sich das Innere vom topologischen Innern der
+Teilmenge $\abs{\sigma}\subseteq \R^n$.
+\begin{defnn}
+\emph{Zusammenhang} bei Simplizialkomplexen ist das, was man sich
+geometrisch darunter vorstellt.\fishhere
+\end{defnn}
+\begin{bspn}
+\begin{enumerate}[label=\arabic{*}.)]
+  \item
+  $K=\{a,b,c,\ldots,k, \lin{a,b},\lin{a,c},\ldots, 
+ \lin{a,b,c},\lin{b,c,d},\ldots,\lin{i,j,k,l}$
+%TODO: Bild, zusammenhängeder Simplizialkomplex
+\item $K\{a,\ldots\}$
+%TODO: Bild, nicht zusammenhängder Simplizialkomplex.
+$K$ ist nicht zusammenhängend.\bsphere 
+\end{enumerate}
+\end{bspn}
+
+\begin{lem}
+\label{prop:4.1.6}
+Sei $K$ Simplizialkomplex mit Polyeder $\abs{K}\subseteq\R^n$ dann gilt:
+\begin{enumerate}[label=\arabic{*}.)]
+  \item $\abs{K}$ ist abgeschlossen und beschränkt, also kompakt im $\R^n$.
+  \item Jeder Punkt $x$ von $\abs{K}$ liegt im Innern genau eines Simplexes von
+  $K$. Dieses Simplex wird Träger von $x$ genannt.
+  \item $\abs{K}=\bigcup_{\sigma\in K} \abs{\sigma}$ trägt die
+  Quotiententopologie bezüglich der Einbettungen $\abs{\sigma}\opento\abs{K}$, $\sigma\leqslant
+  \abs{K}$.
+  \item Ist $K$ zusammenhängend, so ist $\abs{K}$ wegzusammenhängend.\fishhere
+\end{enumerate}
+\end{lem}
+\begin{proof}
+Übung.\qedhere
+\end{proof}
+
+\begin{defn}
+\label{defn:4.1.7}
+Seien $K,L$ Simplizialkomplexe mit Eckenmenge $K_0$ bzw. $L_0$. Eine Abbildung,
+\begin{align*}
+\ph: K_0\to L_0,
+\end{align*}
+heißt \emph{simplizial}, falls gilt:
+
+Spannt $\{v_0,\ldots,v_k\}\subseteq K_0$ einen Simplex in $K$ auf, so spannt
+$\{\ph(v_0),\ldots,\ph(v_k)\}$ einen Simplex in $L$ auf. ($\ph$ muss nicht
+injektiv sein!).
+
+Ist $\ph$ eine Bijektion und sind $\ph$ und $\ph^{-1}$ simplizial, so heißt
+$\ph$ \emph{Isomorphismus} von $K$ auf $L$.\fishhere
+\end{defn}
+ 
+\begin{bemn}
+Seien $K,L$ Simplizialkomplexe und $\ph: K\to L$ simpliziale Abbildung.
+\begin{enumerate}[label=\alph{*})]
+  \item $\ph$ ist eindeutig durch die Bilder der Ecken von $K$ bestimmt.
+  \item Sind $\sigma,\tau\in K$ und $\tau\leqslant\sigma$, dann ist
+  $\ph(\tau)\leqslant\ph(\sigma)$ in $L$.
+  \item Für $\sigma\in K$ ist $\dim \sigma \ge \dim\ph(\sigma)$.
+\end{enumerate}
+Wir haben eine Kategorie der Simplizialkomplexe mit den simplizialen
+Abbildungen also Morphismen. ($\id_K: K\to K$ ist simplizial und die
+Komposition von simplizialen Abbildungen ist wieder eine simpliziale
+Abbildung.)\maphere
+\end{bemn}
+\begin{bemn}[Bemerkungen.]
+\begin{enumerate}[label=\arabic{*}.)]
+  \item Sei $\ph: K_0\to L_0$ simplizial.
+
+Dann lässt sich $\ph$ in natürlicher Weise zu einer Abbildung $\ph: K\to L$
+erweitern, durch:
+Ist $\Delta = \{v_0,\ldots,v_k\}\in K$, d.h. $\Delta$ ist Simplex in $K$, so
+sei $\ph(\Delta) = \{\ph(v_0),\ldots,\ph(v_k)\}\in L$.
+\item Seien $\abs{K}$ und $\abs{L}$ die zugehörigen Polyeder im $\R^n$. Sei
+$\ph: K\to L$ simplizial und $x\in\abs{K}$, dann gibt es einen Simplex
+$\{v_0,\ldots,v_k\}$ in $K$ mit $x=\sum\limits_{i=0}^k \lambda_i v_i$ wobei
+$\lambda_i\in\R,\;\sum \lambda_i = 1,\;\lambda_i > 0$.
+
+Definiere $s(x) = \sum\limits_{i=0}^k \lambda_i \ph(v_i)\in\abs{L}$. Dann wird
+$s: \abs{K}\to\abs{L}$ Abbildung.
+
+Diese ist wohldefiniert, da jedes $x$ nur im Innern von genau einem Simplex
+liegt. Klar ist auch, dass $s$ stetig und linear auf den $\abs{\Delta}$ mit
+$\Delta \in K$ ist.
+
+In Zukunft wollen wir daher nicht mehr zwischen
+\begin{align*}
+s: \abs{K}\to\abs{L} \text{ und } \ph: K\to L,
+\end{align*}
+unterscheiden.\maphere
+\end{enumerate}
+\end{bemn}
+\begin{lem}
+\label{prop:4.1.8}
+Seien $K,L$ Simplizialkomplexe und sei $\ph: K\to L$ Isomorphismus. Dann ist
+die zugehörige simpliziale Abbildung $s: \abs{K}\to\abs{L}$ ein
+Homöomorphismus.\fishhere
+\end{lem}
+\begin{proof}
+Übung.\qedhere
+\end{proof}
+
+\begin{bemn}
+Es kann durchaus passieren, dass $\abs{K}$ und $\abs{L}$ homöomorph aber nicht
+isomorph sind.\maphere
+%TODO: Bild, K,L
+\end{bemn}
+\begin{bemn}[Bemerkungen.]
+\begin{enumerate}[label=\arabic{*}.)]
+  \item Es gibt viel mehr stetige Abbildung als simpliziale Abbildungen von
+  $\abs{K}$ nach $\abs{L}$.
+
+Ist $m$ bzw. $n$ die Anzahl der Ecken von $K$ bzw. $L$, so gibt es höchstens
+$m^n$ simpliziale Abbildungen von $K$ nach $L$.
+\item Sei $\ph: K\to L$ simplizial, $\sigma\in K$, $\tau=\ph(\sigma)\in L$,
+dann bildet $s$, $\abs{\sigma}$ auf $\abs{\tau}$ ab.
+
+Ist $\dim\sigma = \dim \tau$, so ist $s\big|_{\abs{\sigma}}:
+\abs{\sigma}\to\abs{\tau}$ eine bijektive affine Abbildung.
+
+Ist $\dim\sigma > \dim \tau$, so ``drückt'' $s$, $\abs{\sigma}$ auf
+$\abs{\tau}$ zusammen.
+
+Den Fall $\dim\sigma <\dim\tau$ gibt es nicht (siehe \ref{defn:4.1.7}).\maphere
+\end{enumerate}
+\end{bemn}
+
+%\begin{bspn}
+%TODO: Bilder, simplizale Abbildungen.
+%\end{bspn}
+
+\subsection{Die Kantengruppe eines Simplizialkomplexes}
+
+Sei $X$ wegzusammenhängender, triangulierbarer Raum, etwa mit Triangulierung
+$h: \abs{K}\to X$, $K$ Simplizialkomplex. Da nach Voraussetzung $h$ ein Homöomorphismus
+ist, induziert $h$ einen Isomorphismus $h_* : \Pi(\abs{K})\to \Pi(X)$.
+
+Die Fundamentalgruppe von $\abs{K}$ ist aber besonder schön zu berechnen:
+Wir können annhehmen, dass alle Schleifen an eine Ecke von $\abs{K}$ über
+Kanten (=1-Simplizes von $K$) laufen.
+
+\begin{defn}
+\label{defn:4.2.1}
+Sei $K$ ein $S$-Komplex. Ein \emph{Kantenzug} in $K$ ist eine Folge
+$v_0,v_1,\ldots,v_k$ von Ecken in $K$ ($k\in\N_0$), so dass aufeinanderfolgende
+Ecken $v_i,v_{i+1}$ entweder gleich sind oder durch eine Kante in $K$
+verbunden sind.
+
+Ein \emph{geschlossener Kantenzug} erfüllt zusätzlich $v_0 = v_k$ und wird mit
+$vv_1\ldots v_{k-1}v$ bezeichnet.
+
+Auf der Menge der Kantenzüge an der Ecke $v_0$ definieren wir eine
+Äquivalenzrelation $\sim$ wie folgt:
+%TODO: Bild, Äquivalenzrelation Kantenzüge
+
+Die von diesen Relationen erzeugte Äquivalenzrelation wird ebenfalls mit $\sim$
+bezeichnet. Die Äquivalenzklasse bzgl. ``$\sim$'' von dem geschlossenen
+Kantenzug $vv_1\ldots v_{k-1}v$ bezeichnen wir mit $\nrm{vv_1\ldots v_{k-1}v}$.
+
+Wir definieren eine Multiplikation auf der Menge der Äquivalenzklassen durch,
+\begin{align*}
+\nrm{v_0v_1\ldots v_kv_0}\nrm{v_0w_1\ldots w_mv_0} = \nrm{v_0v_1\ldots
+v_kw_1\ldots w_m v_0}.
+\end{align*}
+Diese binäre Operation ist offensichtlich wohldefiniert und assoziativ.
+
+Der Kantenzug $\nrm{v_0}=\nrm{v_0v_0}=\nrm{v_0v_1v_0}$ ist die Identität und
+$\nrm{v_0 v_k v_{k-1} \ldots v_1 v_0}$ das Inverse $\nrm{v_0 v_1 \ldots v_{k-1}
+v_0}^{-1}$ von $\nrm{v_0 v_1 \ldots v_{k-1} v_0}$.
+
+Damit wird die Menge der Äquivalenzklassen von geschlossenen Kantenzügen an
+$v_0$ eine Gruppe $E(K,v_0)$, die \emph{Kantengruppe} an $v_0\in K$.\fishhere
+\end{defn}
+
+Wir wollen zeigen, dass die Abbildung,
+\begin{align*}
+&E(K,v_0)\to\Pi(\abs{K},v_0),\; \nrm{v_0v_1\ldots v_{k}v_0}\to \lin{\text{Weg}
+(v_0v_1\ldots v_kv_0)},
+\end{align*}
+ein Isomorphismus ist. 
+
+\begin{defn}
+\label{defn:4.2.2}
+Die erste \emph{baryzentrische Unterteilung} $K^1$ von einem Simplizialkomplex $K$ ist
+definiert wie folgt:
+
+Jedes einzelne $q$-Simplex $\sigma^q = \lin{v_0,v_1,\ldots,v_q}, q\in\N_0$ wird
+enzeln unterteilt, wobei die Ecken von $(\sigma^q)^1\in K^1$ alle Schwerpunkte
+$\widehat{v_{j_0}\ldots v_{j_i}}$ der $i$-dimensionalen Seiten von $\sigma^q$
+sind.
+
+Hierbei ist der \emph{Schwerpunkt} des $q$-Simplex $\sigma$ bezeichnet als
+$\hat{\sigma}$, der Punkt mit den baryzentrischen Koordianten $\lambda_i=
+\frac{1}{1+q},\; i=0,\ldots,q$.
+
+D.h. ist $\sigma =\lin{x_0,x_1,\ldots,x_q}$, dann ist $\hat{\sigma} =
+\frac{1}{1+q}(x_0+x_1+\ldots+x_q)$.\fishhere
+\end{defn}
+\begin{bspn}
+%TODO: Bild, Dreieck baryzentrische Unterteilung
+\begin{align*}
+\frac{1}{3}(x_0+x_1+x_2) = x_0+ \underbrace{\frac{1}{3}(x_1-x_0)}_{:=a} +
+\underbrace{\frac{1}{3}(x_2-x0)}_{:=b}.\bsphere
+\end{align*}
+\end{bspn}
+
+\begin{propn}
+Die Schwerpunkte einer Kette
+\begin{align*}
+\sigma^0 < \sigma^1 < \ldots <\sigma^q,
+\end{align*}
+von $i$-Simplizes $\sigma^i$ ($i=0,\ldots,q$) gegeben als
+\begin{align*}
+\hat{\sigma}^0, \hat{\sigma}^1, \ldots, \hat{\sigma}^q,
+\end{align*}
+sind in allgemeiner Position und spannen einen $q$-Simplex auf.\fishhere
+\end{propn}
+\begin{proof}
+Übung.\qedhere
+\end{proof}
+
+Daher ist ein $k$-dimensionaler Simplex in der Unterteilung $(\sigma^q)^1$ von
+$\sigma^q$ bestimmt durch die Ecken,
+\begin{align*}
+\{\widehat{v_{j_0}}, \widehat{v_{j_0}v_{j_1}},
+\widehat{v_{j_0}v_{j_1}v_{j_2}},\ldots,\widehat{v_{j_0}v_{j_1}\ldots v_{j_k}}\},
+\end{align*}
+für jedes geordnete Tupel $(v_{j_0}, \ldots, v_{j_k})$ in $\{v_0,\ldots,v_q\}$.
+
+Der $q$-Simplex $\sigma^q$ wird dadurch in $(q+1)!$ viele $q$-Simplizes zerlegt.
+%TODO: Bild, Baryzentrische Zerlegung.
+
+\begin{bemn}[Klar]
+$\abs{\sigma^q}$ ist die Vereinigung der $q$-Simplizes in $\abs{(\sigma^q)^1}$,
+\begin{align*}
+\Rightarrow\; & \abs{\sigma^q} = \abs{(\sigma^q)^1}\\
+\Rightarrow\; &\abs{K} = \abs{K^1} \text{ als Teilmenge des }\R^n.
+\end{align*}
+Induktiv erhalten  wir die $m$-te baryzentrische Unterteilung $K^m$ von $K$.
+\end{bemn}
+
+\begin{defn}
+\label{defn:4.2.3}
+Seien $K$ und $L$ Simplizialkomplexe, $f: \abs{K}\to\abs{L}$ eine stetige Abbildung.
+Eine \emph{simplizale Approximation} von $f$ ist eine simpliziale Abbildung
+\begin{align*}
+s: K\to L,
+\end{align*}
+für die gilt, dass $s(x)$ im Träger von $f(x)\in L$ liegt für alle
+$x\in\abs{K}$.\fishhere
+\end{defn}
+
+\begin{bspn}
+Seien $K=L=[0,1]$,
+\begin{align*}
+&K=\left\{0,\frac{1}{3},1,\lin{0,\frac{1}{3}},\lin{\frac{1}{3},1}\right\},\\
+&L=\left\{0,\frac{2}{3},1,\lin{0,\frac{2}{3}},\lin{\frac{2}{3},1}\right\}.
+\end{align*}
+%TODO: Bild, S-Approx
+$f: \abs{K}\to\abs{L},\; x\mapsto x^2$ ist stetig.
+
+Sei $s$ simpliziale Approximation von $f$, dann ist
+\begin{align*}
+&f(0) = 0 = s(0),\\
+&f(1) = 1 = s(1),
+\end{align*}
+und daher $s\left(\frac{1}{3}\right) = \frac{2}{3}$ (und
+$s\left(\frac{\sqrt{2}}{\sqrt{3}}\right) = \frac{2}{3}$)
+(Wäre z.B. $s\left(\frac{1}{3}\right) = 0$, so wäre
+$s\left(\lin{\frac{1}{3},1}\right) = \lin{0,1} \notin L$)
+
+Nun ist aber $f\left(\frac{1}{2}\right) = \frac{1}{4}\in
+\lin{0,\frac{2}{3}}\ni s\left(\frac{1}{2}\right)$,
+da $s\left(\frac{1}{2}\right) \in s\left(\lin{\frac{1}{3},1}\right) \in
+\lin{\frac{2}{3},1}$ sein muss.
+
+Also kann $s$ nicht simplizial sein und daher finden wir keine simpliziale
+Approximation von $f$.
+
+\begin{bemn}[Ähnlich:]
+Keine simpliziale Abbildung $s: K^1 \to L$ approximiert $f$ simplizial.
+\end{bemn}
+Aber wir finden eine simpliziale Abbildung $s: K^2\to L$:
+%TODO: Bild, S-Approx Bar-U
+\begin{align*}
+0,\frac{1}{12},\frac{1}{6}, \frac{1}{4},\frac{1}{3},\frac{1}{2}&\mapsto
+0,\\
+\frac{2}{3},\frac{5}{6}&\mapsto \frac{2}{3},\\
+1&\mapsto 1,
+\end{align*}
+also ist $\sigma: \abs{K^2}\to \abs{L}$ gegeben durch,
+\begin{align*}
+&\nrm{0,\frac{1}{2}} \to 0,\\
+&\nrm{\frac{1}{2},\frac{2}{3}} \to \nrm{0,\frac{2}{3}},\\
+&\nrm{\frac{2}{3},\frac{5}{6}} \to \frac{2}{3},\\
+&\nrm{\frac{5}{6},1} \to \nrm{\frac{2}{3},1}.
+\end{align*}
+(stetig durch verkleben)
+
+$s$ ist simpliziale Approximation von $f$, da $s$ so gewählt wird,
+dass $s\left(\frac{\sqrt{2}}{\sqrt{3}}\right) = \frac{2}{3}$ ist.\bsphere
+\end{bspn}
+\begin{propn}[Problem]
+Finden Sie eine zweite von $\sigma$ verschiedene simpliziale Approximation $t:
+K^2\to L$ von $f$.\fishhere
+\end{propn}
+Wir können $f$ also nicht auf dem ursprünglichen Simplex simplizial
+approximieren aber auf $K^2$.
+
+Ist insbesondere $x\in K$ Ecke $f(x)$ im Innern von $\sigma^q\in L$, dann ist
+$s(x)$ auch Ecke von $\sigma^q$. Ist $f(x) = w$ Ecke von $L$, dann folgt
+$s(x)=f(x)=w$.
+
+Die Funktionswerte von $f$ und $s$ durchlaufen also immer dieselben Simplizes.
+
+\begin{prop}[Simplizialer Approximationssatz]
+\label{prop:4.2.4}
+Seien $K,L$ Simplizialkomplexe, $f: \abs{K}\to\abs{L}$ stetig, dann gibt es ein
+$m\in\N$, so dass $f: \abs{K^m}\to\abs{L}$ eine simpliziale Approximation $s:
+K^m\to L$ besitzt.\fishhere
+\end{prop}
+\begin{proof}
+Siehe Armstrong.\qedhere
+\end{proof}
+
+\begin{prop}
+\label{prop:4.2.5}
+Seien $K,L$ Simplizialkomplexe, $f: \abs{K}\to\abs{L}$ stetig und $s: K\to L$
+simpliziale Approximation von $f$, dann sind $s$ und $f$ homotop.\fishhere
+\end{prop}
+\begin{proof}
+Es gilt $\abs{L}\subseteq\R^n$, sowie $f,s: \abs{K}\to\R^n$ wenn man den
+Wertebereich ausdehnt.
+
+Sei $F: \abs{K}\times I\to \R^n,\; (x,t)\mapsto (1-t)s(x)+tf(x)$ die
+Streckenhomotopie von $s$ nach $f$ als Abbildungen von $\abs{K}$ in den
+konvexen Raum $\R^n$. Für $x\in K$ sei $\Delta\in L$ das Trägersimplex von
+$f(x)$. Dann ist $s(x)\in\Delta$, da $s$ simpliziale Approximation von $f$ ist
+und daher ist $(1-t)s(x)+tf(x)\in\Delta$ für alle $t\in I$, da $\Delta$ konvex
+ist.
+
+Also ist $F: \abs{K}\times I\to \abs{L}$ in der Tat Homotopie von $s$ nach $f$
+als Abbildungen von $\abs{K}$ nach $\abs{L}$.\qedhere
+\end{proof}
+
+\begin{prop}
+\label{prop:4.2.6}
+Sei $K$ ein Simplizialkomplex, $v\in K_0$ (=Eckenmenge). Dann ist die Kantengruppe
+$E(K,v)\cong \Pi(K,v)$.\fishhere
+\end{prop}
+\begin{proof}
+Die Abbildung $\ph: E(K,v)\to \Pi(K,v)$, die jeder Äquivalenzklasse eines
+geschlossenen Kantenzuges an $v$ eine Homotopieklasse des zugrundeliegenden
+(stückweise linearen) geschlossenen Weges zuordnet, ist offensichtlich
+wohldefiniert, da äquivalente Kantenzüge auch homotop $\rel{0,1}$ sind.
+
+Klar ist auch, dass $\ph$ Gruppenhomomorphismus ist, denn die Multiplikation
+zweier Kantenzüge ist die Hintereinanderausführung der zugrundeliegenden Wege.
+\begin{enumerate}[label=\arabic{*}.)]
+  \item $\ph$ ist surjektiv:
+
+Sei $\alpha: I\to\abs{K}$ Schleife an $v$. z.Z. $\alpha$ ist homotop
+$\rel{0,1}$ zu einem geschlossen Kantenzug an $v$.
+
+Sei $L$ das 1-Simplex $\lin{x_0,x_1}$, so ist $\abs{L}=I$. Nach dem
+simplizialen Approximationssatz \ref{prop:4.2.4} gibt es ein $m\in\N$ und eine
+simpliziale Abbildung $s: \abs{L^m}\to K$, die $\alpha$ simplizial
+approximiert. Nach dem Beweis von \ref{prop:4.2.5} sind $s$ und $f$ homotop
+mit der Streckenhomotopie,
+\begin{align*}
+F(x,t) = (1-t)s(x) + tf(x),\quad \text{für } t\in I.
+\end{align*}
+Also gilt für alle $t\in I$,
+\begin{align*}
+F(1,t) = s(1) = \alpha(1) = v,\\
+F(0,t) = s(0) = \alpha(0) = v,
+\end{align*}
+d.h. die Homotopie ist $\rel{0,1}$ und $\lin{s} = \lin{\alpha}$. Also ist $\ph$
+surjektiv.
+\item $\ph$ ist injektiv:
+
+Dazu reicht es zu zeigen, dass $\ker \ph = \nrm{v}$ ist.
+D.h. ein geschlossener Kantenzug $vv_1\ldots v_{k-1}v$, der als Weg in
+$\abs{K}$ nullhomotop ist, muss äquivalent zu $\nrm{v}$ sein.
+
+Sei $\alpha: I\to\abs{K}$ der von $vv_1\ldots v_{k-1}v$ induzierte Weg. Da
+$\alpha$ nullhomotop ist, gibt es eine stetige Abbildung
+\begin{align*}
+F: I\times I\to \abs{K},
+\end{align*}
+mit
+\begin{align*}
+&F(s,0) = \alpha(s),\\
+&F(s,1) = v,
+\end{align*}
+für alle $s\in I$. Außerdem ist
+\begin{align*}
+F(0,t) = F(1,t) = v,
+\end{align*}
+für alle $t\in I$, da alle Kurven $\alpha_t: I\to K,\; s\mapsto F(s,t)$
+Schleifen an $v$ sind. ($F$ ist Homotopie $\rel{0,1}$)
+
+Wir machen $I\times I$ zum Polyeder eines Simplizialkomplexes $L$ mit Ecken,
+\begin{align*}
+&a = (0,0),\; b=(0,1),\;\; c=(1,1), d=(1,0),\\
+&a_i = \left(\frac{i}{k},0\right),\; k\in\N,
+\end{align*}
+und $2$-Simplizes,
+\begin{align*}
+\lin{b,a_{i-1},a_i}, \lin{b,c,d}.
+\end{align*}
+%TODO: Bild, Zerlegung von IxI in Dreiecke
+Dann ist $L$ Simplizialkomplex bestehend aus Dreiecken.
+%TODO: Bild, Strecke ad
+wird durch $\alpha=\alpha_0$ Weg $\alpha$ in $\abs{K}$ an $v\in\abs{K}$,
+%TODO: Bild Rechteck,
+wird durch Homotopie $F$ konstant auf $v\in\abs{K}$ abgebildet.
+%TODO: Punkt
+zusätzliche Ecken bei baryzentrischer Unterteilung der Kantenzüge $abcd$ bzw.
+$\alpha a_1 a_2 \ldots a_{k-1} d$ auf den involvierten Kanten.
+
+In $L$ sind die Kantenzüge $E_{1,0} := a a_1 \ldots a_{k-1}d$ und
+$E_{2,0}:=abcd$ offensichtlich äquivalent.
+
+In der baryzentrischen Unterteilung $L^m$, $m\in\N$ von $L$ erhalten wir zwei
+Kantenzüge $E_{1,m}$ und $E_{2,m}$.
+
+Induktion über $m$ ergibt, dass $E_{1,m}$ und $E_{2,m}$ äquivalent in
+$\abs{L^m}$ sind. Mit \ref{prop:4.2.4} folgt, es existiert ein $m\in\N$ und eine simpliziale
+Approximation $S: L^m\to K$ zu $F: \abs{L^m}\to\abs{K}$.
+
+\begin{bemn}[Leichte Übung:]
+Simpliziale Abbildungen erhalten die Relationen \ref{defn:4.2.1:1},
+\ref{prop:4.2.1:2} und \ref{prop:4.2.1:3} in \ref{defn:4.2.1} und daher
+erhalten sie auch die Äquivalenzrelation $\sim$ auf geschlossenen Kantenzügen.
+\end{bemn}
+\begin{bemn}[Also:]
+Die Bilder $S(E_1),S(E_2)$ von $E_1$ und $E_2$ unter $S$ sind äquivalent in
+$K$,
+\begin{align*}
+&S(E_2) = \text{ die Ecke } v (3\cdot 2^m + 1)\text{-mal},\\
+&\nrm{S(E_2)} = \nrm{v\ldots v} = \nrm{v}.
+\end{align*}
+\end{bemn}
+Andererseits mit $F(a_i) = v_i\in K$ $1\le i\le k-1$ ist $S$ (neue Ecke
+zwischen $a_i$ und $a_{i+1}$) $=v_i\in\abs{K}$ oder $=v_{i+1}$, da $S$ eine
+Abbildung $F$ simplizial approximiert.
+
+Also ist $S(E_1)$ ein Kantenzug äquivalent zu $vv_1\ldots v_{k-1}v$ und daher
+ist
+\begin{align*}
+\nrm{v} = \nrm{vv_1\ldots v_{k-1}v}.
+\end{align*}
+Also ist $\ph$ injektiv.
+\end{enumerate}
+$\Rightarrow \ph$ ist Isomorphismus.\qedhere
+\end{proof}
+
+\begin{bemn}[Wollen:]
+Erzeugende und Relationen für $E(K,v)$ direkt am Simplizialkomplex $K$ ablesen.
+\end{bemn}
+
+\begin{defn}
+\label{defn:4.2.7}
+Sei $K$ ein Simplizialkomplex.
+\begin{enumerate}[label=\arabic{*}.)]
+  \item Ein \emph{Unterkomplex} $L$ von $K$ ($L\leqslant K$) ist eine Teilmenge
+  von $K$, so dass $L$ ein Simplizialkomplex ist und jeder Simplex von $L$ auch Simplex
+  von $K$ ist.
+
+$L$ heißt dann \emph{voll}, wenn jeder Simplex von $K$ dessen sämtliche Ecken
+in $L$ liegen, schon in $L$ liegt.
+\item Ein eindimensionaler Simplizialkomplex heißt \emph{Graph} (genauer Graph
+ohne Schleifen und Doppelkanten)
+%TOD: Graph
+\item Ein zusammenhängender, einfach zusammenhängender Graph heißt \emph{Baum}.
+(Graph ohne geschlossene Kantenzüge)\fishhere
+%TODO: Baum
+\end{enumerate}
+\end{defn}
+
+\begin{lem}
+\label{prop:4.2.8}
+Jeder zusammenhängende Simplizialkomplex $K$ enthält einen maximalen Baum als
+Unterkomplex. Solch ein Baum enthält alle Ecken von $K$.\fishhere
+\end{lem}
+\begin{proof}
+Klar ist, dass jeder zusammenhängende Simplizialkomplex einen maximalen Baum
+als Unterkomplex enthält. ($K$ hat nur endlich viele Elemente)
+
+Sei $T$ maximaler
+Baum $\leqslant K$, $v$ Ecke in $K$ mit $v\notin T$, $u$ Ecke in $T$. Sei $uv_1\ldots v_k v$ Kantenzug von $u$ nach $v$. Ein solcher
+existiert, da $K$ zusammenhängend ist. Sei $v_i$ die letzte Ecke in diesem
+Kantenzug, die noch in $T$ liegt. Sei $T' = T\cup
+\{v_{i+1},\lin{v_i,v_{i+1}}\}$ (für $i=k$ sei $v_{i+1} = v$)
+%TODO: Bild, Baum mit Ecke
+$T$ ist starker Deformationsretrakt von $T'$ also ist $T'$ einfach
+zusammenhängend und daher ist $T'\leqslant K$ Baum, aber $T$ war bereits maximal, ein
+Widerspruch\dipper
+
+Also liegen alle Ecken von $K$ in $T$.
+\end{proof}
+
+\begin{defn}
+\label{defn:4.2.9}
+Sei $K$ zusammenhängender S-Komplex, $T$ ein maximaler Baum in $K$ und
+$K_0=\{v=v_0,v_1,\ldots,v_k\}$ die Menge Menge der Ecken in von $K$.
+
+Sei $G(K,T)$ die Gruppe, die von Elementen $g_{ij}$ mit $i,j\in\{0,\ldots,s\}$
+erzeugt wird, wobei $\lin{v_i,v_j}\in K$ ($K\setminus T$) und die folgenden
+Relationen erfüllt sind:
+\begin{enumerate}[label=(\roman{*})]
+  \item\label{defn:4.2.9:1} $g_{ij} = 1$, falls $\lin{v_i,v_j}\in T$. (entfällt)
+  \item\label{defn:4.2.9:2} $g_{ij}g_{jk} = g_{ik}$, falls $\lin{v_i,v_j,v_k}\in
+  K$.
+\end{enumerate}
+Aus \ref{defn:4.2.9:2} folgt, $g_{ij}^{-1} = g_{ji}$, da $g_{ii} = 1$. Somit
+gilt,
+\begin{align*}
+G(K,T) = \lin{g_{ij}\ : \ 0\le i < j \le s, \lin{v_i,v_j}\in K\setminus T,\;
+g_{ij}g_{jk}=g_{ik},\text{ für } \lin{v_i,v_j,v_k}\in K}.
+\end{align*}
+Im Übrigen berühren die Relationen keine höherdimensionalen Simplizes als
+Dreiecke.\fishhere
+\end{defn}
+\begin{prop}
+\label{prop:4.2.10}
+Sei $K$ zusammenhängender S-Komplex und $T$ maximaler Baum in $K$. Dann ist
+\begin{align*}
+G(K,T)\cong E(K,v),
+\end{align*}
+wobei $v$ eine beliebige Ecke von $K$ ist.\fishhere
+\end{prop}
+\begin{proof}
+Wir definieren,
+\begin{align*}
+\phi: G(K,T)\to E(K,v),
+\end{align*}
+auf den Erzeugenden $g_{ij}$ von $G(K,T)$ durch,
+\begin{align*}
+\phi(g_{ij}) := \nrm{E_i v_iv_j E_j^{-1}},
+\end{align*}
+mit $E_i$ ist ein fest gewählter Kantenzug in $T$ von $v=v_0$ nach $v_i$.
+
+Ist $\lin{v_i,v_j}\in T$, so ist $E_iv_iv_jE_j^{-1}$ Schleife in $T$ und daher
+äquivalent zu $v=E_0$, d.h. in $E(K,v)$ ist $\nrm{E_iv_iv_jE_j^{-1}}$ das
+Einselement.
+
+Spannen $v_i,v_j,v_k$ ein $2$-Simplex in $K$ auf, so ist
+\begin{align*}
+\phi(g_{ij})\phi(g_{jk}) &= \nrm{E_iv_iv_jE_j^{-1}}\nrm{E_jv_jv_kE_k^{-1}} =
+\nrm{E_jv_iv_jE_j^{-1}E_jv_jv_kE_k^{-1}} \\ &=
+\nrm{E_jv_iv_jv_jv_kE_k^{-1}} =
+\nrm{E_jv_iv_kE_k^{-1}} = \phi(g_{ij}\cdots g_{jk}) = \phi(g_{ik}).  
+\end{align*}
+Also ist $\phi$ ein Homomorphismus.
+
+Analog definieren wir,
+\begin{align*}
+\psi: E(K,v)\to G(K,T),
+\end{align*}
+durch
+\begin{align*}
+\psi(\nrm{vv_kv_lv_m\cdots v_n v}) = g_{0k}g_{kl}g_{lm}\cdots g_{n0}.
+\end{align*}
+Eine leichte Übung zeigt, dass auch $\psi$ ein Gruppenhomomorphismus ist.
+
+Wir haben daher,
+\begin{align*}
+\psi\circ\phi(g_{ij}) = \psi(\nrm{E_iv_iv_jE_j^{-1}}) = g_{ij},
+\end{align*}
+da die Paare von Ecken in $E_i$ und $E_j^{-1}$ Kanten in $T$ aufspannen und
+daher die entsprechenden $g_{uv}=1$ sind.
+
+Ist $vv_kv_lv_m\cdots v_n v$ ein geschlossener Kantenzug in $K$ an $v$, so ist
+\begin{align*}
+\nrm{vv_kv_l\cdots v_nv} =
+\nrm{E_0vv_kE_k^{-1}}\nrm{E_kv_kv_lE_l^{-1}}\cdots\nrm{E_nv_nvE_0^{-1}}.
+\tag{*}
+\end{align*}
+Nun ist,
+\begin{align*}
+\phi\circ\psi(\nrm{E_iv_iv_jE_j^{-1}}) = \phi(g_{ij}) = \nrm{E_iv_iv_jE_j^{-1}},
+\end{align*}
+und daraus folgt mit (*), dass
+\begin{align*}
+\phi\circ\psi(\nrm{vv_kv_l\cdots v_nv}) = \nrm{vv_kv_l\cdots v_nv}.
+\end{align*}
+Also sind $\phi$ und $\psi$ zueinander inverse Isomorphismen von $E(K,v)$ und
+$G(K,T)$.\qedhere
+\end{proof}
+\begin{bemn}[Beobachtung.]
+Sei $K$ ein S-Komplex. Die Teilmenge der Ecken ($0$-Simplizes), Kanten
+($1$-Simplizes) und Dreiecke ($2$-Simplizes) bilden einen Unterkomplex $K_2$,
+\begin{align*}
+K_2 = \setdef{q\text{-Simplizes in }K}{q\le 2},
+\end{align*}
+das sogenannte \emph{$2$-Skelett} von $K$. Alle Konstruktionen in diesem
+Abschnitt (also $G(K,T)$ und $E(K,v)$) involvieren nur $q$-Simplizes mit $q\le
+2$.
+
+Um diese Objekte für $K$ zu bestimmen, genügt es also, sie für $K_2$ zu
+bestimmen.
+\begin{align*}
+G(K_2,T) = G(K,T) = E(K,v) = E(K_2,v) \cong \Pi(K,v) = \Pi(K_2,v).\maphere 
+\end{align*}
+\end{bemn}
+
+\begin{cor}
+\label{prop:4.2.12}
+Die Fundamentalgruppe eines wegzusammenhängenden, triangulierbaren Raums ist
+\emph{endlich präsentierbar}, d.h. kann durch eine endliche Menge von Erzeugern
+und eine endliche Menge von Relationen beschrieben werden.\fishhere
+\end{cor}
+
+Unser Ziel, die kompakten zusammenhängenden randlosen Flächen zu klassifizieren
+haben wir aus Zeitgründen nicht erreicht. :(

@@ -1,0 +1,2572 @@
+\section{Homotopie und Fundamentalgruppe}
+\subsection{Homotopie}
+\begin{defn}
+\label{defn:3.1.1}
+Seien $X,Y$ topologische Räume und $f,g: X\to Y$ stetige Abbildungen. Eine
+\emph{Homotopie} von $f$ nach $g$ ist eine stetige Abbildung $F: X\times [0,1]
+\to Y$ mit
+\begin{align*}
+F(x,0) = f(x),\quad F(x,1) = g(x),
+\end{align*}
+und $X\times[0,1]$ trägt die Produkttopologie.
+
+Gibt es eine Homotopie von $f$ nach $g$, so heißen $f$ und $g$ \emph{homotop}
+und wir schreiben $f\hom g$ bzw. $f\hom_F g$, wenn die Homotopie $F: X\times[0,1]\to y$
+mit bezeichnet werden soll.
+
+Wir schreiben $f_t: X\to Y$ für die Abbildung $f_t(x) = F(x,t)$. Es gilt,
+\begin{align*}
+f_0 = f,\;f_1 = g.\fishhere
+\end{align*}
+\end{defn}
+
+\begin{lem}
+\label{prop:3.1.2}
+``$\hom$'' ist eine Äquivalenzrelation auf $C(X,Y)$.\fishhere
+\end{lem}
+\begin{proof}
+Seien $f,g: X\to Y$ stetig
+\begin{enumerate}
+  \item $f\hom f$ mit $F(x,t) = f(x), \forall x\in X, t\in[0,1]$. (Reflexivität)
+  \item Sei $F(x,t)$ Homotopie von $f$ nach $g$, dann ist $G(x,1-t)$ Homotopie
+  von $g$ nach $f$. (Symmetrie)
+  \item Seien $F(x,t), G(x,t)$ Homotopien von $f$ nach $g$ bzw. $g$ nach $h$,
+  dann ist
+  \begin{align*}
+  H(x,t) = \begin{cases}
+           F(x,2t), & 0\le t\le \frac{1}{2},\\
+           G(x,2t-1), & \frac{1}{2}< t\le 1.
+           \end{cases}
+  \end{align*}
+eine Homotopie, denn
+\begin{align*}
+H(x,0) = F(x,0) = f(x),\\
+H(x,1) = G(x,1) = g(x),
+\end{align*}
+und $X\times[0,\frac{1}{2}],\; X\times [\frac{1}{2},1]\in \AA_X\times I$, also
+ist $H$ stetig. (Transitivität)\qedhere
+\end{enumerate}
+\end{proof}
+
+\begin{prop}[Verallgemeinerung]
+\label{prop:3.1.3}
+Seien $X,Y$ topologische Räume, $A\subseteq X$ und $f,g: X\to Y$ stetig. Dann
+heißen $f,g$ \emph{relativ homotop zu $A$} und wir schreiben $f\hom g\rels{A}$,
+falls eine Homotopie $F: X\times I \to Y$ existiert mit $F(x,0) = f(x),\; F(x,1) = g(x)$
+und $F(a,t) = f(a) = g(a), \forall a\in A,\; t\in I$. Insbesondere ist dann
+$f\big|_A = g\big|_A$.
+
+``$\hom_A$'' ist eine Äquivalenzrelation auf $C(X,Y)$.\fishhere
+\end{prop}
+
+\begin{prop}[Spezialfälle]
+\begin{enumerate}
+  \item $I=[0,1]$, $X$ topologischer Raum. Stetige Abbildungen von $I$ nach $X$
+  sind Wege in $X$. Eine Homotopie von Wegen ist eine stetige Abbildung $F:
+  I\times I\to X$ mit $F(t,0) = \alpha(t)$ und $F(t,1) = \beta(t)$.
+  
+  Sei jetzt $\alpha(0) = x,\;x\in X$ und $e_x : I\to X,\;t\mapsto x$ die
+  \emph{konstante Abbildung}. Wählt man als Homotopie $F: I\times I \to
+  X,\;(s,t)\mapsto\alpha(st)$, dann ist
+  \begin{align*}
+  & F(s,0) = \alpha(0) = x, & F(s,0) = c_x,\\
+  & F(s,1) = \alpha(s), & F(s,1) = \alpha,
+  \end{align*}
+
+Also ist $F$ eine Homotopie von $e_x$ nach $\alpha$ und da $\hom$ eine
+Äquivalenzrelation ist, sind alle Wege in $X$ mit selbem Anfangs und Endpunkt
+homotop.
+
+Dies gibt nicht viel her\ldots
+\item Seien $\alpha, \beta: X\to I$ Wege und $F: I\times I \to X,
+(s,t)\mapsto F(s,t)$ eine Homotopie von $\alpha$ nach $\beta$, also
+\begin{align*}
+F(s,0) = \alpha(s), \forall s\in I\text{ und }F(s,1) = \beta(s), \forall s\in I,
+\end{align*}
+so bezeichnet der 1. Parameter $s$ in $F(s,t)$ den \emph{deformierten Weg}, der
+2. Parameter $t$ den \emph{Kurvenparameter} in $\setdef{\alpha_t}{t\in I}$
+von Wegen $\alpha_t(s) = F(s,t)$.
+
+Da die einfache Homotopie von Wegen im Allgemeinen nichts bringt, benutzt man
+hier eine besondere Homotopie von Wegen mit demselben Anfangs- und Endpunkt.
+
+\item Seien $\alpha,\beta$ Wege in $X$ mit Anfangspunkt $a$ und Endpunkt $b$. dann
+heißen (mißbräuchlich) $\alpha$ und $\beta$ homotop, falls es eine Homotopie
+$F:I\times I\to X$ von $\alpha$ nach $\beta$ $\rel{0,1}$ gibt, also eine
+stetige Abbildung $F:I\times I\to X$ mit $F(s,0) = \alpha(s)$
+und $F(s,1) = \beta(s), \forall s\in I$.
+\begin{align*}
+F(0,t) = a, F(1,t) = b, \forall t\in I. \alpha\hom_{\{0,1\}}
+\end{align*}
+Ist dazu noch $a=b$, so haben wir eine Homotopie von \emph{Schleifen
+(``Loops'')} an $a\in X$, also von Wegen von $a$ nach $a$
+($\rel{0,1}\subseteq I$). $F:I\times I \to X$ mit
+\begin{align*}
+F(s,0) = \alpha(s),\\
+F(s,1) = \beta(s).
+\end{align*}
+Jeder Weg $\alpha_t : I\to X, s\mapsto F(s,t)$ ist Weg von $a$ nach $b$.
+\end{enumerate}
+\end{prop}
+
+\begin{prop}[Probleme]
+\label{prop:3.1.5}
+\begin{enumerate}
+  \item Seien $f,g: X\to Y$ homotop ($\rels{A}\subseteq X$) und $h: Y\to Z$
+  stetig, dann ist $h\circ f\hom h\circ g$ ($\rels{A}$).
+  \item Seien $g,h: Y\to Z$ homotop ($\rels{B}\subseteq Y$) und sei $f: X\to
+  Y$ stetig, dann ist $g\circ f \hom h\circ f$ ($\rels{f^{-1}(B)}\subseteq
+  X$).\fishhere
+\end{enumerate}
+\end{prop}
+
+\begin{prop}
+\label{prop:3.1.6}
+Seien $X,Y,Z$ topologische Räume $f,g: X\to Y$ stetige Abbildungen und $h,k:
+Y\to Z$ stetige Abbildungen mit $f\hom g$ und $h\hom k$, dann ist $h\circ f\hom
+k\circ g$.\fishhere
+\end{prop}
+\begin{proof}
+Seien $F: X\times I\to Y,\;G: Y\times I\to Z$ Homotopien von $f$ nach $g$ bzw.
+$h$ nach $k$. Nach \ref{prop:3.1.5} ist $h\circ F: X\times I \to Z$ Homotopie
+von $h\circ f$ nach $h\circ g$.
+
+Definiert man nun
+\begin{align*}
+\Phi: X\times I \to Y\times I,\;(x,t)\mapsto (g(x),t),
+\end{align*}
+dann ist $\Phi$ aufgrund der der universellen Eigenschaft von topologischen
+Produkten \ref{prop:1.4.3} stetig und nach \ref{prop:3.1.5} ist 
+\begin{align*}
+G\circ\Phi:X\times I \to Z,\;(x,t)\mapsto G(g(x),t),
+\end{align*}
+eine Homotopie von $h\circ g$ nach $k\circ g$, also ist
+$h\circ f \hom h\circ g\hom k\circ g$ und aufgrund der Transitivität folgt,
+dass $h\circ f\hom k\circ g$.\qedhere
+\end{proof}
+
+\begin{cor}[Korollar aus \ref{prop:3.1.5} und \ref{prop:3.1.6}]
+\label{prop:3.1.7}
+Ersetzt man in irgendeiner Komoposition von stetigen Abbildungen einen oder
+mehrere Faktoren durch homotope Abbildungen, so erhält man eine zur
+ursprünglichen Komposition homotope Abbildung.\fishhere
+\end{cor}
+
+\begin{lem}[Definition/Lemma]
+\label{prop:3.1.8}
+Seien $X,Y$ topologische Räume und $f: X\to Y$ stetig. Eine Abbildung $g: Y\to
+X$ heißt \emph{Homotopieinverse von $f$}, falls gilt
+\begin{align*}
+g\circ f\hom \id_X,\quad
+f\circ g\hom \id_Y.
+\end{align*}
+Hat $f$ eine Homotopieinverse, so heißt $f$ \emph{Homotopieäquivalenz}.
+Existiert eine Homotopieäquivalenz von $X$ nach $Y$, so heißen $X$ und $Y$
+\emph{homotopieäquivalent} und wir schreiben $X\hom Y$. Die Relation ``$\hom$''
+ist eine Äquivalenzrelation auf der Klasse der topologischen Räume.\fishhere
+\end{lem}
+\begin{proof}
+\begin{enumerate}
+  \item $\id_X: X\to X$ ist eine Homotopieäquivalenz (wegen \ref{prop:3.1.2}).
+  (Reflexivität)
+  \item Ist $f: X\to Y$ Homotopieäquivalenz mit Homotopieinverser $g: Y\to X$,
+  so ist $g$ Homotopieäquivalenz mit Homotopieinverser $f$. (Symmetrie)
+  \item Sind $f: X\to Y$ und $g: Y\to Z$ Homotopieäquivalenzen mit
+  Homotopieinversen $\hat{f}: Y\to X$ und $\hat{g}: Z\to Y$, so ist $g\circ f:
+  X\to Z$ Homotopieäquivalenz mit Homotopieinverser: $\hat{f}\circ\hat{g}$.
+  Denn $f\circ\hat{f} \hom \id_Y, g\circ\hat{g} \hom \id_Z, \hat{f}\circ f 
+  \hom \id_X, \hat{g}\circ g\hom \id_Y$. Also erhalten wir mit \ref{prop:3.1.7},
+  \begin{align*}
+  \left(\hat{f}\circ\hat{g}\right)\circ\left(g\circ f\right)
+  &= \hat{f}\circ\left(\hat{g}\circ g\right)\circ f
+  \hom \hat{f}\circ\id_Y\circ f = \hat{f}\circ f \hom \id_X,\\
+  \left(g\circ g\right)\circ \left(\hat{f}\circ\hat{g}\right) &\hom \id_Z.
+  \end{align*}
+Also ist $X\hom Z$ und ``$\hom$'' ist transitiv.\qedhere
+\end{enumerate}
+\end{proof}
+
+\begin{bsp}
+\label{bsp:3.1.9}
+\begin{enumerate}
+  \item Sei $X$ homöomorph zu $Y$. Dann ist $X\hom Y$, denn sei $f: X\to Y$
+  Homöomorphismus und $g=f^{-1} : Y\to X$ Homöomorphismus, dann ist $g\circ f =
+  \id_X$ und $f\circ g = \id_Y$ und die Homotopien
+  \begin{align*}
+  F: X\times I \to X, (x,t)\mapsto x,\\
+  G: Y\times I\to Y, (y,t)\mapsto y,
+  \end{align*}
+tun den Job.
+\item Ist $C\leqslant \R^n$ konvex, $x\in C$. Dann ist $C\hom\{x\}$.
+Insbesondere ist $\R^n\hom \{0\}$.
+\item $\R^n\setminus\{0\}\hom \S^{n-1}$ durch die Abbildungen
+\begin{align*}
+&f: \S^{n-1}\to \R^n\setminus\{0\},\; x\mapsto x,\\
+&g: \R^n\setminus\{0\} \to \S^{n-1},\; x\mapsto \frac{x}{\norm{x}}.\bsphere
+\end{align*}
+\end{enumerate}
+\end{bsp}
+
+\begin{defn}
+\label{defn:3.1.10}
+Sei $X$ topologischer Raum, $A\leqslant X$ und $\iota: A\to X$ die natürliche
+Einbettung.
+\begin{enumerate}[label=(\roman{*})]
+  \item $X$ heißt \emph{zusammenziehbar}, falls $X$ homotopieäquivalent zum
+  einpunktigen Raum ist.
+  \item Eine stetige Abbildung $\rho: X\to A$ mit $\rho\big|_{A} = \id_A$ heißt
+  \emph{Retraktion}. Existiert so ein $\rho$, heißt $A$
+  \emph{Retrakt von $X$}.
+  \item Eine Retraktion $\rho: X\to A$ Retraktion, so dass für 
+  $\iota$ gilt $\iota\circ\rho \hom \id_X$, heißt 
+  \emph{Deformationsretraktion}. Existiert so ein $\rho$, heißt $A$
+  \emph{Deformationsretrakt von $X$}.
+  \item Eine Retraktion $\rho: X\to A$, so dass $\iota\circ \rho
+  \hom_A \id_X \rels{A}$ ist,  heißt \emph{starke
+  Deformationsretraktion}. Existiert so ein $\rho$, heißt $A$ \emph{starker
+  Deformationsretrakt von $X$}.\fishhere
+\end{enumerate}
+\end{defn}
+
+\subsection{Fundamentalgruppe}
+
+Seien $(X,\OO_X), (Y,\OO_Y), (Z,\OO_Z)$ topologische Räume und $x_0\in X$ fest
+gewählter Punkt (genannt \emph{Basispunkt}). Aus \ref{prop:3.1.2} und
+\ref{prop:3.1.3} wissen wir, dass homotop $\rel{0,1}$ sein eine
+Äquivalenzrelation auf der Menge der Schleifen an $x_0$ ist,
+\begin{align*}
+\alpha,\beta: I\to X, \alpha(0) = \beta(0) = \alpha(1) = \beta(1) = x_0.
+\end{align*}
+Dann ist $\alpha\hom\beta\rel{0,1}$, falls eine stetige Abbildung $F: I\times
+I\to X$ existiert, so dass
+\begin{align*}
+&F(\cdot,0) = \alpha,\quad F(\cdot,1) = \beta,\\
+&F(0,t) = F(1,t) = x_0,\quad \forall t\in I,
+\end{align*}
+d.h. $f_t = F(\cdot,t)$ ist Schleife an $x_0$ für alle $t\in I$.
+
+\begin{defnn}[Bezeichnung]
+Ist $\alpha$ Schleife an $x_0$, dann bezeichnet $\lin{\alpha}$ die
+\emph{Homotopieklasse} bezüglich homotop $\rel{0,1}$ von
+$\alpha$.\fishhere
+\end{defnn}
+
+\begin{prop}
+\label{prop:3.2.1}
+Seien $\alpha,\beta$ Schleifen an $x_0$. Dann wird durch
+$\lin{\alpha}\lin{\beta} = \lin{\alpha\cdot\beta}$ eine wohldefinierte
+Operation auf der Menge der Homotopieklassen von Schleifen an $x_0$
+definiert.\fishhere
+\end{prop}
+\begin{proof}
+Seien $\alpha\hom\talpha\rel{0,1}$ und
+$\beta\hom\tbeta\rel{0,1}$, dann ist zu zeigen, dass $\alpha\cdot\beta
+\hom \tilde{\alpha}\cdot\tilde{\beta}$.
+
+Seien $F,G$ Homotopien von $\alpha$ nach $\tilde{\alpha}$ relativ $\rel{0,1}$
+bzw. von $\beta$ nach $\tilde{\beta}$ relativ $\rel{0,1}$. Definiere $H: I\times
+I\to X$ durch
+\begin{align*}
+H(s,t) = \begin{cases}
+         F(2s,t), & 0\le s\le \frac{1}{2},\\
+         G(2s-1,t), & \frac{1}{2} \le s \le 1.
+         \end{cases}
+\end{align*}
+Nun ist $F(2\frac{1}{2},t) = F(1,t) = x_0 = G(0,t) = G(2\frac{1}{2}-1,t)$, also
+ist $H$ wohldefiniert und stetig (\ref{prop:2.2.20}). Weitherhin ist,
+\begin{align*}
+H(s,0) = \begin{cases}
+         F(2s,0) = \alpha(2s), & 0\le s\le \frac{1}{2},\\
+         G(2s-1,0) = \beta(2s-1), & \frac{1}{2} \le s \le 1,
+         \end{cases}\\
+H(s,1) = \begin{cases}
+         F(2s,1) = \tilde{\alpha}(2s), & 0\le s\le \frac{1}{2},\\
+         G(2s-1,1) = \tilde{\beta}(2s-1), & \frac{1}{2} \le s \le 1,
+         \end{cases}
+\end{align*}
+Also ist $\alpha\beta \hom \tilde{\alpha}\tilde{\beta}$ und daher
+$\lin{\alpha}\lin{\beta} = \lin{\tilde{\alpha}}\lin{\tilde{\beta}}$.\qedhere
+\end{proof}
+
+\begin{prop}[Definition/Satz]
+\label{prop:3.2.2}
+Die binäre Operation von \ref{prop:3.2.1} macht die Menge
+\begin{align*}
+\setdef{\lin{\alpha}}{\alpha \text{ Schleife an } x_0},
+\end{align*}
+zur Gruppe, der \emph{Fundamentalgruppe $\Pi(X,x_0)$} von $X$ mit Basispunkt
+$x_0$. Die Homotopieklassen $e = \lin{e_{x_0}}$, wobei für $y\in X$ der Weg
+$e_y: I\to X,\; t\mapsto y$ als der konstante Weg von $y$ definiert ist, ist
+die Identität von $\Pi(X,x_0)$ und das Inverse $\lin{\alpha}^{-1}$, für eine Schleife $\alpha$
+an $x_0$, ist gegeben durch $\lin{\alpha^{-1}}$ mit
+\begin{align*}
+\alpha^{-1}: I\to X,\; t\mapsto \alpha(1-t).\fishhere
+\end{align*}
+\end{prop}
+\begin{proof}
+\begin{enumerate}[label=\arabic{*}.)]
+  \item Assoziativität
+  
+  \begin{align*}
+  f: I\to T,\;s\mapsto\begin{cases}
+                     2s,& 0\le s\le \frac{1}{4},\\
+                     s+\frac{1}{4}, & \frac{1}{4} \le s \le \frac{1}{2},\\
+                     \frac{1}{2}s + \frac{1}{2}, & \frac{1}{2}\le s \le 1,
+                     \end{cases}
+  \end{align*}
+Man rechnet nach, dass $(\alpha\beta)\gamma = \alpha(\beta\gamma)\circ f$.
+\begin{align*}
+\begin{cases}
+0\le s\le \frac{1}{4}, & (\alpha(\beta\gamma))\circ f(s) =
+\alpha(\beta\gamma)(2s) = \alpha(4s) = ((\alpha\beta)\gamma)(s),\\
+\frac{1}{4} \le s \le \frac{1}{2}, & (\alpha(\beta\gamma))\circ f(s) =
+\alpha(\beta\gamma)(s+\frac{1}{4}) = \beta(4s-1) = ((\alpha\beta)\gamma)(s),\\
+\frac{1}{2} \le s\le 1, & (\alpha(\beta\gamma))\circ f(s) =
+\alpha(\beta\gamma)(\frac{s+1}{2}) = \gamma(2s-1) = ((\alpha\beta)\gamma)(s),
+\end{cases}
+\end{align*}
+Nun ist $I\subseteq\R$ konvex und $f(0) = 0 = \id(0),\; f(1) = 1 = \id(1)$, und
+nach Bsp 2 auf F92 ist daher $f\hom \id_I$.
+\begin{align*}
+&F: I\times I \to I, (s,t)\mapsto (1-t)\cdot f(s) + t\cdot\id_I(s) = (1-t)f(s) +
+ts,\\
+&F(0,t) = (1-t)\cdot 0 + t\cdot 0 = 0 = f(0),\\
+&F(1,t) = (1-t)\cdot 1 + t\cdot 1 = 1 = f(1),
+\end{align*}
+d.h. $F$ ist Homotopie $\rel{0,1}$.
+
+Nach \ref{prop:3.1.5} sind daher $((\alpha\beta)\gamma)\circ\id_I =
+(\alpha\beta)\gamma = \alpha(\beta\gamma)\circ f$, also gilt
+\begin{align*}
+(\alpha\beta)\gamma \hom \alpha(\beta\gamma) \rel{0,1} \Rightarrow
+(\lin{\alpha}\lin{\beta})\lin{\gamma} = \lin{\alpha}(\lin{\beta}\lin{\gamma}).
+\end{align*}
+\item Ähnlich zeigt man, dass $e = \lin{e_{x_0}}$ das Einselement der Gruppe
+ist.
+
+Sei $\alpha$ Schleife an $x_0$, $\alpha^{-1} : I\to X,\; t\mapsto \alpha(1-t)$.
+Daraus folgt,
+\begin{align*}
+\alpha\alpha^{-1} \hom c_{x_0}\hom \alpha^{-1}\alpha.
+\end{align*}
+
+\item Beachten Sie: Ist $\alpha$ Schleife an $x_0$ und $x_0\in X$, so ist jeder
+Punkt von $\im\alpha\subseteq X$ in der selben Wegzusammenhangskomponente von $X$ wie
+$x_0$.
+
+\item Sei $f: X\to Y$ stetig und $y_0 = f(x_0)\in Y$. Ist $\alpha$ Schleife an
+$x_0$, so ist $\beta = f_*(\alpha) = f\circ\alpha : I\to Y$ eine Schleife an
+$y_0$, wegen
+\begin{align*}
+\beta(0) = f(\alpha(0)) = f(x_0) = y_0 = \beta(1).
+\end{align*}
+
+\item Betrachte die Abbildung
+\begin{align*}
+f_*: \Pi(X,x_0) \to \Pi(Y,y_0),\;
+\lin{\alpha}\mapsto \lin{f_*(\alpha)} = \lin{f\circ\alpha}.
+\end{align*}
+Diese ist wohldefiniert, denn sind $\alpha$ und $\sigma$ Schleifen an $x_0$ und
+ist $\alpha\hom\sigma\rel{0,1}$, so gilt wegen \ref{prop:3.1.5}, dass
+\begin{align*}
+f_*(\alpha) \hom f_*(\sigma) \rel{0,1}.
+\end{align*}
+Die Abbildung ist sogar ein Gruppenhomomorphismus.\qedhere
+\end{enumerate}
+\end{proof}
+
+\begin{lem}
+\label{prop:3.2.3}
+Sei $f:X\to Y$ stetig mit $f(x_0) = y_0\in Y$. Seien $\alpha,\beta$ Schleifen
+an $x_0$. Dann ist
+\begin{align*}
+f_*(\lin{\alpha\beta}) = f_*(\lin{\alpha})f_*(\lin{\beta}),
+\end{align*}
+d.h. $f_*: \Pi(X,x_0) \to \Pi(Y,y_0)$ ist ein Gruppenhomomorphismus.\fishhere
+\end{lem}
+\begin{proof}
+Offensichtlich ist,
+\begin{align*}
+f_*(\lin{\alpha}\lin{\beta}) = f_*(\lin{\alpha\beta}) = \lin{f_*(\alpha\beta)}
+= \lin{f\circ(\alpha\beta)}.
+\end{align*}
+So genügt es zu zeigen, dass
+\begin{align*}
+f\circ(\alpha\beta) \hom (f\circ\alpha)(f\circ\beta) \rel{0,1}.
+\end{align*}
+Sei $0\le t\le 1$,
+\begin{align*}
+(f\circ(\alpha\beta))(t) &= f((\alpha\beta)(t)) = \begin{cases}
+                                                 f(\alpha(2t)), & 0\le t\le
+                                                 \frac{1}{2},\\
+                                                 f(\beta(2t-1)), & \frac{1}{2}\le t\le
+                                                 1
+                                                 \end{cases}
+\\ &= \begin{cases}
+  f\circ\alpha(2t), & 0\le t\le \frac{1}{2},\\
+  f\circ\beta(2t-1), & \frac{1}{2}\le t\le 1
+  \end{cases}
+\\ &= ((f\circ\alpha)(f\circ\beta))(t).\qedhere
+\end{align*}
+\end{proof}
+\begin{lem}
+\label{prop:3.2.4}
+Seien $X,Y,Z$ topologische Räume, $x_0\in X,\;y_0\in Y,\;z_0\in Z$, $f: X\to
+Y$, $g: Y\to Z$ stetig und $f(x_0) = y_0, g(y_0) = z_0$. Dann ist $(g\circ f)_*
+= g_*\circ f_*$.\fishhere
+\end{lem}
+\begin{proof}
+Leichte Übung.\qedhere
+\end{proof}
+
+\begin{cor}
+\label{prop:3.2.5} Sei $G$ die Kategorie der Gruppen, dann ist
+$\pi: \Top_0\to G$ ist ein Funktor.\fishhere
+\end{cor}
+
+Bisher kennen wir nur Fundamentalgruppenhomomorphismen,
+\begin{align*}
+\pi(f) = f_* : \Pi(X,x_0)\to \Pi(Y,y_0),
+\end{align*} 
+die vom Basispunkt abhängen. Die Abhängigkeit wollen wir nun eliminieren. Seien
+dazu $x_0,x_1\in X$ und sei $\gamma$ ein Weg von $x_0$ nach $x_1$. Ist nun
+$\alpha$ eine Schleife an $x_0$, dann ist
+$\gamma^{-1}\alpha\gamma$ eine Schleife an $x_1$.
+
+\begin{prop}
+\label{prop:3.2.6}
+Seien $x_0,x_1\in X$ und sei $\gamma$ Weg von $x_0$ nach $x_1$. Dann wird durch
+\begin{align*}
+c_\gamma: \Pi(X,x_0)\to \Pi(X,x_1),\; \lin{\alpha} \mapsto
+\lin{\gamma^{-1}\alpha\gamma}
+\end{align*} 
+ein Gruppenhomomorphismus definiert.\fishhere
+\end{prop}
+\begin{proof}
+Wie in \ref{prop:3.2.1} zeigt man,
+\begin{enumerate}[label=\arabic{*}.)]
+  \item\label{proof:3.2.6:1} Sind $\sigma,\tilde{\sigma},\tau,\tilde{\tau}$ Wege
+  in $X$ mit $\sigma\hom\tilde{\sigma} \rel{0,1}$ und $\tau\hom\tilde{\tau} \rel{0,1}$ und
+  $\sigma(1) = \tau(0)$, sowie $\tilde{\sigma}(1)=\tilde{\tau}(0)$, dann ist
+  $\sigma\tau \hom\tilde{\sigma}\tilde{\tau} \rel{0,1}$. (Details HA)
+  \item\label{proof:3.2.6:2} Sind $\rho,\sigma,\tau$ Wege in $X$ mit $\rho(1) =
+  \sigma(0)$ und $\sigma(1) = \tau(0)$, dann ist
+  $(\rho\sigma)\tau\hom\rho(\sigma\tau)\rel{0,1}$. (Wie in \ref{prop:3.2.1}
+  Details HA)
+  \item\label{proof:3.2.6:3} Ist $\sigma$ Weg in $X$, $\sigma^{-1}: I\to
+  X,\;t\mapsto \sigma(1-t)$, so ist $\sigma\sigma^{-1}\hom c_{\sigma(1)}$ und $\sigma^{-1}\sigma\hom
+  c_{\sigma(0)}$.
+  \item\label{proof:3.2.6:4} Ist $\sigma$ Weg in $X$, so ist $\sigma
+  c_{\sigma(1)} \hom \sigma\hom c_{\sigma(0)}\sigma\rel{0,1}$.
+\end{enumerate}
+Damit gilt
+\begin{enumerate}[label=(\alph{*})]
+  \item Sind $\alpha,\talpha$ Schleifen an
+  $x_0\in X$  mit $\alpha\hom\talpha\rel{0,1}$, so ist
+  \begin{align*}
+  \gamma^{-1}\alpha\gamma\hom
+  \gamma^{-1}\talpha\gamma\rel{0,1}
+  \end{align*}
+  wegen 1.), also ist $c_\gamma$ wohldefiniert.
+  \item Sind $\alpha$ und $\beta$ Schleifen an $x_0$, so ist
+\begin{align*}
+  (\gamma^{-1}\alpha\gamma)(\gamma^{-1}\beta\gamma) \hom \gamma^{-1}\alpha
+  c_{x_0} \beta \gamma\hom \gamma^{-1}(\alpha\beta)\gamma\rel{0,1}.
+\end{align*}
+
+\begin{align*}
+\Rightarrow c_\gamma(\lin{\alpha}) c_\gamma(\lin{\beta}) =
+c_\gamma(\lin{\alpha}\lin{\beta}),
+\end{align*}
+d.h. $c_\gamma$ ist Gruppenhomomorphismus,
+\begin{align*}
+&c_\gamma c_{\gamma^{-1}} = \id_{\Pi(X,x_1)},\\
+&c_{\gamma^{-1}}c_\gamma = \id_{\Pi(X,x_0)},
+\end{align*}
+also ist $c_\gamma$ Isomorphismus.\qedhere
+\end{enumerate}
+\end{proof}
+\begin{cor}
+\label{prop:3.2.7}
+Sei $X$ wegzusammenhängend. Dann ist die Fundamentalgruppe $\Pi(X,x_0)$ von $X$
+zum Basispunkt $x_0\in X$ unabhängig von der Wahl von $x_0$. Wir sprechen dann
+von der Fundamentalgruppe von $X$ und schreiben $\Pi(X)$.\fishhere
+\end{cor}
+\begin{bemn}
+Der Isomorphismus $c_\gamma$ in \ref{prop:3.2.6} hängt von der Wahl des Weges
+$\gamma$ ab.\maphere
+\end{bemn}
+
+\begin{defn}
+\label{prop:3.2.8}
+Ein wegzusammenhängender topologischer Raum heißt \emph{einfach
+zusammenhängend}, wenn $\Pi(X)$ trivial ist, d.h. also jede Schleife in $X$ ist
+nullhomotop, also homotop $\rel{0,1}$ zur konstanten Schleife.\fishhere
+\end{defn}
+
+Ist $f: (X,x_0)\to (Y,y_0)$ Morphismus in $\Top_0$, so ist $f$ stetig und
+$f(x_0) = y_0$.
+
+\begin{bem}[Warnung.]
+\label{bem:3.2.9}
+Injektivität und Surjektivität übertragen sich keines Wegs von $f$ auf
+$\pi(f)$, es gilt aber, $\pi(\id_X) = \id_{\Pi(X,x_0)}$. Klar ist auch,
+dass $\pi(f)$ ein Isomorphismus ist, wenn $f$ ein Homöomorphismus ist, denn sei
+$X\to Y$ Homöomorphismus, dann ist
+\begin{align*}
+\id_{\Pi(X,x_0)} = \pi(\id_x) = \pi(f^{-1}\circ f) = \pi(f^{-1})\circ\pi(f).
+\end{align*}
+Also ist $\pi(f)$ Isomorphismus mit Inverser $\pi(f^{-1})$.\maphere
+\end{bem}
+
+\begin{defn}
+\label{defn:3.2.10}
+Seien $f,g: (X,x_0)\to(Y,y_0)$ Morphismen in $\Top_0$. Eine Homotopie $F:
+(X\times I)\to Y$ von $f$ nach $g$ heißt \emph{basispunkterhaltend}, falls
+\begin{align*}
+F(x_0,t)=y_0,\quad \forall t\in I,
+\end{align*}
+d.h. $F$ ist Homotopie $\rel{0,1}$.\fishhere
+\end{defn}
+
+\begin{prop}
+\label{prop:3.2.11}
+Seien $f,g: (X,x_0)\to (Y,y_0)$ stetig und homotop $\rel{0,1}$ und $f(x_0) =
+g(x_0) = y_0$. Sei $\alpha: I\to X$ Schleife an $x_0$. Dann ist $\Pi(f)(\lin{\alpha}) =
+\Pi(g)(\lin{\alpha})$ und daher gilt $\Pi(f) = \Pi(g)$.\fishhere
+\end{prop}
+\begin{proof}
+$f\circ\alpha$ ist Schleife an $y_0\in Y$. Aus \ref{prop:3.2.5} folgt, dass
+$f\circ\alpha \hom g\circ\alpha\rel{0,1}$. Also gilt,
+\begin{align*}
+\Pi(f)\lin{\alpha} = \lin{f\circ\alpha} = \lin{g\circ\alpha} =
+\Pi(g)\lin{\alpha}.
+\end{align*}
+Und damit folgt $\Pi(f) = \Pi(g)$.\qedhere
+\end{proof}
+
+Daraus lässt sich leicht sehen, dass homotopieäquivalente topologische Räume
+$X,Y$ mit Basispunkten $x_0,y_0$ isomorphe Fundamentalgruppen haben, sofern
+\begin{align*}
+f:X\to Y,\; g:Y\to X\text{ mit }f(x_0) = y_0,\;g(y_0) = x_0,
+\end{align*}
+so existieren, dass $g\circ f\hom\id_X\rel{0,1}$ und $f\circ g\hom
+\id_Y\rel{0,1}$ sind. Wir sagen dann, $(X,x_0)\hom(Y,y_0)$ in $\Top_0$, die
+Homotopien sind basispunkterhaltend.
+
+\begin{cor}
+\label{prop:3.2.12}
+Sei $(X,x_0)\hom (Y,y_0)$ in $\Top_0$. Dann ist $\Pi(X,x_0) \hom
+\Pi(Y,y_0)$.\fishhere
+\end{cor}
+\begin{proof}
+Aus $g\circ f\hom\id_X\rel{x_0}$ und $f\circ g\hom\id_Y\rel{y_0}$, folgt mit
+\ref{prop:3.2.11} und \ref{prop:3.2.4}, dass
+\begin{align*}
+&\Pi(g\circ f) = \Pi(g)\Pi(f) = \id_{\Pi(X,x_0)},\\
+&\Pi(f\circ g) = \Pi(f)\Pi(g) = \id_{\Pi(Y,y_0)},
+\end{align*}
+also ist $\Pi(g) = \Pi(f)^{-1}$ Gruppenisomorphismus.\qedhere
+\end{proof}
+
+\begin{bsp}
+\label{bsp:3.2.13}
+\begin{enumerate}[label=\arabic{*}.)]
+  \item 
+Sei $\rho: X\to A$ ein starker Deformationsretrakt, dann ist
+\begin{align*}
+\Pi(X,a)\hom\Pi(A,a), \forall a\in A.
+\end{align*}
+Dies ist z.b. für einen mit starker Retraktion zusammenziehbaren
+topologischen Raum der Fall.
+\item
+Einpunktige Räume haben triviale Fundamentalgruppe, sind also
+einfach zusammenhängend.\bsphere
+\end{enumerate}
+\end{bsp}
+
+Was gilt nun im Allgemeinen für topologisch äquivalente Räume?
+
+\begin{lem}
+\label{prop:3.2.14}
+Seien $f,g: X\to Y$ stetige Abbildungen, $x_0\in X, y_0,y_1\in Y$, $f(x_0) =
+y_0$ und $g(x_0) = y_1$ mit $f\hom g$. Dann gibt es einen Weg $\gamma$ von
+$y_0$ nach $y_1$ in $Y$ so, dass $\pi(g) = c_\gamma\circ \pi(f)$ ist, also
+folgendes Diagramm kommutiert:
+\begin{center}
+\psset{unit=0.7cm}
+\begin{pspicture}(-1,0)(6,4)
+\rput[B](0,3){\Rnode{V}{$\Pi(X,x_0)$}}
+\rput[B](5,3){\Rnode{S}{$\Pi(Y,y_0)$}}
+\rput[B](2.5,0.2){\Rnode{W}{$\Pi(Y,y_1)$}}
+\ncLine[nodesep=3pt]{->}{V}{S}
+\Aput{$\pi(f)$}
+\ncLine[nodesep=3pt]{->}{V}{W}
+\Bput{$\pi(g)$}
+\ncLine[nodesep=3pt]{->}{S}{W}
+\Aput{$\exists c_\gamma$}
+\end{pspicture}
+\end{center}
+\end{lem}
+\begin{proof}
+Sei $F: X\times I \to Y$ Homotopie von $f$ nach $g$, d.h. $f(x) = F(x,0)$ und
+$g(x) = F(x,1)$ $\forall x\in X$.
+
+Definiere $\gamma: I\to Y$ durch $\gamma(t) = F(x_0,t)$ für $t\in I$. Dann ist
+\begin{align*}
+&\gamma(0) = F(x_0,0) = f(x_0) = y_0,\\
+&\gamma(1) = F(x_0,1) = g(x_0) = y_1, 
+\end{align*}
+d.h. $\gamma$ ist Weg von $y_0$ nach $y_1$.
+
+Ist $\rho$ Schleife an $y_0$, dann ist $\gamma^{-1}\rho\gamma$ Schleife an
+$y_1$ und $c_\gamma(\rho) = \lin{\gamma^{-1}\rho\gamma}$.
+
+Sei $\alpha$ Schleife an $x_0$, für $0\le t\le 1$ definiere Schleife $\beta_t:
+I\to Y$ durch
+\begin{align*}
+\beta_t(s) := F(\alpha(s),t),\quad s\in I.
+\end{align*}
+Dann ist,
+\begin{align*}
+&\beta_t(0) = F(\alpha(0),t) = F(x_0,t) = \gamma(t),\\
+&\beta_t(1) = F(\alpha(1),t) = F(x_0,t) = \gamma(t).
+\end{align*}
+Also ist $\beta_t$ Schleife an $\gamma(t)\in Y$.
+\begin{align*}
+&\beta_0(s) = F(\alpha(s),0) = f\circ\alpha(s),\\
+&\beta_1(s) = F(\alpha(s),1) = g\circ\alpha(s).
+\end{align*}
+Für $0\le t\le 1$ sei $\gamma_t$ der Weg der entlang $\gamma$ von $y_0$ nach
+$\gamma(t)$ geht und
+\begin{align*}
+\gamma_t = (\gamma_t\beta_t)\gamma_t^{-1} = \text{Schleife an } y_0.
+\end{align*}
+Für $t=0$ ist $\gamma_0 = y_0$ konstant, $\beta_0 = f\circ\alpha$,
+\begin{align*}
+\gamma_0 = (e_{y_0}\beta_0)e_{y_0}^{-1} = f\circ\alpha,
+\end{align*}
+für $t=1$ ist $\gamma_1 = \gamma$, $\beta_1 = g\circ\alpha$,
+\begin{align*}
+\gamma_1 = (\gamma\beta_1)\gamma^{-1} = c_\gamma (g\circ\alpha).
+\end{align*}
+%TODO: Ist das nicht c_(\gamma^{-1})g\circ\alpha?
+Wir definieren die Homotopie $G: I\times I\to Y$ durch
+\begin{align*}
+G(s,t) =
+\begin{cases}
+\gamma(4st), & 0\le s\le \frac{1}{4},\\
+F(\alpha(4s-1),t), & \frac{1}{4}\le s\le \frac{1}{2},\\
+\gamma(2t(1-s)), & \frac{1}{2}\le s\le 1,
+\end{cases}
+\end{align*}
+die Wohldefiniertheit sei als Übung überlassen. Sei $t=0$, dann ist
+\begin{align*}
+G(s,0) = \begin{cases}
+\gamma(0) = y_0, & 0\le s\le \frac{1}{4},\\
+F(\alpha(4s-1),0) = f\circ\alpha(4s-1), & \frac{1}{4}\le s\le \frac{1}{2},\\
+\gamma(0) = y_0, & \frac{1}{2}\le s\le 1. 
+         \end{cases}
+\end{align*}
+Sei $t=1$, dann ist
+\begin{align*}
+G(s,1) = \begin{cases}
+\gamma(4s) , & 0\le s\le \frac{1}{4},\\
+F(\alpha(4s-1),1) = g\circ\alpha(4s-1), & \frac{1}{4}\le s\le \frac{1}{2},\\
+\gamma(4(1-s)) , & \frac{1}{2}\le s\le 1. 
+         \end{cases}
+\end{align*}
+Also haben wir eine Homotopie zwischen $f\circ\alpha$ und
+$c_\gamma(g\circ\alpha)$. Außerdem gilt,
+\begin{align*}
+&G(0,t) = \gamma(0)= y_0,\\
+&G(1,t) = \gamma(0) = y_0,
+\end{align*}
+somit ist die Homotopie $\rel{0,1}$ und daher gilt,
+\begin{align*}
+\Pi(f)\lin{\alpha} = \lin{f\circ\alpha} =
+\lin{(\gamma(g\circ\alpha))\gamma^{-1}}
+= c_{\gamma}^{-1}\lin{g\circ\alpha}
+= c_{\gamma}^{-1}\Pi(g)\lin{\alpha},
+\end{align*}
+für alle Schleifen an $x_0\in X$. Also ist $\pi(f) = c_{\gamma}^{-1}\circ
+\pi(g)$ und daher ist $\pi(g) = c_\gamma\circ \pi(f)$.\qedhere
+\end{proof}
+
+\begin{cor}
+\label{prop:3.2.15}
+Seien $X,Y$ topologische Räume, $f\in C(X\to Y)$, $x_0\in X$, $y_0\in Y$ und 
+$f(x_0) = y_0$. Ist $f$ eine Homotopieäquivalenz, so ist
+\begin{align*}
+\Pi(f): \Pi(X,x_0) \to \Pi(Y,y_0),
+\end{align*}
+ein Gruppenisomorphismus.\fishhere
+\end{cor}
+\begin{proof}
+Sei $g\in C(Y\to X)$ Homotopieinverse von $f$ mit $x_1 = g(y_0)$ und $y_1 =
+f(x_1)$. $f_0=f$ aber zum Basispunkt $x_0$, $f_1=f$ zum Basispunkt $x_1$.
+\begin{center}
+\psset{unit=0.7cm}
+\begin{pspicture}(-1,-0.5)(6,4)
+\rput[B](0,3){\Rnode{A}{$\Pi(X,x_0)$}}
+\rput[B](5,3){\Rnode{B}{$\Pi(Y,y_0)$}}
+\rput[B](0,0.2){\Rnode{C}{$\Pi(X,x_1)$}}
+\rput[B](5,0.2){\Rnode{D}{$\Pi(Y,y_1)$}}
+
+\ncLine[nodesep=3pt]{->}{A}{B}
+\Aput{$\Pi(f_0)$}
+
+\ncLine[nodesep=3pt]{->}{C}{D}
+\Bput{$\Pi(f_1)$}
+
+\ncLine[nodesep=3pt]{->}{B}{C}
+\Bput{$\Pi(g)$}
+
+\ncLine[nodesep=3pt]{<->}{A}{C}
+\Bput{$\cong$}
+
+\ncLine[nodesep=3pt]{<->}{B}{D}
+\Aput{$\cong$}
+
+\end{pspicture}
+\end{center}
+Nun ist $g\circ f \hom \id_X\rel{0,1}$.
+
+Nach \ref{prop:3.2.5} existiert ein Weg $\gamma$ von $x_1$ nach $x_0$, so dass
+$\pi(g)\circ\pi(f) = \pi(g\circ f) = c_\gamma \pi(\id_X) = c_\gamma$.
+\begin{align*}
+\Rightarrow\; & \pi(g)\circ\pi(f)\text{ ist Isomorphismus},\\
+\Rightarrow\; & \pi(g)\text{ ist injektiv und }\pi(f)\text{ surjektiv}.
+\end{align*}
+Analog folgt, $f\circ g\hom \id_Y\rel{0,1}$, sowie
+\begin{align*}
+&\pi(f)\text{ ist injektiv und }\pi(g)\text{ surjektiv}.
+\end{align*}
+Also ist $\pi(f)$ bijektiv und daher Isomorphismus.\qedhere
+\end{proof}
+
+$\Pi(f)$ und $\Pi(g)$ sind Gruppenisomorphismen aber nicht nichtwendigerweise
+invers zueinander.
+
+\begin{cor}
+\label{prop:3.2.16}
+Sind $X$ und $Y$ homotopieäquivalent und wegzusammenhängend, so ist
+$\Pi(X)\cong\Pi(Y)$ (unabhängig vom Basispunkt).
+
+Die Fundamentalgruppe ist daher für wegzusammenhängende topologische Räume eine
+Homotopieinvariante. Insbesondere sind alle zusammenziehbaren Räume einfach
+zusammenhängend.\fishhere
+\end{cor}
+
+\subsection{Freie Gruppen und Relationen}
+
+\begin{defn}
+\label{defn:3.3.1}
+Eine \emph{freie Gruppe} über $S$ ist eine Gruppe $\FF(S)$ zusammen mit einer
+Abbildung $j: S\to \FF(S)$ mit folgender universeller Eigenschaft:
+
+Ist $G$ Gruppe und $f: S\to G$ Abbildung, dann gibt es genau einen
+Gruppenhomomorphismus $\hat{f}: \FF(S)\to G$, so dass das folgende Diagramm
+kommutiert:
+\begin{center}
+\psset{unit=0.7cm}
+\begin{pspicture}(-1,0)(6.5,4)
+\rput[B](0,3){\Rnode{A}{$S$}}
+\rput[B](5,3){\Rnode{B}{$\FF(S)$}}
+\rput[B](5,0.2){\Rnode{C}{$G$}}
+
+\ncLine[nodesep=3pt]{->}{A}{B}
+\Aput{$j$}
+
+\ncLine[nodesep=3pt]{->}{B}{C}
+\Aput{$\exists!\hat{f}$}
+
+\ncLine[nodesep=3pt]{->}{A}{C}
+\Bput{$f$}
+
+\end{pspicture}
+\end{center}
+d.h. $\hat{f}\circ j = f$.\fishhere
+\end{defn}
+
+\begin{bemn}[Klar:] Die universelle Eigenschaft legt $\FF(S)$ bis auf
+Isomorphie fest.\maphere
+\end{bemn}
+
+\begin{proof}
+Übung.\qedhere
+\end{proof}
+
+\begin{propn}[Konstruktion von $\FF(S)$]
+Elemente von $\FF(S)$ sind ``Wörter'',
+\begin{align*}
+s_1^{i_1}\cdots s_k^{i_k},
+\end{align*}
+mit $s_1,\ldots,s_k\in S,\; k\in\N_0,\; 0\neq i_\nu\in\Z$, wobei
+\begin{align*}
+s_1\neq s_2, s_2\neq s_3,\ldots,s_{k-1}\neq s_k.
+\end{align*}
+Dabei wird das leere Wort ($k=0$) als Einselement interpretiert.
+
+Multiplikation:
+\begin{align*}
+&w_1 = s_1^{i_1}\cdots s_k^{i_k},\quad s_j\in S,\\
+&w_1\cdot s^m = \begin{cases}
+s_1^{i_1}\cdots s_k^{i_k}s^m, & s_k\neq s,\\
+s_1^{i_1}\cdots s_k^{i_k}, & s_k= s.
+\end{cases}
+\end{align*}
+Die Multiplikation folgt nun aus Induktion über $k$.
+
+$e=$ leeres Wort ist $1$-Element.
+\begin{align*}
+(s_1^{i_1}\cdots s_k^{i_k})^{-1} = s_k^{-i_k}\cdots s_1^{-i_1},
+\end{align*}
+damit wird $\FF(S)$ zur Gruppe. Die Abbildung,
+\begin{align*}
+S\to \FF(S),\; s\mapsto \text{``Wort'' }s (=\text{Wörter der Länge }1),
+\end{align*}
+ist klar. Sie hat die Universelle Eigenschaft:
+
+Sei $G$ Gruppe, $f:S\to G$ Abbildung, $w=s_1^{i_1}\cdots s_k^{i_k}\in \FF(S)$.
+Sei $g_i=f(s_i)\in G$. Definiere $\hat{f}: \FF(S) \to G$, durch $\hat{f}(w) =
+g_1^{i_1}\cdots g_k^{i_k}$, dann ist $\hat{f}$ Gruppenhomomorphismus und es
+gilt,
+\begin{align*}
+&f(s) = g_1,\\
+&(\hat{f}\circ i)(s) = g_s = f(s).
+\end{align*}
+\fishhere
+\end{propn}
+\begin{proof}
+Details: Hausaufgabe.\qedhere
+\end{proof}
+
+\begin{defn}
+\label{defn:3.3.2}
+\begin{enumerate}[label=\roman{*})]
+  \item Sei $G$ eine Gruppe.
+Eine Gleichung der Form $g_1\cdot g_2\cdots g_k = 1$, $g_i\in G,\; k\in\N$ heißt
+\emph{Relation}.
+\begin{bspn}
+$aba^{-1}=c$ ist Relation, da $aba^{-1}c^{-1}=1$.\bsphere
+\end{bspn}
+\item Sei $S$ Menge, $\FF(S)$ die freie Gruppe über $S$. Seien $w_i, (i\in \II)$
+Elemente von $\FF(S)$ und sei $H$ der von $\setdef{w_i}{i\in\II}$ erzeugte
+Normalteiler von $G$. Dann sagt man $F(S)/H$ hat \emph{Erzeugende} $S$ (streng
+genommen $sH$, $s\in S$) und Relationen $w_i=1$.\fishhere
+\end{enumerate}
+\end{defn}
+\begin{bemn}[Beachte:]
+\begin{enumerate}[label=\roman{*})]
+  \item $\setdef{sH}{s\in S}$ erzeugt $F(S)/H$, d.h. $F(S)/H$ ist die kleinste
+  Untergruppe von $F(S)/H$, die $\setdef{sH}{s\in S}$ enthält.
+\item Sei $w$ eine Relation aus $\setdef{w_i}{i\in I}$,
+\begin{align*}
+\Rightarrow w\in H \Rightarrow wH = H = 1_{F(S)/H}.
+\end{align*}
+\begin{bspn}
+$\lin{\setdef{a,b}{aba^{-1}b^{-1} = 1}} = \Z\times\Z$.\bsphere
+\end{bspn}
+\item $F(S)/H$ ist die ``feinste'' Gruppe, so dass in ihr die Relationen $w_i =
+1 (i\in\II)$ gelten, denn ist $G$ eine Gruppe mit Erzeugenden $g_s (s\in S)$
+und es gilt:
+\begin{align*}
+g_{s_1}^{i_1}\cdots g_{s_k}^{i_k} = 1,
+\end{align*}
+falls $s_1^{i_1}\cdots s_k^{i_k}\in \setdef{w_i}{i\in\II}$, so gilt
+\begin{center}
+\psset{unit=0.7cm}
+\begin{pspicture}(-1,0)(6.5,4)
+\rput[B](0,3){\Rnode{A}{$S$}}
+\rput[B](5,3){\Rnode{B}{$\FF(S)$}}
+\rput[B](5,0.2){\Rnode{C}{$G$}}
+
+\ncLine[nodesep=3pt]{->}{A}{B}
+\Aput{$j$}
+
+\ncLine[nodesep=3pt]{->}{B}{C}
+\Aput{$\exists!\hat{f}$}
+
+\ncLine[nodesep=3pt]{->}{A}{C}
+\Bput{$f$}
+
+\end{pspicture}
+\end{center}
+mit $\hat{f}\circ j(s) = g_s\forall s\in S$ und $f(s) = g_s$.
+\end{enumerate}
+Wegen $g_{s_1}^{i_1}\cdots g_{s_k}^{i_k} = 1, w_i = s_1^{i_1}\cdots s_k^{i_k}
+\exists i\in\II$, sodass
+\begin{align*}
+&\Rightarrow w_i\in \ker \hat{f},\\
+&\Rightarrow H\subseteq \ker\hat{f},\\
+&\overset{\text{1. Isosatz}}{\Rightarrow} \exists \tilde{f},
+\end{align*}
+\begin{center}
+\psset{unit=0.7cm}
+\begin{pspicture}(-1,0)(6,4.5)
+\rput[B](0,3){\Rnode{A}{$\FF(S)$}}
+\rput[B](5,3){\Rnode{B}{$G$}}
+\rput[B](2.5,0.2){\Rnode{C}{$\FF(S)/H$}}
+
+\ncLine[nodesep=3pt]{->}{A}{B}
+\Aput{$\hat{f}$}
+
+\ncLine[nodesep=3pt]{<-}{B}{C}
+\Aput{$\exists!\tilde{f}$}
+
+\ncLine[nodesep=3pt]{->}{A}{C}
+%\Bput{$f$}
+
+\end{pspicture}
+\end{center}
+\end{bemn}
+
+\begin{bspn}
+\begin{enumerate}[label=\arabic{*}.)]
+  \item $G=\lin{x : x^n = 1} \cong C_n \cong (\Z/n\Z^+)$.
+  \item $D_{2n} = \lin{a,b : a^n = b, b^2=1, b^{-1}ab = a^{-1}}$ ist endliche
+  Gruppe.\bsphere
+\end{enumerate}
+\end{bspn}
+
+\begin{bsp}
+Weitere Beispiele von Fundamentalgruppen
+\begin{enumerate}[label=\arabic{*}.)]
+  \item Wir haben bereits gesehen,
+\begin{align*}
+\Pi(\S^n)\cong\begin{cases}
+\Pi(\Z,+), & n=1,\\
+(1),& n\ge 2,
+\end{cases}
+\end{align*}
+da für $n\ge 2$ die $\S^n$ zusammenziehbar ist.
+\item Die Fundamentalgruppe eines offenen oder abgeschlossenen Balls
+$B_\ep^n(x)$ ist trivial, da $B_\ep^n(x)$ zusammenziehbar ist.
+\item Betrachte die Kreisfläche $B_1^2\subseteq\R^2$ mit Identifikation von je
+zwei Antipoden auf dem Rand. $\S^1\subseteq B^2$. Der resultierende Raum ist
+ein Model der projektiven Ebene. Der ``halbe'' Rand $\alpha$ ist ein
+geschlossener Weg. Seine Homotopieklasse $\lin{\alpha}$ ist daher ein Element
+der Fundamentalgruppe,
+\begin{align*}
+&\lin{\alpha}\lin{\alpha} = \lin{\alpha\alpha} = 1,\\
+&\Pi(P(\R^2)) \cong C_2 = (\Z/2\Z,+).
+\end{align*}
+Ähnlich für Unterteilung der Kreislinie $\S^1$ in gleich lange Stücke und
+Identifikation von jeweils $n$ entsprechenden Punkten, dann ist die
+Fundamentalgruppe des entstehenden Raums isomorph zur $C_n$.
+\item Dunce hat.
+\item Torus $T=S^1\times S^1$, $\Pi(T) = (\Z,+)\times(\Z,+)$.
+\item Allgemein gilt: Sind $X,Y$ topologische Räume $x_0\in X,\;y_0\in Y$, dann
+ist $\Pi(X\times Y,(x_0,y_0)) \cong \Pi(X,x_0)\times \Pi(Y,y_0)$.
+\item Jede freie Gruppe mit  $n$ Erzeugenden $(n\in\N)$ kommt als
+Fundamentalgruppe vor. (Kleeblatt mit $n$ Blättern)\bsphere
+\end{enumerate}
+\end{bsp}
+
+\subsection{Überlagerungen}
+
+Sei $X$ topologischer Raum. Eine Überlagerung von $X$ ist grob gesprochen eine
+stetige, surjektive Abbildung $p: Y\to X$, die lokal um jeden Punkt der Basis
+$X$ so aussieht, wie die kanonische Abbildung einer topologischen Summe $\sum
+U$ von Kopien von $U$, wobei $U\in\UU_x$.
+
+\begin{defn}
+\label{defn:3.4.1}
+Zwei topologische Räume $Y,\tilde{Y}$ mit surjektiven, stetigen Abbildungen $p:
+Y\to X$ und $\tilde{p}: \tilde{Y}\to X$ heißen \emph{homöomorph über $X$}
+(kurz: isomorph), falls es einen Homöomorphismus $h: Y\to\tilde{Y}$ gibt, mit
+$\tilde{p}\circ h = p$, d.h. das folgende Diagramm kommutiert:
+\begin{center}
+\psset{unit=0.7cm}
+\begin{pspicture}(-1,0)(6,4.5)
+\rput[B](0,3){\Rnode{A}{$Y$}}
+\rput[B](5,3){\Rnode{B}{$\tilde{Y}$}}
+\rput[B](2.5,0.2){\Rnode{C}{$X$}}
+
+\ncLine[nodesep=3pt]{->}{A}{B}
+\Aput{$h$}
+
+\ncLine[nodesep=3pt]{->}{B}{C}
+\Aput{$\tilde{p}$}
+
+\ncLine[nodesep=3pt]{->}{A}{C}
+\Bput{$p$}
+\end{pspicture}
+\end{center}
+Wir schreiben $Y\cong_X \tilde{Y}$.\fishhere 
+\end{defn} 
+
+\begin{lem}
+\label{prop:3.4.2}
+Sei $h: Y\to \tilde{Y}$ ein Homöomorphismus über $X$ und sei $z\in X$. Dann ist
+$h\big|_{p^{-1}(z)} : p^{-1}(z)\to \tilde{Y}$ ein Homöomorphismus von der Faser
+$\pp^{-1}(z)$ von $z$ unter $p$ auf die Faser $\tilde{\pp}^{-1}(z)$ von $z$
+unter $\tilde{\pp}$.\fishhere
+\end{lem}
+\begin{proof}
+Klar.\qedhere
+\end{proof}
+
+\begin{defn}
+\label{defn:3.4.3}
+Ein topologischer Raum $Y$ über $X$ heißt \emph{trivial}, wenn es einen
+topolgischen Raum $F$ gibt, so dass $Y$ homöomorph zum topologischen Produkt
+$X\times F$ ist.
+\begin{center}
+\psset{unit=0.7cm}
+\begin{pspicture}(-1,0)(6,4.5)
+\rput[B](0,3){\Rnode{A}{$Y$}}
+\rput[B](5,3){\Rnode{B}{$X\times F$}}
+\rput[B](2.5,0.2){\Rnode{C}{$X$}}
+
+\ncLine[nodesep=3pt]{->}{A}{B}
+\Aput{$\cong$}
+
+\ncLine[nodesep=3pt]{->}{B}{C}
+\Aput{$\pi$}
+
+\ncLine[nodesep=3pt]{->}{A}{C}
+\Bput{$p$}
+\end{pspicture}
+\end{center}
+Für $z\in X$ gilt,
+\begin{align*}
+Y_z = p^{-1}(z)\cong \pi^{-1}(z) = \{z\}\times F\cong F,
+\end{align*}
+mit $\pi: X\times F\to X,\;(x,f)\mapsto x$.\fishhere
+\end{defn}
+
+\begin{defn}
+\label{defn:3.4.4}
+Ein topologischer Raum $Y$ über $X$ heißt \emph{lokal trivial} oder \emph{lokal
+triviale Faserung}, falls es zu jedem $z\in X$ eine Umgebung $U\in\UU_z$ gibt
+für die $Y\big|_U$ trivial ist.
+
+D.h. $p\big|_{p^{-1}(U)} : p^{-1}(U)\to U$ ist trivial, d.h. es gibt einen
+topologischen Raum $\Lambda$ und einen Homöomorphismus, so dass
+das folgende Diagramm kommutiert:
+\begin{center}
+\psset{unit=0.7cm}
+\begin{pspicture}(-1,0)(6,4.5)
+\rput[B](0,3){\Rnode{A}{$p^{-1}(U)$}}
+\rput[B](5,3){\Rnode{B}{$U\times\Lambda$}}
+\rput[B](2.5,0.2){\Rnode{C}{$U$}}
+
+\ncLine[nodesep=3pt]{->}{A}{B}
+\Aput{$h$}
+
+\ncLine[nodesep=3pt]{->}{B}{C}
+\Aput{$\pi$}
+
+\ncLine[nodesep=3pt]{->}{A}{C}
+\Bput{$\pp\big|_{\pp^{-1}(U)}$}
+\end{pspicture}
+\end{center}
+d.h. $\pp\big|_{\pp^{-1}(U)}\circ h = \pi$, mit $\pi$ der natürlichen
+Projektion.\fishhere
+\end{defn}
+
+\begin{defn}
+\label{defn:3.4.5}
+Eine lokaltriviale Faserung von $X$ heißt \emph{Überlagerung}, wenn ihre Fasern
+als topologische Räume mit der Spurtopologie diskret sind.
+
+D.h. $\pp: Y\to X$ ist Überlagerung, falls gilt
+\begin{enumerate}[label=(\roman{*})]
+  \item $\pp$ ist stetig und surjektiv.
+  \item $\forall z\in X \exists U\in\UU_z$, so dass gilt:
+\begin{enumerate}[label=\alph{*})]
+  \item $\forall u\in U: \pp^{-1}(u)$ ist diskreter Teilraum von $Y$.
+  \item Es gibt einen Homöomorphismus,
+\begin{align*}
+h: \pp^{-1}(U) \to U\times \pp^{-1}(z),
+\end{align*}
+so dass mit der Projektion $\pi: U\times\pp^{-1}(z) \to U,\; (u,a)\mapsto u$
+gilt,
+\begin{align*}
+&\pi\circ h = \pp\big|_{\pp^{-1}(U)}.\fishhere
+\end{align*}
+\end{enumerate}
+\end{enumerate}
+\end{defn}
+Als Konsequenz daraus ergibt sich:
+\begin{itemize}
+  \item Alle Fasern $\pp^{-1}(u)$ mit $u\in U$ sind gleichmächtig, falls $X$
+  zusammenhängend,
+  \item $Y\big|_U$ und $U\times \pp^{-1}(z)$ sind homöomorph über $U$. 
+\end{itemize}
+% TODO: Bildchen
+Als $\Lambda$ kann man jeden diskreten Raum gleichmächtig zu $\pp^{-1}(z)$
+wählen, insbesondere den diskreten Raum $Y_z = \pp^{-1}(z)$ selbst. Ist
+$a\in\pp^{-1}(U), \pp(a) = u$, so ist $h(a) = (u,\lambda)$ für ein
+$\lambda\in\Lambda$.
+
+Die Mächtigkeit $\abs{Y_z}$ der Faser über $z\in X$ nennt man
+\emph{Blätterzahl} der Überlagerung an der Stelle $z$. Offensichtlich ist die
+Blätterzahl lokal konstant (man kann jeden Punkt nahe daneben wählen, dann
+erhält man dieselbe Umgebung  und damit die gleiche Blätterzahl) und deshalb
+für einen zusammenhängenden Raum $X$ global konstant (Beweis: Übung).
+
+Ist die Blätterzahl $n\in\N\cup\{\infty\}$ konstant, so spricht man von einer
+$n$-blättrigen Überlagerung.
+
+\begin{defn}
+\label{defn:3.4.6}
+Seien $X,Y$ topologische Räume und $h: Y\to X$ stetig. Dann heißt $h$
+\emph{lokaler Homöomorphismus}, falls es zu jedem $y\in Y$ eine offene Umgebung
+$V$ von $y$ gibt, so dass $h(V)$ offen in $X$ und $h\big|_V : V\to h(V)$ ein
+Homöomorphismus ist.\fishhere
+\end{defn}
+
+\begin{lem}
+\label{prop:3.4.7}
+Sei $\pp: Y\to X$ Überlagerung. Dann ist $\pp$ ein lokaler
+Homöomorphismus.\fishhere
+\end{lem}
+\begin{proof}
+Sei $z\in X$ und $U\in\UU_z$ wie in \ref{defn:3.4.5} gefordert. In
+$U\times\Lambda$ ist jede Faser $U\times\{\lambda\}\subseteq U\times \Lambda$ 
+offen in $U\times\Lambda$ und die Projektion $U\times\{\lambda\}\to
+U,\;(u,\lambda)\mapsto u$ ein Homöomorphismus.
+
+Sei $y\in\pp^{-1}(U)\in\OO_Y$, so ist $h(y) = (u,\lambda)$ für ein $u\in
+U,\lambda\in\Lambda$ und daher auch $V=h^{-1}(U\times\{\lambda\})$ offen in
+$\pp^{-1}(U)$ und daher auch in $Y$.
+
+Natürlich ist $y\in V=h^{-1}(U\times\{\lambda\})$ wegen $h(y) = (u,\lambda) \in
+U\times\{\lambda\}$, ist $h$ ein Homöomorphismus und daher auch $\pp\big|_{V} =
+\pi\circ h: V\to U$.\qedhere
+\end{proof}
+%TODO: Beispiele
+
+\begin{prop}[Heben von Wegen]
+\label{prop:3.4.8}
+Sei $\pp: Y\to X$ eine Überlagerung, $\alpha: I\to X$ Weg in $X$ von
+$\alpha(0)=x_0\in X$ nach $\alpha(1) = x_1\in X$. Sei $y_0\in Y_{x_0}$, d.h.
+$\pp(y_0) = x_0$. 
+
+Dann gibt es genau einen Weg $\talpha: I\to Y$ mit $\talpha(0) = y_0$, so
+dass das folgende Diagramm kommutiert:
+\begin{center}
+\psset{unit=0.7cm}
+\begin{pspicture}(-1,0)(6,4.5)
+\rput[B](0,3){\Rnode{A}{$[0,1]$}}
+\rput[B](5,3){\Rnode{B}{$Y$}}
+\rput[B](2.5,0.2){\Rnode{C}{$X$}}
+
+\ncLine[nodesep=3pt]{->}{A}{B}
+\Aput{$\talpha$}
+
+\ncLine[nodesep=3pt]{->}{B}{C}
+\Aput{$\pp$}
+
+\ncLine[nodesep=3pt]{->}{A}{C}
+\Bput{$\alpha$}
+\end{pspicture}
+\end{center}
+d.h. $\pp\circ\talpha=\alpha$.\fishhere 
+\end{prop}
+\begin{proof}
+\begin{bemn}[Vorüberlegung.]
+Sei $U\subseteq X$ offen und $Y\big|_U$ trivial, so sind sämtliche ganz in $U$
+verlaufende Wege leicht zu überschauen und zu haben. Bezüglich $Y\big|_U\cong
+U\times\Lambda$ sind es gerade die durch
+\begin{align*}
+t\in I: \talpha_\lambda(t) = (\alpha(t),\lambda)\in U\times\Lambda
+\end{align*} 
+definierten Wege in $U\times\Lambda$, die dann unter $h^{-1}: U\times \Lambda
+\to Y\big|_U = \pp^{-1}(U)$ in $Y$ zurückgehoben wurden.
+
+(Diese bezeichnen wir der Einfachheit halber wieder mit $\talpha_\lambda$)
+
+Klar: Dieses Argument kann sofort auf stetige Abbildungen $\tau:[a,b]\to X,
+a<b\in\R$ verallgemeinert werden.
+\end{bemn}
+\begin{bemn}[Eindeutigkeit.]
+Seien $\talpha$ und $\halpha$ zwei Hochhebungen von $\alpha$ zu $y_0\in Y$. 
+Insbesondere gilt dann,
+\begin{align*}
+&\talpha(0) = \halpha(0) = y_0,\\
+&\pp\circ\talpha = \pp\circ\halpha = \alpha. 
+\end{align*}
+Sei $t\in I$ mit $\talpha(t) = \halpha(t)$ (bzw. $\talpha(t)\neq\halpha(t)$),
+$x=\pp(\talpha(t)) = \alpha(t) = \pp(\halpha(t))$.
+
+Sei $U$ offene Umgebung von $x$ mit $Y\big|_U \cong U\times\Lambda$, wobei
+$\Lambda$ diskreter Raum ist. Nach unserer Vorüberlegung ist $\talpha(s) =
+\halpha(s)$ für alle $s\in I$ mit $\talpha(s)\in U$. Also sind,
+\begin{align*}
+\setdef{t\in I}{\talpha(t) = \halpha(t)}  \text{ und }
+\setdef{t\in I}{\talpha(t)\neq\halpha(t)}
+\end{align*}
+offene Teilmengen von $I$, deren Vereinigung ganz $I$ ergibt. Da $I$
+zusammenhängend ist, gilt
+\begin{align*}
+\setdef{t\in I}{\talpha(t) = \halpha(t)} = I,
+\end{align*}
+d.h. $\talpha=\halpha$.
+\end{bemn}
+
+\begin{bemn}[Existenz.]
+Die Menge der $t\in I$ so, dass eine Hochhebung von
+\begin{align*}
+\alpha\big|_{[0,t]}: [0,t]\to X, 
+\end{align*}
+zum Anfangspunkt $y_0$ gehoben werden kann, ist nicht leer, da $0$
+darin liegt.
+
+Sei $t_0$ das Supremum dieser Menge, $x=\alpha(t_0)$, $U$ offene Umgebung von
+$x$ so, dass $Y\big|_U$ triviale Fortsetzung ist, mit $\Lambda$ diskretem Raum.
+
+Sei $\ep > 0$ so, dass $[t_0-\ep,t_0+\ep]\cap[0,1]$ unter $\alpha$ ganz nach
+$U$ abgebildet wird (existiert aufgrund der Stetigkeit von $\alpha$). Sei
+$\tau\in[t_0-\ep/2,t_0]\cap[0,1]$ und sei $\tbeta$ die Hochhebung
+$\alpha\big|_{[\tau,t_0+\ep/2]}$ zum Anfangspunkt $\talpha(\tau)\in U$,
+$\talpha: [0,\tau]\to Y$ eine Hochhebung von $\alpha\big|_{[0,\tau]}$ zum
+Anfangspunkt $y_0$ ist. $\talpha$ existiert, da $\tau<t_0$ und $\tbeta$
+existiert aufgrund unserer Vorüberlegung.
+
+Dann wird durch
+\begin{align*}
+\halpha(t) = \begin{cases}
+\talpha(t), & t\in[0,\tau],\\
+\tbeta(t), & t\in [\tau,t_0+\ep/2]\cap[0,1]
+             \end{cases}
+\end{align*}
+eine Hochhebung von $\alpha\big|_{[0,\tau]}$ zum Anfangspunkt $y_0$ definiert,
+mit $b=1$ (falls $t_0=1$ ist) oder aber $b>t_0$. Da $t_0$ aber das Supremum der
+Menge der $t\in I$ ist, so dass $\alpha\big|_{[0,t]}$ zum Anfangspunkt $y_0$
+gehoben werden kann, haben wir einen Widerspruch. Also ist $t_0=1$ und der
+ganze Weg $\alpha$ kann gehoben werden.\qedhere
+\end{bemn}
+\end{proof}
+
+Unser Ziel ist es, Überlagerungen mithilfe der Fundamentalgruppe zu
+klassifizieren. Dazu müssen wir aber Homotopien heben können. Daher stellt sich
+die Frage, ob dies überhaupt möglich ist.
+
+
+Sei $Z$ topologischer Raum, $F: Z\times I \to X$ Homotopie von $f_0: Z\to X,\;
+z\mapsto F(z,0)$ nach $f_1: Z\to X,\; z\mapsto F(z,1)$.
+
+Für $t\in I,\; z\in X$ seien
+\begin{align*}
+&f_t: Z\to X,\;z\mapsto F(z,t),\\
+&\ph_z: I\to X,\;t\mapsto F(z,t).
+\end{align*}
+Gesucht ist eine Abbildung $\tilde{F}: Z\times I\to Y$ mit $\pp\circ\tilde{F} =
+F$, d.h. das folgende Diagramm kommutiert:
+\begin{center}
+\psset{unit=0.7cm}
+\begin{pspicture}(-1,0)(6,4.5)
+\rput[B](0,3){\Rnode{A}{$Z\times I$}}
+\rput[B](5,3){\Rnode{B}{$Y$}}
+\rput[B](2.5,0.2){\Rnode{C}{$X$}}
+
+\ncLine[nodesep=3pt]{->}{A}{B}
+\Aput{$\tilde{F}$}
+
+\ncLine[nodesep=3pt]{->}{B}{C}
+\Aput{$\pp$}
+
+\ncLine[nodesep=3pt]{->}{A}{C}
+\Bput{$F$}
+\end{pspicture}
+\end{center}
+Definiere die Wege,
+\begin{align*}
+&\tilde{f}_0 : Z\to Y,\; z\mapsto \tilde{F}(z,0),\\
+&\tilde{f}_t : Z\to Y,\; z\mapsto \tilde{F}(z,t),\\
+&\tilde{\ph}_z: I\to Y,\; t\mapsto \tilde{F}(z,t).
+\end{align*}
+Voraussetzung ist natürlich, dass $f_0$ überhaupt zu einer stetigen Abbildung
+$\tilde{f}_0$ gehoben werden kann, d.h. dass gilt
+$\pp\circ\tilde{f}_0=f_0$.
+
+\begin{prop}[Heben von Homotopien]
+\label{prop:3.4.9}
+Sei $\pp: Y\to X$ Überlagerung von $X$. Sei $Z$ ein topologischer Raum und $F:
+Z\times I \to X$ eine stetige Abbildung und daher insbesondere Homotopie von
+$f_0$ nach $f_1$.
+
+Sei $\tilde{f}_0: Z\to Y$ stetig mit $\pp\circ\tilde{f}_0 = f_0$, d.h. das
+folgende Diagramm kommutiert:
+\begin{center}
+\psset{unit=0.7cm}
+\begin{pspicture}(-1,0)(6,4.5)
+\rput[B](0,3){\Rnode{A}{$Z$}}
+\rput[B](5,3){\Rnode{B}{$Y$}}
+\rput[B](2.5,0.2){\Rnode{C}{$X$}}
+
+\ncLine[nodesep=3pt]{->}{A}{B}
+\Aput{$\tilde{f}_0$}
+
+\ncLine[nodesep=3pt]{->}{B}{C}
+\Aput{$\pp$}
+
+\ncLine[nodesep=3pt]{->}{A}{C}
+\Bput{$f_0$}
+\end{pspicture}
+\end{center}
+Für $z\in Z$ sei $\ph_z: I\to X,\; t\mapsto F(z,t)$ und $\tilde{\ph}_z: I\to Y$
+sie die Hochhebung von $\ph_z$ nach $Y$ zum Anfangspunkt $\tilde{f}_0(z)$.
+
+Dann ist die Abbildung $\tilde{F}: Z\times I\to Y,\; (z,t)\mapsto
+\tph_z(t)\in Y$ stetig und daher Homotopie von $\tilde{f}_0$ nach
+$\tilde{f}_1$, wobei $\tilde{f}_1(z) = \tph_z(1) = \tilde{F}(z,1)$.
+
+Insbesondere haben wir $\pp\circ\tilde{F} = F$.\fishhere
+\end{prop}
+\begin{proof}
+Ist $t_0\in [0,1]$ so bezeichnen wir die $\ep$-Umgebung $(t_0-\ep/2,t_0+\ep/2)$
+von $t_0$ mit $I_\ep(t_0)$. Für $\Omega\in\OO_Z$ soll das offene Kästchen
+$\Omega\times I_\ep(t_0)$ in $Z\times I$ \emph{klein} heißen, wenn es unter $F$
+in eine offene Menge $U\subseteq X$, über der $Y$ trivial ist, abgebildet wird.
+
+Ist dann $\tilde{F}$ auf einer ``Vertikalen'' $\Omega\times\{t_1\}$ eines
+kleinen Kästchens stetig, dann sogar auf dem ganzen Kästchen, denn bei der
+Trivialisierung $Y\big|_U \cong U\times\Lambda$ ist die $\Lambda$-Koordinate
+von $\tilde{F}\big|_{\Omega\times I_\ep(t_0)}$ (auf die allein es ankommt)
+unabhängig von $t$, da die $U$-Koordinate durch die ohnehin stetige Abbildung
+$\tilde{F}\big|_{\Omega\times I_\ep(t_0)}$ gegeben ist, aufgrund der Stetigkeit
+der Einzelwerte $\tph_z : I_\ep(t_0) \to U\times\Lambda$.
+
+Gibt es also ein $t_1\in I_\ep(t_0)$ für das kleine Kästchen so, dass
+$\tilde{F}$ auf $\Omega\times\{t_1\}$ stetig ist, so nennen wir $\Omega\times
+I_\ep(t_0)$ ein \emph{kleines gutes Kästchen}.
+
+Für $z\in Z$ sei $T=T(z)$ die Menge der $t\in [0,1]= I$ so, dass ein kleines
+gutes Umgebungskästchen $\Omega(z)\times I_\ep(t)$ um $(z,t)\in Z\times I$
+existiert.\\
+Dann ist also $\tilde{f}_t$ auf einer Umgebung von $z$ stetig und $T$ ist daher
+offen in $I$.\\
+Aufgrund der Stetigkeit der Anfangshochhebung $\tilde{f}_0$ von $f_0$ (die ja
+als existierend vorausgesetzt ist) ist $0\in T$.
+
+Wir zeigen, dass $T$ auch abgeschlossen in $I$ ist:
+
+Sei $t_0\in\overline{T}$. Wegen der Stetigkeit von $F: Z\times I\to X$ gibt es
+ein kleines Kästchen $\Omega\times I_\ep(t_0)$ um $(z,t_0)$ und wegen
+$t_0\in\overline{T}$ gibt es ein $t_1\in I_\ep(t_0)\cap T$.\\
+Dann ist also $\tilde{f}_{t_1}$ stetig auf einer Umgebung $\Omega_1$ von $z$,
+also ist $\tilde{F}$ stetig auf ganz $(\Omega\cap \Omega_1)\times I_\ep(t_0)$
+und es folgt $t_0\in T$.
+
+Also ist $T=\overline{T}$ und daher $T=I$, weil $I$ zusammenhängend ist.
+
+Weil $z\in Z$ beliebig war, ist $\tilde{F}$ auf ganz $Z\times I$ stetig.\qedhere
+\end{proof}
+
+\begin{prop}[Mondronomiesatz]
+\label{prop:3.4.10}
+Sei $\pp: Y\to X$ Überlagerung von $X$. Seien $\alpha,\beta$ Wege in $X$ von
+$x_0$ nach $x_1$ in $X$. Seien $\alpha\hom\beta\rel{0,1}$ mit Homotopie,
+\begin{align*}
+&F: I\times I\to X,\\
+&F(0,t) = x_0, \forall t\in I,\\
+&F(1,t) = x_1, \forall t\in I.
+\end{align*}
+Sind $\talpha$ und $\tbeta$ Hochhebungen von $\alpha$ bzw. $\beta$ zum
+Anfangspunkt $y_0$, so haben sie auch denselben Endpunkt $y_1=\talpha(1) =
+\tbeta(1)$.\fishhere
+\end{prop}
+\begin{bemn}[Warnung:]
+``homotop'' sein ist für diesen Satz entscheidend.
+%TODO: Bildchen 
+\end{bemn}
+
+\begin{proof}
+$F(0,t) = x_0$ und $x_0$ ist konstant also stetig. Sei
+$\tilde{F}(0,t)=y_0$ eine Homotopie von $F(0,t)$ (d.h. die Anfangspunkte
+$F(0,t)$ aller Wege $\alpha_t: I\to X,\; s\mapsto F(s,t)$ sind in der Homotopie
+$F$ alle gleich $x_0$ und daher hebbar nach $Y$ mit konstantem Weg
+$\tilde{F}(0,t) = y_0$.)
+
+Also ist die Homotopie $F$ zu einer Homotopie $\tilde{F}: I\times I \to Y$ mit
+$\tilde{F}: I\times I \to Y$ mit $\tilde{F}(0,t) = y_0 \forall t\in I$ hebbar
+und es gilt $\pp\circ\tilde{F} = F$.
+
+Sei $\talpha = \talpha_0, \tbeta = \talpha_1$, wobei $\talpha_t : I\to Y,
+s\mapsto \tilde{F}(s,t)$. Die Endpunkte $\talpha(1)$ durchlaufen dabei den Weg
+$\ep: I\to \talpha_t(1) = \tilde{F}(1,t)$ und liegen wegen $\pp\circ\tilde{F} =
+F$ alle in der Faser $Y_{x_1}$.
+
+So ist $\ep$ eine stetige Abbildung von $I$ in den diskreten Raum $Y_{x_1}$.
+Daher ist $\ep$ konstant $\ep(t) = \talpha_0(t) = \talpha(1) = y_1 \forall
+t\in I$. Dann ist $\ep(1) = \talpha_1(1) = \tbeta(1) = y_1$.
+
+Also ist $\tilde{F}$ Homotopie von $\talpha$ nach $\tbeta\rel{0,1}$ und
+die Behauptung folgt.\qedhere
+\end{proof}
+
+\begin{prop}[Problem]
+\label{prop:3.4.11}
+Seien $(Y,\pp)$ und $(Z,\pp')$ Überlagerungen von $X$. Sei $f: Y\to Z$ ein
+Homöomorphismus über $X$, d.h. $\pp'\circ f = \pp$.
+
+Seien $x_0\in X$, $y_0\in\pp^{-1}(x_0)$ und $z_0 = f(y_0)$. Seien
+$\alpha,\beta: I\to X$ Wege mit Anfangspunkt $x_0$ und Endpunkt $x_1$.
+
+Seien $\talpha,\tbeta$ die zu $Y$ gehobenen Wege mit Anfangspunkt $y_0$ und
+$\halpha,\hbeta$ die zu $Z$ gehobenen Wege mit Anfangspunkt $z_0$.
+
+Ist $\talpha(1) = \tbeta(1)$, so ist auch $\halpha(1)=\hbeta(1)$.\fishhere
+\end{prop}
+
+\begin{defn}
+\label{defn:3.4.12}
+Sei $(X,x_0)$ ein Objekt in $\Top_0$ und sei $\pp: Y\to X$ Überlagerung von
+$X$. Sei $y_0\in\pp^{-1}(x_0)$. Wir sagen $(Y,y_0)$ ist \emph{Überlagerung von
+$(X,x_0)$ in $\Top_0$}.
+
+Zwei Überlagerungen $(Y,y_0), (Y',y_0')$ von $(X,x_0)$ haben dasselbe
+\emph{Hochhebeverhalten}, wenn gilt:
+
+Sind $\alpha,\beta$ Wege in $X$ von $x_0$ nach $x_1$ und $\talpha,\tbeta$ die
+zu $y_0$ gehobenen Wege in $Y$ und $\halpha,\hbeta$ die zu $y_0'$ gehobenen
+Wege in $Y'$, so haben $\talpha$ und $\tbeta$ genau dann denselben Endpunkt,
+wenn $\halpha$ und $\hbeta$ denselben Endpunkt haben.\fishhere
+\end{defn}
+
+Wir haben in \ref{prop:3.4.11} gesehen:
+
+Sind $(Y,y_0)$ und $(Y',y_0')$ wie in \ref{defn:3.4.12} und ist $Y$ in $\Top_0$
+isomorph zu $Y'$ durch einen Homöomorphismus $h: Y\to Y'$ mit $h(x_0) = y_0'$
+(basispunkterhaltend), so haben die Überlagerungen $\pp: Y\to X$ und $\pp':
+Y'\to X$ dasselbe Hochhebeverhalten.
+
+\begin{bemn}[Frage:]
+Gilt auch die Umkehrung, d.h. sind zwei Räume mit gleichem Hochhebeverhalten
+isomorph in $\Top_0$?
+\end{bemn}
+
+Sei also $f: (Z,z_0) \to (X,x_0)$ stetig mit $f(z_0) = x_0$ und sei $(Y,y_0)$
+Überlagerung von $(X,x_0)$. (d.h. $\pp: Y\to X$ ist Überlagerung und $\pp(y_0)
+= x_0$)
+
+Die stetige Abbildung $\tilde{f}: (Z,z_0)\to (Y,y_0)$ in $\Top_0$ (d.h.
+$\tilde{f}(z_0) = y_0$) ist Hebung von $f$, falls $\tilde{f}\circ\pp = f$, d.h.
+folgendes Diagramm kommutiert:
+\begin{center}
+\psset{unit=0.7cm}
+\begin{pspicture}(-1,0)(6,4.5)
+\rput[B](0,3){\Rnode{A}{$(Z,z_0)$}}
+\rput[B](5,3){\Rnode{B}{$(Y,y_0)$}}
+\rput[B](2.5,0.2){\Rnode{C}{$(X,x_0)$}}
+
+\ncLine[nodesep=3pt]{->}{A}{B}
+\Aput{$\tilde{f}$}
+
+\ncLine[nodesep=3pt]{->}{B}{C}
+\Aput{$\pp$}
+
+\ncLine[nodesep=3pt]{->}{A}{C}
+\Bput{$f$}
+\end{pspicture}
+\end{center}
+Sei $z\in Z$ und $\alpha$ Weg in $Z$ von $z_0$ nach $z$, dann ist nach
+\ref{prop:3.4.8} $\tilde{f}\circ\alpha$ die eindeutige Hebung des Weges $f\circ\alpha$
+von $x_0$ nach $f(z)$ an $y_0\in Y$.
+
+Wie kommen wir über $\tilde{f}\circ\alpha$ an $\tilde{f}$
+heran?
+
+%Situation:
+%TODO: Bildchen
+
+Ist $Z$ wegzusammenhängend, so folgt aus der Eindeutigkeit des Hebens von Wegen
+(\ref{prop:3.4.8}) die Eindeutigkeit von $\tilde{f}$, falls es existiert.
+
+\begin{bemn}[Idee:]
+Benutze dies für wegzusammenhängendes $Z$ zur Definition von $\tilde{f}$:
+\begin{itemize}
+  \item Für $z\in Z$ wähle Weg $\alpha$ von $z_0$ nach $z$ in $Z$.
+  \item Erhalte Weg $f\circ\alpha$ von $x_0$ nach $f(z)$ in $X$
+  \item Hebe diesen Weg (\ref{prop:3.4.8}) zu einem Weg
+  $\beta=\tilde{f\circ\alpha}$ an $y_0$ in $Y$, dann gilt $\pp\circ\beta =
+  f\circ\alpha$.
+  \item Definiere $\tilde{f}(z) = \beta(1)$.
+  %TODO: Bildchen
+\end{itemize}
+\end{bemn}
+Aber ist $\tilde{f}$ auch wohldefiniert?
+
+Für die Existenz von $\tilde{f}$ ist offenbar notwendig, dass die zu
+$y_0$ gehobenen Wege $\widetilde{f\circ\alpha}$ unabhängig von $\alpha$
+denselben Endpunkt besitzen.
+
+Wir brauchen also, dass für je zwei Wege $\alpha$ und $\gamma$ in $Z$, die von
+$z_0$ zu einem gemeinsamen Endpunkt laufen, durch Hochheben der Wege
+$f\circ\alpha$ und $f\circ\gamma$ zu $y_0$, Wege in $Y$ mit demseleben
+Endpunkt entstehen. Wir werden sehen, dass dies unter gewissen Annahmen an $Z$
+ausreicht, um die Existenz von $\tilde{f}: (Z,z_0)\to (Y,y_0)$ zu garantieren.
+
+Als Anwendung erhalten daraus:
+\begin{propn}
+Seien $(Y,y_0), (Y',y_0')$ zwei Überlagerungen von $(X,x_0)$ mit
+demselben Hochhebeverhalten. Erfüllen beide die obigen (noch unbekannten)
+Annahmen, dann ist $(Y,y_0)\cong_{X} (Y',y_0')$.\fishhere
+\end{propn}
+\begin{center}
+\psset{unit=0.7cm}
+\begin{pspicture}(-1,0)(6,4.5)
+\rput[B](0,3){\Rnode{A}{$(Y,y_0)$}}
+\rput[B](5,3){\Rnode{B}{$(Y',y_0')$}}
+\rput[B](2.5,0.2){\Rnode{C}{$(X,x_0)$}}
+
+\ncLine[nodesep=3pt]{->}{A}{B}
+\Aput{$\exists \tilde{\pp}$}
+\ncLine[nodesep=3pt]{->}{B}{A}
+\Aput{$\exists \tilde{\pp}'$}
+
+\ncLine[nodesep=3pt]{<-}{B}{C}
+\Aput{$\pp'$}
+
+\ncLine[nodesep=3pt]{->}{A}{C}
+\Bput{$\pp$}
+\end{pspicture}
+\end{center}
+
+\begin{bemn}[Strategie:]
+Wir algebraisieren das Problem, indem wir die 
+Fundamentalgruppen von $(Y,y_0)$ und $(X,x_0)$ untersuchen.
+\end{bemn}
+
+\begin{prop}
+\label{prop:3.4.13}
+Ist $\pp: (Y,y_0)\to (X,x_0)$ Überlagerung, so ist der induzierte
+Gruppenhomomorphismus $\pi(\pp) = \pp_* : \Pi(Y,y_0) \to \Pi(X,x_0)$
+injektiv.\fishhere
+\end{prop}
+\begin{proof}
+Sei $\gamma$ Schleife an $y_0$ mit $\pp_*(\lin{\gamma}) = \lin{\pp\circ\gamma}
+= \lin{e_{x_0}} \in\Pi(X,x_0)$. Dann ist $\pp\circ\gamma\hom e_{x_0}\rel{0,1}$.
+
+$\gamma$ ist die eindeutige Hebung zu $y_0$ von $p\circ\gamma$
+(\ref{prop:3.4.8}) und der konstante Weg $e_{y_0}$ die von $e_{x_0}$.
+Da beide denselben Endpunkt $y_0\in Y$ haben, sind sie nach \ref{prop:3.4.9}
+homotop mit einer Homotopie $F: I\times I\to Y$ mit $F(0,t) = y_0\forall t\in
+I$.
+
+Nach \ref{prop:3.4.10} haben alle Wege $\alpha_t: I\to Y,\; s\mapsto F(s,t)$ in
+dieser Homotopie denselben Endpunkt $F(1,t)$. Daher ist $F$ Homotopie
+$\rel{0,1}$ von $\gamma$ nach $e_{y_0}$ und daher $\lin{\gamma} = \lin{e_{y_0}}
+= 1_{\Pi(Y,y_0)}$.
+
+Wir haben also gezeigt, dass nur das Einselement auf das Einselement abgebildet
+wird, d.h. ist $\pp\circ\gamma$ nullhomotop, dann war schon $\gamma$
+nullhomotop und damit ist $\pp_*$ injektiv.\qedhere
+\end{proof}
+
+\begin{defn}
+\label{defn:3.4.14}
+Sei $\pp: (Y,y_0)\to (X,x_0)$ Überlagerung. Dann heißt das Bild $\im\pp_*$ von
+$\Pi(Y,y_0)$ in $\Pi(X,x_0)$ die \emph{charakteristische Untergruppe der
+Überlagerung $(Y,y_0)$} und wird mit $G(Y,y_0)\leqslant \Pi(X,x_0)$ bezeichnet.
+(Klar: $\Pi(Y,y_0)\cong G(Y,y_0)$)
+
+Die Schleifen an $x_0$ in $X$, die zu Schleifen an $y_0$ gehoben werden können
+(deren Homotopieklassen daher in $G(Y,y_0)$ liegen) heißen \emph{geschlossen
+hebbar zu $y_0$}.\fishhere
+\end{defn}
+
+Wie wir sehen werden, enthält die charakteristische Untergruppe von
+Überlagerungen alle Informationen über das Hochheben der Überlagerung.
+
+Sei gegeben:
+\begin{center}
+\psset{unit=0.7cm}
+\begin{pspicture}(-1,0)(6,4.5)
+\rput[B](0,3){\Rnode{A}{$(Z,z_0)$}}
+\rput[B](5,3){\Rnode{B}{$(Y,y_0)$}}
+\rput[B](2.5,0.2){\Rnode{C}{$(X,x_0)$}}
+
+\ncLine[nodesep=3pt]{->}{A}{B}
+\Aput{$\tilde{f}$}
+
+\ncLine[nodesep=3pt]{->}{B}{C}
+\Aput{$\pp$}
+
+\ncLine[nodesep=3pt]{->}{A}{C}
+\Bput{$f$}
+\end{pspicture}
+\end{center}
+Dann gilt:
+\begin{align*}
+f_*(\Pi(Z,z_0)) &= (\pp\circ\tilde{f})_* (\Pi(Z,z_0))
+= \pp_*\circ\tilde{f}(\Pi(Z,z_0))
+\\ &\subseteq \pp_*(\Pi(Y,y_0))
+= G(Y,y_0).
+\end{align*}
+
+Damit $f: (Z,z_0)\to (X,x_0)$ zu einer stetigen Abbildung
+$\tilde{f}: (Z,z_0)\to (Y,y_0)$ hebbar ist, muss das Bild von $\Pi(Z,z_0)$
+unter dem Gruppenhomomorphismus $\pp_* = \Pi(\pp)$ in der charakteristischen
+Untergruppe der Überlagerung $(Y,y_0)$ enthalten sein.
+\begin{bemn}[Frage:]
+Reicht dies bereits aus?
+\end{bemn}
+
+Nicht ganz, wie wir noch sehen werden.
+
+\begin{prop}[Hochhebbarkeitskriterium]
+\label{prop:3.4.15}
+Sei $\pp: (Y,y_0)\to (X,x_0)$ Überlagerung, $Z$ ein weg- und lokal
+wegzusammenhängender topologischer Raum und $f: (Z,z_0)\to (X,x_0)$ mit
+$f(z_0) = x_0$ stetig.
+
+Dann existiert eine Hochhebung $\tilde{f}: (Z,z_0)\to (Y,y_0)$ (und diese ist
+dann eindeutig) genau dann, wenn $f_* = \pi(f)$ die Fundamentalgruppe
+$\Pi(Z,z_0)$ in die charakteristische Untergruppe $G(Y,y_0)\leqslant
+\Pi(X,x_0)$ abbildet.\fishhere
+\end{prop}
+\begin{proof}
+\begin{enumerate}
+  \item[``$\Rightarrow$''] Aus der Existenz von $\tilde{f}$ folgt, (s.o)
+ \begin{align*}
+ f_*(\Pi(Z,z_0)) \subseteq G(Y,y_0).
+ \end{align*}
+ Die Eindeutigkeit von $\tilde{f}$ folgt dann sofort. (s.o.)
+\begin{bemn}[Eindeutigkeit von $\tilde{f}_*$:]
+  $\tilde{f}_*: \Pi(Z,z_0)\to \Pi(Y,y_0)$ ist Gruppenhomomorphismus und
+  $\pp_*\circ\tilde{f}_* = f_*$ wegen der Injektivität von $\pp_*$
+  (\ref{prop:3.4.13}).
+\end{bemn}
+  \item[``$\Leftarrow$''] Sei also $\im f_*\subseteq G(Y,y_0)$, $z\in Z$. Wähle
+  Weg $\alpha$ von $z_0$ nach $z$ (existiert, da $Z$ wegzusammenhängend). Hebe
+  $f\circ\alpha : I\to X$ zu Weg $\widetilde{f\circ\alpha}$ an $y_0\in Y$ in $Y$
+  und definiere $\tilde{f}(z) = \widetilde{f\circ\alpha}(1)$.
+  
+Sei $\beta$ ein weiterer Weg von $z_0$ nach $z$ in $Z$. Dann ist
+$(f\circ\alpha)(f\circ\beta)^{-1}$ Schleife an $x_0$. Daher ist
+$\pp\left(\lin{(\tilde{f\circ\alpha})(\tilde{f\circ\beta})^{-1}}\right)\in
+G(Y,y_0)$ also ist $(f\circ\alpha)(f\circ\beta)^{-1}$ geschlossen hebbar und
+die Hochhebung von $f\circ\alpha$ und $f\circ\beta$ an $y_0$ in $Y$ haben
+denselben Endpunkt, nämlich $\tilde{f}(z)$.
+
+Also ist $\tilde{f}: Z\to Y$ wohldefiniert und trivialerweise ist
+$\tilde{f}(z_0) = y_0$. Nach Konstruktion ist $\pp\circ\tilde{f} = f$.
+
+Es bleibt zu zeigen, dass $\tilde{f}$ stetig ist. Hier kommt der vorausgesetzte
+lokale Wegzusammenhang von $Z$ ins Spiel.
+
+Sei $V$ eine offene Umgebung von $\tilde{f}(z_1)\in Y, z_1\in Z$. Ohne
+Einschränkung ist $V$ so klein, dass $\pp\big|_{V}$ ein Homöomorphismus auf die
+offene Umgebung $U=\pp(V)$ von $x_1\in X$ ist, $x_1=f(z_1)$. (d.h. ``$V$ lebt
+ganz auf einem Blatt der Überlagerung'') Wähle eine wegzusammenhängende
+Umgebung $W$ von $z_1$ so klein, dass $f(W)\subseteq U$, und einen festen Weg
+$\alpha$ von $z_0$ nach $z$ und füge kleine ``Stichwege'' zu jedem Punkt von
+$W$ an.
+%TODO: Bildchen
+Das geht, da $W$ wegzusammenhängend ist. Dann ist $\tilde{f}\big|_W =
+(\pp\big|_V)^{-1} \circ f\big|_W$ und insbesondere ist $\tilde{f}(W)\subseteq
+V$, d.h. $W\subseteq \tilde{f}^{-1}(V)$. Also ist $f$ stetig.\qedhere
+\end{enumerate}
+\end{proof}
+
+\subsection{Klassifikation von Überlagerungen und universelle Überlagerungen}
+
+Sei $X$ topologischer Raum, $x_0\in X$ Basispunkt, $X$ wegzusammenhängend und
+lokal wegzusammenhängend.
+
+\begin{prop}[Eindeutigkeitssatz]
+\label{prop:3.5.1}
+Seien $(Y,y_0)$ und $(Y',y_0')$ zwei weg- und lokal wegzusammenhängende
+Überlagerungen von $(X,x_0)$. Dann ist $(Y,y_0)\cong_{(X,x_0)} (Y',y_0')$ genau
+dann, wenn $G(Y,y_0)=G(Y',y_0')$ ist.\fishhere
+\end{prop}
+
+\begin{proof}
+\begin{enumerate}
+  \item[``$\Rightarrow$''] Sei $\ph$ ein Homöomorphismus von $Y$ nach $Y'$ über
+  $X$ mit $\ph(y_0) = y_0'$, dann gilt:
+\begin{align*}
+G(Y,y_0) &= \pp_*(\Pi(Y,y_0)) = (\pp'\circ\ph)_*(\Pi(Y,y_0))
+= \pp_*' (\ph_*(\Pi(Y,y_0))) \\ &= \pp_*'(\Pi(Y',y_0')) = G(Y',y_0').
+\end{align*}
+\item[``$\Leftarrow$''] Sei $G(Y,y_0)=G(Y',y_0')$, dann haben wir:
+
+Jetzt können wir den letzten Satz anwenden, indem wir das Diagramm etwas drehen:
+\begin{center}
+\psset{unit=0.7cm}
+\begin{pspicture}(-1,0)(6,4.5)
+\rput[B](0,3){\Rnode{A}{$(Y,y_0)$}}
+\rput[B](5,3){\Rnode{B}{$(Y',y_0')$}}
+\rput[B](2.5,0.2){\Rnode{C}{$(X,x_0)$}}
+
+\ncLine[nodesep=3pt]{->}{B}{C}
+\Aput{$\pp'$}
+
+\ncLine[nodesep=3pt]{->}{A}{C}
+\Bput{$\pp$}
+\end{pspicture}
+\end{center}\item[]
+Voraussetzungen:
+\begin{itemize}
+  \item $\pp': (Y',y_0)\to (X,x_0)$ ist Überlagerung.
+  \item $Y$ ist weg- und lokal wegzusammenhängend.
+  \item $\pp: (Y,y_0) \to (X,x_0)$ ist stetig mit $\pp(y_0) = x_0$.
+  \item $\pp_*$ bildet $\Pi(Y,y_0)$ in $G(Y,y_0) = G(Y',y_0')$ ab.
+\end{itemize}
+d.h. es gibt genau eine Hochhebung $h: (Y,y_0)\to (Y',y_0')$ von $\pp$.
+ 
+Genauso verfahren wir mit $\pp$ als Überlagerung und erhalten:
+\begin{center}
+\psset{unit=0.7cm}
+\begin{pspicture}(-1,0)(6,4.5)
+\rput[B](0,3){\Rnode{A}{$(Y,y_0)$}}
+\rput[B](5,3){\Rnode{B}{$(Y',y_0')$}}
+\rput[B](2.5,0.2){\Rnode{C}{$(X,x_0)$}}
+
+\ncLine[nodesep=3pt]{->}{A}{B}
+\Aput{$\exists h$}
+\ncLine[nodesep=3pt]{->}{B}{A}
+\Aput{$\exists h'$}
+
+\ncLine[nodesep=3pt]{->}{B}{C}
+\Aput{$\pp'$}
+
+\ncLine[nodesep=3pt]{->}{A}{C}
+\Bput{$\pp$}
+\end{pspicture}
+\end{center}
+
+Wegen,
+\begin{center}
+\psset{unit=0.7cm}
+\begin{pspicture}(-1,0)(6,4.5)
+\rput[B](0,3){\Rnode{A}{$(Y,y_0)$}}
+\rput[B](5,3){\Rnode{B}{$(Y,y_0)$}}
+\rput[B](2.5,0.2){\Rnode{C}{$(X,x_0)$}}
+
+\ncLine[nodesep=3pt]{->}{A}{B}
+\Aput{$h'\circ h$}
+\ncLine[nodesep=3pt]{->}{B}{A}
+\Aput{$\id_Y$}
+
+\ncLine[nodesep=3pt]{<-}{B}{C}
+\Aput{$\pp'$}
+
+\ncLine[nodesep=3pt]{->}{A}{C}
+\Bput{$\pp$}
+\end{pspicture}
+\end{center}
+und der Eindeutigkeit der gehobenen Abbildung $h'\circ h$ von $\pp: Y\to X$ zur
+Überlagerung $\pp: Y\to X$, ist $h'\circ h=\id_Y$. Analog folgt $h\circ h' =
+\id_{Y'}$ und damit folgt $(Y,y_0)\cong_{(X,x_0)}(Y',y_0')$.\qedhere
+\end{enumerate}
+\end{proof}
+
+\begin{bemn}[Frage:]
+Gibt es zu jeder Untergruppe $G$ von $\Pi(X,x_0)$ eine Überlagerung
+$(Y,y_0)$ mit charakteristischer Untergruppe $G(Y,y_0) = G$?
+\end{bemn}
+\begin{prop}[Forschungsauftrag]
+\label{prop:3.5.2}
+Finde Bedingungen so, dass die Antwort auf obige Frage ``ja'' lautet.\fishhere
+\end{prop}
+
+Also starten wir den Beweisversuch:
+
+Sei $G\leqslant \Pi(X,x_0)$.
+
+Wie können wir Elemente von $Y$ ``erschaffen''?
+
+Tun wir mal so, als hätten wir die Überlagerung $\pp: (Y,y_0)\to (X,x_0)$ schon
+so konstruiert, dass $G(Y,y_0)=G\leqslant \Pi(X,x_0)$ ist.
+
+Sei $x\in X$. Wie können wir die Faser $Y_x = \pp^{-1}(x)$ von $x$ unter $\pp$
+aus $G$ und ??? rekonstruieren?
+
+Der Wegzusammenhang hilft: Ist $y\in Y_x$, so gibt es Wege in $Y$ von $y_0$
+nach $y$, die auf Wege von $x_0$ nach $x$ unter $\pp$ projezieren.\\
+Umgekehrt kann jeder Weg $\alpha$ von $x_0$ nach $x$ zu einem Weg $\talpha$ an
+$y_0$ gehoben werden, dessen Endpunkt in $Y_x$ liegt.
+
+Wann haben die Hochhebungen $\talpha,\tbeta$ zweier Wege $\alpha,\beta$ von
+$x_0$ nach $x$ denselben Endpunkt?
+
+Sind $\alpha,\beta: I\to X$ Wege von $x_0$ nach $x$ in $X$, so ist
+$\alpha\beta^{-1}$ geschlossene Schleife an $x_0$.\\
+Diese hebt sich an $y_0$ zu einer geschlossenen Schleife an $y_0$ genau dann,
+wenn $\talpha$ und $\tbeta$ denselben Endpunkt in $Y_x$ haben, und dies ist
+äquivalent dazu, dass $\lin{\alpha\beta^{1-}}\in G\leqslant \Pi(X,x_0)$ ist
+(nach Definition von $G$ und \ref{prop:3.4.15})
+
+Wir definieren also eine Äquivalenzrelation auf der Menge $\Omega(X,x_0,x)$ von
+Wegen in $X$ von $x_0$ nach $x$ durch:
+\begin{align*}
+\alpha\sim\beta \Leftrightarrow \lin{\alpha\beta^{-1}}\in G.
+\end{align*}
+
+Jetzt definieren wir:
+\begin{align*}
+Y_x := \Omega(X,x_0,x)/\sim,
+\end{align*}
+als die Menge der Äquivalenzklassen von $\Omega(X,x_0,x)$ bezüglich $\sim$ und,
+\begin{align*}
+Y := \bigcup_{x\in X} Y_x,
+\end{align*} 
+ist per definitionem eine disjunkte Vereinigung.
+
+Sei $y_0$ die Äquivalenzklasse des konstanten Weges $e_{x_0}$ in
+$\Omega(X,x_0,x)$. Für $y\in Y_x$ sei $p(y) = x$, so ist $p$ surjektive
+Abbildung von $Y$ nach $X$ mit Fasern $p^{-1}(x) = Y_x$ für $x\in X$.
+
+Wir brauchen jetzt eine Topologie auf $Y$ so, dass gilt,
+\begin{itemize}
+  \item $Y$ ist weg- und lokal wegzusammenhängend.
+  \item $p: (Y,y_0)\to (X,x_0)$ ist stetig.
+  \item Die Faser $Y_x = p^{-1}(x)$ für $x\in X$ ist diskret in der
+  Spurtopologie.
+  \item $p: Y\to X$ ist lokale Faserung.
+  \item $\im p_* = G$, $(p_*(\Pi(Y,y_0)) = G)$.
+\end{itemize} 
+
+Bezeichnungen:
+\begin{itemize}
+  \item Für einen Weg $\alpha$ von $x_0$ nach $x$ sei $\nrm{\alpha}$ die
+  Äquivalenzklasse von $\alpha$ in $\Omega(X,x_0,x)$ bezüglich ``$\sim$''.
+  
+  $\Rightarrow$ Also ist $\nrm{\alpha} = \nrm{\beta} \Leftrightarrow
+  \lin{\alpha\beta^{-1}}\in G$ wenn $\alpha,\beta$ Wege von $x_0$ nach $x$.
+  \item Für $t\in I = [0,1]$ sei $\alpha_t\in \Omega(X,x_0,\alpha(t))$ gegeben
+  durch $\alpha_t(s) = \alpha(st)$.
+  %TODO: Bildchen
+\end{itemize}
+  Wir wollen eine Topologie auf $Y$ so, dass die Hochhebung $\talpha$ von
+  $\alpha$ an $y_0\in Y$ gerade durch
+\begin{align*}
+\talpha: I\to Y,\; t\mapsto \nrm{\alpha_t} \in Y_{\alpha(t)} \subseteq Y,
+\end{align*}
+gegeben ist.
+
+\begin{bemn}[Idee:]
+Wir machen die Umgebungen so klein, dass sie auf einem Blatt liegen. Sei
+$x\in X$ und $U$ offene, wegzusammenhängende Umgebung von $x$. Sei $\alpha\in
+y\in Y_x$, d.h. $\alpha$ ist Weg von $x_0$ nach $x$. Nach \ref{prop:2.2.28}
+%TODO: Die Referenz stimmt niemals, 2.2.28 ist die Definition von lokal ko
+%mpakt \ldots
+bilden diese  Umgebungen  eine  Umgebungsbasis  von  $X$.
+\end{bemn}
+
+Definiere:
+\begin{align*}
+V(U,y):= \setdef{\nrm{\alpha\beta}}{\beta\text{ ist Weg von }x\text{ nach }z,
+z\in U}.
+\end{align*}
+%TODO: Bildchen
+$V(U,y)$ ist offensichtlich unabhängig von der Wahl von $\alpha\in y$, denn sei
+\begin{align*}
+\nrm{\alpha} = \nrm{\halpha} \Rightarrow \lin{(\alpha\beta)(\halpha\beta)^{-1}}
+= \lin{\alpha\beta\beta^{-1}\halpha^{-1}} = \lin{\alpha\halpha^{-1}} \in G.
+\end{align*}
+So hängt $V(U,x)$ nur von $y=\nrm{\alpha}$ ab und wir können daher tatsächlich
+$V(U,y)$ schreiben.
+
+Klar:\begin{enumerate}
+       \item $p(V(U,y)) = U$.
+       \item Sind $U_1,U_2$ offene, wegzusammenhängende Umgebungen von $x$,
+       dann enthält $U_1\cap U_2$ eine wegzusammenhängende Umgebung $U_3$ von
+       $x$ (aber der Schnitt selbst muss keine wegzusammenhängende Umgebung
+       sein).
+\begin{align*}
+\Rightarrow V(U_3,y) \subseteq V(U_1,y)\cap V(U_2,y).
+\end{align*}
+\end{enumerate}
+Somit bilden die $V(U,y)$ eine Umgebungsbasis von $y\in Y$ und definieren daher
+eine Topologie auf $Y$.
+
+$O\subseteq Y$ ist also offen genau dann, wenn es zu jedem $y\in O$ eine
+wegzusammenhängende offene Umgebung $U$ von $x=p(y)$ gibt, so dass $V(U,y) =
+O$.
+
+Da jede Umgebung von $x\in X$ eine offene, wegzusammenhängende Umgebung $U$
+von $x$ enthält und $V(U,y)$ in $p^{-1}(U)$ enthalten ist, ist $p$ stetig.
+
+Es bleibt zu zeigen:
+\begin{enumerate}[label=(\alph{*})]
+  \item\label{prop:3.5.2:a} Die Fasern $Y_x = \Omega(X,x_0,x)/\sim$ für $x\in X$
+  sind diskret in der Spurtopologie.
+  \item\label{prop:3.5.2:b} $p: Y\to X$ ist lokal trivial.
+  \item\label{prop:3.5.2:c} $Y$ ist weg- und lokal zusammenhängend.
+  \item\label{prop:3.5.2:d} $G(Y,y_0)=G$.
+\end{enumerate}
+
+\begin{proof}
+\ref{prop:3.5.2:a} Die Aussage ist äquivalent dazu, dass es für alle $y\in Y_x$
+eine offene wegzusammenhängende Umgebung $U$ von $x$ gibt, mit
+\begin{align*}
+Y_x\cap V(U,y) = \{y\}.
+\end{align*}
+\begin{bemn}[Frage:]
+Was ist $Y_x\cap V(U,y)$?
+\end{bemn}
+Sei $y=\nrm{\alpha}$ mit $\alpha$ Weg von $x_0$ nach $x$ in $X$. Da alle
+Elemente von $Y_x$ Äquivalenzklassen $\nrm{\tau}$ von Wegen $\tau$ von $x_0$
+nach $x$ sind und alle lemente von $V(U,y)$ Äquivalenzklassen
+$\nrm{\alpha\beta}$ mit einem Weg $\beta$ von $x$ nach $z$ in $U$ sind, ist
+\begin{align*}
+\nrm{\alpha\beta}\in Y_x\cap V(U,y) \Leftrightarrow \beta \text{ ist Schleife
+an $x$}.
+\end{align*}
+Wir müssen also ein $U$ so finden können, dass
+\begin{align*}
+\nrm{\alpha} =\nrm{\alpha\beta}, \text{ für alle Schleifen an }x.
+\end{align*}
+Es gilt,
+\begin{align*}
+\nrm{\alpha}= \nrm{\alpha\beta} \Leftrightarrow
+\lin{\alpha(\alpha\beta)^{-1}}\in G.
+\end{align*}
+Ohne weitere Annahme hat aber die Homotopieklasse
+$\lin{\alpha(\alpha\beta)^{-1}} = \lin{\alpha\beta^{-1}\alpha^{-1}}$ gar keinen
+Grund aus $G$ zu sein.
+%TODO: Bildchen
+
+Spezialfall: $x = x_0$, $\alpha=\text{const.}$, $G=(1)$, dann gilt
+\begin{align*}
+\lin{\alpha\beta^{-1}\alpha^{-1}} \in G &\Leftrightarrow \lin{\beta}\in G
+\\ \Leftrightarrow \beta\text{ ist Schleife an }x\in X,\text{ und nullhomotop in
+}X.
+\end{align*}
+Eine Umgebung $U$ von $x\in X$, für die alle Schleifen an $x$ in $U$ in $X$
+nullhomotop sind, braucht es nicht zu gelten.
+
+Wir machen aus der Not eine Tugend. Einfach das was wir brauchen, voraussetzen.
+
+\begin{bemn}[Erinnerung]
+Ein wegzusammenhängender Raum heißt einfach zusammenhängend, wenn
+$\Pi(X)  = (1)$ ist.\maphere
+\end{bemn}
+
+\begin{defn}
+\label{defn:3.5.3}
+Sei $X$ topologischer Raum und $X$ wegzusammenhängend, dann heißt $X$,
+\begin{enumerate}[label=\roman{*})]
+  \item\label{defn:3.5.3:1} \emph{lokal einfach zusammenhängend}, falls jede
+  Umgebung eines Punktes $x\in X$ eine einfach zusammenhängende Umgebung von $x$ enthält.
+  \item\label{defn:3.5.3:2} \emph{semilokal einfach zusammenhägend}, falls
+  jedes $x\in X$ eine Umgebung $U$ besitzt, so dass jede Schleife an $x$ in $U$ in $X$ nullhomotop
+  ist.\fishhere
+\end{enumerate}
+\end{defn}
+\end{proof}
+
+\begin{bemn}[Bemerkungen]
+\begin{enumerate}[label=\arabic{*}.)]
+  \item \ref{defn:3.5.3:1} $\Rightarrow$ \ref{defn:3.5.3:2}.
+  \item Ist $U$ Umgebung von $x\in X$ die Bedingung \ref{defn:3.5.3:2} erfüllt,
+  so erfüllt auch jede Teilmenge $V$ von $U$, die Umgebung von $x$ ist,
+  \ref{defn:3.5.3:2}.
+  
+  Dies gilt offensichtlich nicht für \ref{defn:3.5.3:1}.
+  %TODO: BIdlchen
+\end{enumerate}
+\end{bemn}
+
+  Sei jetzt $X$ wegzusammenhängender, lokal wegzusammenhängender, semilokal
+  einfach zusammenhängender Raum.   Wir können jetzt die wegzusammenhängende Umgebung $U$ von $x$ so
+  klein wählen, dass sie die Bedingung \ref{defn:3.5.3:2} von \ref{defn:3.5.3}
+  erfüllt.
+  
+  Dann ist jede Schleife $\beta$ an $x$, die ganz in $U$ verläuft, in $X$
+  nullhomotop, d.h. $\lin{\beta} =\lin{e_{x}}$. Außerdem ist für $y =
+  \nrm{\alpha}$ ($\alpha$ Weg von $x_0$ nach $x$),
+\begin{align*}
+\lin{\alpha(\alpha\beta)^{-1}} = \lin{\alpha\beta^{-1}\alpha^{-1}} =
+\lin{\alpha e_{x} \alpha^{-1}} = \lin{\alpha\alpha^{-1}} = 1_{\Pi(X)} \in G.
+\end{align*}
+Also ist $\nrm{\alpha\beta} = \nrm{\alpha} = y$, $Y_x\cap V(U,y)=\{y\}$ und
+damit ist $Y_x$ diskret in der Spurtopologie.
+
+\ref{prop:3.5.2:b} z.Z. ist $p: Y\to X$ ist lokal trivial. Sei jetzt,
+\begin{align*}
+&\alpha \text{ Weg von $x_0$ nach $x$},\\
+&\beta  \text{ Weg von $x$ nach $x'$},\\
+&\gamma  \text{ Weg von $x'$ nach $x''$}.
+\end{align*}
+Es gilt $\nrm{(\alpha\beta)\gamma}=\nrm{\alpha(\beta\gamma)}$, denn
+\begin{align*}
+\text{Da } & \lin{((\alpha\beta)\gamma)(\alpha(\beta\gamma))^{-1}}
+&= \lin{\alpha\beta\gamma\gamma^{-1}\beta^{-1}\alpha^{-1}} = \lin{e_{x_0}} =
+1_{\Pi(X)}\in G.
+\end{align*}
+Sei nun $x\in X$, $U\in \UU_x$ offen und wegzusammenhängend, so dass jede
+Schleife an $x$ in $U$ in $X$ nullhomotop ist (semilokal einfach
+zusammenhängend).
+
+Sei $y=\nrm{\alpha}$, $\alpha$ Weg von $x_0$ nach $x$. Sei $Z\in
+V(U,y)\Rightarrow z=\nrm{\alpha\beta}$ mit einem Weg $\beta$ von $x$ nach
+$x'\in U$.
+
+Da $U$ offen ist, ist $U$ auch Umgebung von $z$ und $V(u,z)\Rightarrow
+w=\nrm{(\alpha\beta)\gamma}$ mit einem Weg $\gamma$ von $x'$ nach $x''$ in $U$.
+$w=\nrm{\alpha(\beta\gamma)}$ mit $\beta\gamma$ Weg von $x$ nach $x''$, d.h.
+$w\in V(U,y)$.
+
+Wir haben also gezeigt, dass $V(U,z)\subseteq V(U,y)$.
+
+Analog verfahren wir mit $y=\nrm{(\alpha\beta)\beta^{-1})}$ und
+erhalten $V(U,y)\subseteq V(U,z)$, also ist $V(U,y)=V(U,z)$. Insbesondere ist
+$V(U,y)$ offen in $V$.
+
+Seien nun $y,y'\in Y_x$, $z\in V(U,y)\cap V(U,y')$, dann ist
+\begin{align*}
+V(U,y) = V(U,z) = V(U,y').
+\end{align*}
+Wegen
+\begin{align*}
+\{y\} = Y_x\cap V(U,y) = Y_x\cap V(U,y') = \{y'\},
+\end{align*}
+ist $y=y'$.
+
+Also ist $\pp^{-1}(U) = \bigcup_{y\in Y_x} V(U,y)$ eine topologische Summe.
+
+$\pp\big|_{V(U,y)} : V(U,y)\to U$ ist stetig und surjektiv nach Konstruktion:
+
+Ist $y=\nrm{\alpha}$ mit einem Weg $\alpha$ von $x_0$ nach $x=\pp(y)$ und ist
+$\beta$ Weg von $x$ nach $z$ in $U$, so ist $\nrm{\alpha\beta}\in V(U,y)$ und
+$\alpha\beta$ ist Weg von $x_0$ nach $z$. Daher ist nach Definition von $\pp$,
+$\pp(\nrm{\alpha\beta})=z$.
+
+$\pp\big|_{V(U,y)}$ ist aber auch injektiv:
+
+Ist $\gamma$ ein weiterer Weg von $x$ nach $z\in U$. Dann ist
+$\beta\gamma^{-1}$ Schleife an $x$ und daher nullhomotop in $X$ nach
+Vorraussetzung an $U$. Daher ist $\lin{\alpha\beta(\alpha\gamma^{-1})} =
+\lin{\alpha\beta\gamma^{-1}\alpha^{-1}} = \lin{\alpha\alpha^{-1}} = 1\in G$ und
+daher ist $\nrm{\alpha\beta} = \nrm{\alpha\gamma}$.
+
+Also ist $\pp\big|_{\pp^{-1}(U)}$ injektiv und daher ist $\pp: \pp^{-1}(U)\to
+U$ bijektiv und stetig.
+
+Um zu zeigen, dass dies ein Homöomorphismus ist, genügt es zu zeigen, dass
+$\pp_{\pp^{-1}(U)}$ offene Mengen in offene Mengen abbildet. Dies folgt aber
+sofort, da die Mengen $V(U,y)$ mit $y\in Y$ und $U$ offen und
+wegzusammenhängend eine Basis der Topologie von $Y$ bilden. Es genügt also zu
+zeigen, dass $\pp(V(U,y))$ offen in $X$ ist.
+
+Dies gilt aber, da $\pp(V(U,y)) = U$ offen in $X$ ist.
+
+\ref{prop:3.5.2:c} z.Z. $Y$ ist wegzusammenhängend und lokal wegzusammenhängend:
+\begin{itemize}
+  \item $Y$ ist lokal wegzusammenhängend, da jede Umgebung von $y\in Y$ eine
+  Menge $V(U,y)\cong U$ enthält und $U$ wegzusammenhängend ist, und das
+  homöomorphe Bild $V(U,y)$ ist wegzusammenhängend.
+  \item $Y$ ist auch wegzusammenhängend, denn sei $y=\nrm{\alpha}$ mit $\alpha$
+  Weg von $x_0$ nach $x$, dann wird durch $t\mapsto \nrm{\alpha_t}$ mit
+  $\alpha_t : I\to X, s\mapsto \alpha(st)$ ein Weg von $y_0$ nach $y$ definiert.
+\end{itemize}
+\ref{prop:3.5.2:d} z.Z. $G(Y,y_0)=G$:
+Die Elemente von $G(Y,y_0)$ sind genau die Homotopieklassen von Schleifen an
+$x_0\in X$, die sich geschlossen zu Schleifen an $y_0\in Y$ heben lassen.
+
+Dabei ist $y_0=\nrm{e_{x_0}}$. Sei $\alpha$ Schleife an $x_0$ und sei $\talpha$
+die Hochhebung zu $Y$ zum Anfangspunkt $y_0\in Y$. Dann ist nach
+\ref{prop:3.5.2:c}:
+\begin{align*}
+\talpha: I\to Y,\;t\mapsto\nrm{\alpha_t}.
+\end{align*}
+Daher ist $\talpha(1) = \nrm{\alpha_1} = \nrm{\alpha}$ und $\talpha$ ist
+Schleife an $y_0$ genau dann, wenn $y_0 = \talpha(1) = \nrm{\alpha}$ ist, d.h.
+wenn $\nrm{\alpha} = \nrm{e_{x_0}} \Leftrightarrow \lin{\alpha e_{x_0}^{-1}} =
+\lin{\alpha}\in G$.\qedhere
+
+Wir haben gezeigt:
+Klassifikation der weg- und lokal wegzusammenhängenden Überlagerungen von weg-
+und lokal weg- und semilokal einfach zusammenhängenden Räumen
+$(X,x_0)$:
+
+\begin{prop}
+\label{prop:3.5.4}
+Sei $X$ weg-, lokal weg- und semilokal einfach zusammenhängender topologischer
+Raum und sei $x_0\in X$.
+
+Dann existiert für jede Untergruppe $G$ von $\Pi(X,x_0)$ eine bis auf
+Isomorphie über $X$ eindeutig bestimmte Überlagerung $(Y,y_0)$, die ebenfalls
+weg-, lokal weg- und semilokal einfach zusammenhängend ist:
+\begin{align*}
+\pp: (Y,y_0)\to (X,x_0),\quad \pp(y_0) = x_0,
+\end{align*}
+mit charakteristischer Untergruppe $G(Y,y_0)\leqslant \Pi(X,x_0)$ die gegebene
+Gruppe $G$.\fishhere
+\end{prop}
+% \begin{bspn}
+% Die Überlagerung der einfach getwisteten Kreislinie hat Fundamentalgruppe $2\Z$. 
+% %TODO: Bild, Überlagerung.
+% Nur Kreise, die zweimal durchlaufen ewrden, werden oben zur Schleife.\bsphere
+% \end{bspn}
+
+\begin{bem}
+\label{bem:3.5.5}
+Eine besondere Untergruppe von $\Pi(X,x_0)$ ist $(1)\leqslant\Pi(X,x_0)$.
+
+Sei $(Y_U,y_0)\overset{\pp}{\to}(X,x_0)$ die Überlagerung gemäß
+\ref{prop:3.5.4} mit $G(Y_U,y_0)=(1)$.
+
+Wegen $\Pi(Y_U,y_0)\cong G(Y_U,y_0)=(1)$ ist $Y_U$ einfach zusammenhängend.
+
+Wir werden sehen, dass diese ``universelle'' Überlagerung eine bestimmte
+universelle Eigenschaft besitzt.\maphere
+\end{bem}
+
+Sei $X$ weg-, lokal weg- und semilokal einfach zusammenhängend, $x_0\in X$.
+
+Alle Überlagerungen seien weg- und lokal wegzusammenhängend (semilokal einfach
+zusammenhängend ergibt sich automatisch).
+
+\begin{defn}
+\label{defn:3.5.6}
+Eine \emph{Drehbewegung} oder \emph{Decktransformation} einer Überlagerung
+$\pp: Y\to X$ ist ein Automorphismus über $X$ derselben, d.h. ein
+Homöomorphismus $\ph: Y\to Y$ mit $\pp\circ\ph = \pp$, so dass
+\begin{center}
+\psset{unit=0.7cm}
+\begin{pspicture}(-1,0)(6,4.5)
+\rput[B](0,3){\Rnode{A}{$Y$}}
+\rput[B](5,3){\Rnode{B}{$Y$}}
+\rput[B](2.5,0.2){\Rnode{C}{$X$}}
+
+\ncLine[nodesep=3pt]{->}{A}{B}
+\Aput{$\ph$}
+
+\ncLine[nodesep=3pt]{->}{B}{C}
+\Aput{$\pp$}
+
+\ncLine[nodesep=3pt]{->}{A}{C}
+\Bput{$\pp$}
+\end{pspicture}
+\end{center}
+Die Menge der Decktransformationen bildet eine Gruppe $\DD$ unter der
+Komposition:
+\begin{center}
+\psset{unit=0.7cm}
+\begin{pspicture}(-1,0)(11,4.5)
+\rput[B](0,3){\Rnode{A}{$Y$}}
+\rput[B](5,3){\Rnode{B}{$Y$}}
+\rput[B](10,3){\Rnode{D}{$Y$}}
+\rput[B](5,0.2){\Rnode{C}{$X$}}
+
+\ncLine[nodesep=3pt]{->}{A}{B}
+\Aput{$\ph$}
+
+\ncLine[nodesep=3pt]{->}{B}{D}
+\Aput{$\psi$}
+
+\ncLine[nodesep=3pt]{->}{B}{C}
+\Aput{$\pp$}
+
+\ncLine[nodesep=3pt]{->}{A}{C}
+\Bput{$\pp$}
+
+\ncLine[nodesep=3pt]{->}{D}{C}
+\Bput{$\pp$}
+\end{pspicture}
+\end{center}
+\hfill\fishhere
+\end{defn}
+\begin{bemn}[Bemerke]
+Hier legen wir keinen Basispunkt fest. (Zumindest nicht in $Y$). Wir wollen
+gerade Überlagerungen zu verschiedenen Basispunkten in $Y$ studieren und
+vergleichen.\maphere
+\end{bemn}
+
+\begin{bemn}[Klar:]
+\begin{enumerate}[label=\arabic{*}.)]
+  \item Ist $\ph: Y\to Y$ Decktransformation, so ist nach Definition
+  $\pp\circ\ph=\pp$, d.h. $\pp(y)$ und $y$ liegen in derselben Faser von $\pp$.
+  \item Ist $y_1\in Y$, $x_1=\pp(y_1)$, so ist $\pp: (Y,y_1)\to (X,x_1)$ eine
+  Überlagerung mit Basispunkt.
+  
+Aufgrund des Wegzusammenhangs von $X$ bzw. $Y$ sind die Fundamentalgruppen
+$\Pi(X,x_1)$ und $\Pi(Y,y_1)$ unabhängig von der Wahl des Basispunktes.
+\begin{center}
+\psset{unit=0.7cm}
+\begin{pspicture}(-1,0)(6,4.5)
+\rput[B](0,3){\Rnode{A}{$(Y,y_0)$}}
+\rput[B](5,3){\Rnode{B}{$(Y,y_1)$}}
+\rput[B](2.5,0.2){\Rnode{C}{$(X,x_0)$}}
+
+\ncLine[nodesep=3pt]{->}{A}{B}
+\Aput{$\ph$}
+
+\ncLine[nodesep=3pt]{->}{B}{C}
+\Aput{$\pp$}
+
+\ncLine[nodesep=3pt]{->}{A}{C}
+\Bput{$\pp$}
+\end{pspicture}
+\end{center}
+Für $y_0=y_1$ ist die Identität eine Decktransformation und da diese eindeutig
+ist, ist die Identität die einzige Decktransformation, die den Basispunkt
+erhält.
+
+Sei $y_0$ Basispunkt von $Y$, d.h. $\pp(y_0) =x_0$ und $y_1\in Y_{x_0}$, dann
+existiert nach \ref{prop:3.4.15} genau dann eine Deckbewegung $\ph: Y\to Y$ mit
+$\ph(y_0)=y_1$ und $\pp\circ\ph = \pp$, wenn $G(Y,y_0)=G(Y,y_1)$.
+\end{enumerate}
+\end{bemn}
+
+\addtocounter{prop}{1}
+
+\begin{prop}
+\label{prop:3.5.8}
+Sei $\pp: (Y,y_0)\to (X,x_0)$ Überlagerung und sei $y_1\in Y_{x_0}$. Dann gibt
+es eine Decktransformation $\ph: Y\to Y$ mit $\ph(y_0) = y_1$ genau dann, wenn
+\begin{align*}
+G(Y,y_0)= G(Y,y_1).
+\end{align*}
+In diesem Fall ist $\ph$ eindeutig bestimmt.\fishhere
+\end{prop}
+
+Insbesondere ist $\id_Y$ die einzige Decktransformation, die $y_0$ festhält,
+d.h. für die gilt $\ph(y_0) = y_0$.
+
+\begin{cor}
+\label{prop:3.5.9}
+Sei $\id\neq \ph: Y\to Y$ Decktransformation, dann operiert $\ph$
+\emph{fixpunktfrei} auf $Y$, d.h. $\ph(y)\neq y\forall y\in Y$.\fishhere
+\end{cor}
+\begin{proof}
+Der Beweis ist eine leichte Übung.\qedhere
+\end{proof}
+
+\begin{bemn}[Frage:]
+Sei $y_1\in Y_{x_0}$, was bedeutet $G(Y,y_0)=G(Y,y_1)$?
+\end{bemn}
+
+Wähle einen Weg $\gamma$ in $Y$ von $y_0$ nach $y_1$. In \ref{prop:3.2.6} wurde
+ein Isomorphismus konstruiert:
+\begin{align*}
+c_\gamma : \Pi(Y,y_0)\to \Pi(Y,y_1),\; \lin{\beta}\mapsto
+\lin{\gamma^{-1}\beta\gamma}.
+\end{align*}
+%TODO: Bild, des conjugation isom.
+Sei $\alpha = \pp\circ\gamma$, dann ist
+\begin{align*}
+\pp(\gamma(0)) = \pp(y_0) = x_0 = \pp(y_1) = \pp(\gamma(1)),
+\end{align*}
+also ist $\alpha$ Schleife an $x_0$.
+
+Dann ist $\lin{\alpha}\in\Pi(X,x_0)$ und wir haben einen Automorphismus von
+$\Pi(X,x_0)$ durch Konjugation:
+\begin{align*}
+c_{\lin{\alpha}}: \Pi(X,x_0)\to\Pi(X,x_0),\; \lin{\tau} \mapsto
+\lin{\alpha}^{-1}\lin{\tau}\lin{\alpha} = \lin{\alpha^{-1}\tau\alpha},
+\end{align*}
+mit einer Schleife $\tau$ an $x_0$.
+
+\begin{center}
+\psset{unit=0.7cm}
+\begin{pspicture}(-1,0)(6,4.5)
+\rput[B](0,3){\Rnode{A}{$\Pi(Y,y_0)$}}
+\rput[B](5,3){\Rnode{B}{$\Pi(Y,y_1)$}}
+\rput[B](0,0.2){\Rnode{C}{$G(Y,y_0)$}}
+\rput[B](5,0.2){\Rnode{D}{$G(Y,x_1)$}}
+
+\ncLine[nodesep=3pt]{->}{A}{B}
+\Aput{$c_\gamma$}
+
+\ncLine[nodesep=3pt]{->}{A}{C}
+\Bput{$\pp_*$}
+
+\ncLine[nodesep=3pt]{->}{B}{D}
+\Aput{$\pp_*$}
+
+\ncLine[nodesep=3pt]{->}{C}{D}
+\Aput{$c_{\lin{\alpha}}$}
+\end{pspicture}
+\end{center}
+\begin{align*}
+\pp_* c_\gamma(\lin{\beta}) = \pp_*\lin{\gamma^{-1}\beta\gamma} =
+\lin{\pp\circ\gamma^{-1}\beta\gamma} =
+\lin{\alpha^{-1}\underbrace{\pp(\beta)}_{:=\tau}\alpha}
+\end{align*}
+Also ist $G(Y,y_1)= \lin{\alpha}^{-1}G(Y,y_0)\lin{\alpha}$. Daher ist
+\begin{align*}
+G(Y,y_1) = G(Y,y_0) &\Leftrightarrow \lin{\alpha}^{-1}G(Y,y_0)\lin{\alpha} =
+G(Y,y_0) \\ &\Leftrightarrow \lin{\alpha}\in N_{\Pi(X,x_0)}(G(Y,y_0)).
+\end{align*}
+
+\begin{defnn}
+Seien $G,H$ Gruppen mit $H\leqslant G$. Dann ist
+\begin{align*}
+H\subseteq N_G(H) = \setdef{g\in G}{g^{-1}Hg = H}\leqslant G, 
+\end{align*}
+der \emph{Normalisator} von $H$ in $G$.
+
+$N(G)$ ist die größte Untergruppe von $G$ in der $H$ enthalten und die normal
+ist. Insbesondere ist $H\leqslant G$ Normalteiler genau dann, wenn
+$N_G(H) = G$ ist.\fishhere
+\end{defnn}
+
+\begin{prop}[Satz über Deckbewegungen]
+Sei $G=\Pi(X,x_0)$, $\pp: (Y,y_0)\to (X,x_0)$ Überlagerung mit
+$H=G(Y,y_0)\leqslant G$. Dann gibt es zu jedem Element $\lin{\alpha}\in
+N_G(H)$, mit $\alpha$ Schleife an $x_0$, $y_1=\talpha(1)$ und $\talpha$
+eine Hochhebung von $\alpha$ nach $Y$ am Anfangspunkt $y_0$, genau eine
+Deckbewegung
+\begin{align*}
+\ph_{\lin{\alpha}}: Y\to Y,\qquad \ph_{\lin{\alpha}}(y_0) = y_1 \in
+Y_{x_0}.
+\end{align*}
+Die Abbildung $\lin{\alpha}\mapsto \ph_{\lin{\alpha}}\in\DD$ ist surjektiver
+Homomorphismus von $N_G(H)$ auf $\DD$ mit Kern $H$.
+
+Also ist nach dem 1. Isormophiesatz $N_G(H)/H\cong \DD$.\fishhere
+\end{prop}
+\begin{proof}
+Übung.\qedhere
+\end{proof}
+
+\begin{defn}
+\label{defn:3.5.11}
+$\pp: (Y,y_0)\to (X,x_0)$ heißt \emph{normale Überlagerung}, falls
+$G(Y,y_0)$ Normalteiler von $\Pi(X,x_0)$ ist, ($G(Y,y_0) \ideal \Pi(X,x_0)$).
+In diesem Fall ist 
+\begin{align*}
+\DD\cong \Pi(X,x_0)/G(Y,y_0),
+\end{align*}
+und die Kardinalität der Fasern von $\pp$ ist der \emph{Index} von $G(Y,y_0)$
+in $\Pi(X,x_0)$.\fishhere
+\end{defn}
+
+\begin{bemn}[Spezialfall:]
+Ist $G=G(Y,y_0)=(1)$, d.h. $Y=Y_U$, so ist $G\ideal \Pi(X,x_0)$, d.h. die
+universelle Überlagerung ist normal.\maphere
+\end{bemn}
+
+\begin{defn}
+\label{defn:3.5.12}
+Die Überlagerung von $(X,x_0)$ mit trivialer charakteristischer Untergruppe
+heißt \emph{universelle Überlagerung}.\fishhere
+\end{defn}
+
+\begin{bem}[Bemerkungen.]
+\label{bem:3.5.13}
+\begin{enumerate}[label=(\roman{*})]
+  \item Wegen unserer Voraussetzung an $(X,x_0)$ existiert die universelle
+  Überlagerung von $(X,x_0)$ und ist bis auf Isomorphie über $X$ eindeutig.
+  \item Die universelle Überlagerung $(Y_U,y_0)$ ist einfach
+  zusammenhängend.\maphere
+\end{enumerate}
+\end{bem}
+
+\begin{prop}[Problem]
+\label{prop:3.5.14}
+Gehen Sie den Beweis von \ref{prop:3.5.4} im Spezialfall $G=(1)\leqslant
+\Pi(X,x_0)$ durch.
+\end{prop}
+
+\begin{bemn}[Frage:]
+Was ist denn universell an $(Y_U,y_0)$?
+\end{bemn}
+
+Seien $\pp: (Y,y_0)\to (X,x_0)$ und $q: (Z,z_0)\to (X,x_0)$ schöne
+Überlagerungen, also $X$ weg-, lokal weg- und semilokal einfach zusammenhängend
+und $Y$ weg- und lokal wegzusammenhängend.
+
+Seien $H=G(Z,z_0)$, $G=G(Y,y_0)$ und $H,G\leqslant \Pi(X,x_0)$ sowie $H\leqslant G$.
+
+Aus \ref{prop:3.4.15} folgt, dass
+\begin{center}
+\psset{unit=0.7cm}
+\begin{pspicture}(-1,0)(6,4.5)
+\rput[B](0,3){\Rnode{A}{$(Z,z_0)$}}
+\rput[B](5,3){\Rnode{B}{$(Y,y_0)$}}
+\rput[B](2.5,0.2){\Rnode{C}{$(X,x_0)$}}
+
+\ncLine[nodesep=3pt]{->}{A}{B}
+\Aput{$\exists ! \tilde{q}$}
+
+\ncLine[nodesep=3pt]{->}{B}{C}
+\Aput{$\pp$}
+
+\ncLine[nodesep=3pt]{->}{A}{C}
+\Bput{$q$}
+\end{pspicture}
+\end{center}
+da $q_*(\Pi(Z,z_0))= H\leqslant G=p_*(\Pi(Y,y_0))$.
+
+\begin{prop}
+\label{prop:3.5.15}
+Bezeichnungen wie oben mit $f:=\tilde{q}$. Dann ist $f: (Z,z_0)\to (Y,y_0)$
+Überlagerung.\fishhere
+\end{prop}
+\begin{proof}
+%TODO: Bild, Beweisdiagramm.
+$H\leqslant G$ und $p_*: \Pi(Y,y_0)\to G$ ist ein Isomorphismus, also ist 
+$\tilde{H}=p_*^{-1}(H)\leqslant\pi(Y,y_0)$ wohldefiniert.
+
+$Y$ ist schön, es existiert zu $\tilde{H}\leqslant \Pi(Y,y_0)$ also
+eine Überlagerung $\pp': (Y',y_0')\to (Y,y_0)$ mit $G(Y',y_0')=\tilde{H}$.
+\begin{align*}
+&f_*(\Pi(Z,z_0))\subseteq \Pi(Y,y_0)\\
+&\pp_*\circ f_*(\Pi(Z,z_0)) = q_*(\Pi(Z,z_0)) = H,\\
+\Rightarrow\;& f_*(\Pi(Z,z_0)) = \tilde{H}
+\end{align*}
+Nach \ref{prop:3.4.15} existiert daher genau ein $h: (Z,z_0)\to (Y',y_0')$ mit
+$\pp'\circ h = f$
+\begin{center}
+\psset{unit=0.7cm}
+\begin{pspicture}(-1,0)(6,4.5)
+\rput[B](0,3){\Rnode{A}{$(Z,z_0)$}}
+\rput[B](5,3){\Rnode{B}{$(Y',y_0')$}}
+\rput[B](2.5,0.2){\Rnode{C}{$(Y,y_0)$}}
+
+\ncLine[nodesep=3pt]{->}{A}{B}
+\Aput{$\exists ! h$}
+
+\ncLine[nodesep=3pt]{->}{B}{C}
+\Aput{$\pp'$}
+
+\ncLine[nodesep=3pt]{->}{A}{C}
+\Bput{$f$}
+\end{pspicture}
+\end{center}
+\begin{align*}
+&\pp\circ\pp': (Y',y_0')\overset{\pp'}{\to} (Y,y_0)\overset{\pp'}{\to} (X,x_0),
+\end{align*}
+\begin{align*}
+(\pp\circ\pp')_*(\Pi(Y',y_0')) &= \pp_*(\pp_*'(\Pi(Y',y_0'))) = \pp_*(\tilde{H})
+\\ &= H = G(Z,z_0) \leqslant \Pi(X,x_0).
+\end{align*}
+\begin{center}
+\psset{unit=0.7cm}
+\begin{pspicture}(-1,0)(6,4.5)
+\rput[B](0,3){\Rnode{A}{$(Y',y_0')$}}
+\rput[B](5,3){\Rnode{B}{$(Z,z_0)$}}
+\rput[B](2.5,0.2){\Rnode{C}{$(X,x_0)$}}
+
+\ncLine[nodesep=3pt]{->}{A}{B}
+\Aput{$\exists ! g$}
+
+\ncLine[nodesep=3pt]{->}{B}{C}
+\Aput{$\pp\circ\pp'$}
+
+\ncLine[nodesep=3pt]{->}{A}{C}
+\Bput{$q$}
+\end{pspicture}
+\end{center}
+Nach \ref{prop:3.4.15} existiert daher genau ein $g: (Y',y_0')\to (Z,z_0)$ mit
+$q\circ g = \pp\circ\pp'$.
+
+Betrachte $g\circ h: (Z,z_0)\to (Z,z_0)$
+\begin{center}
+\psset{unit=0.7cm}
+\begin{pspicture}(-1,0)(6,4.5)
+\rput[B](0,3){\Rnode{A}{$(Z,z_0)$}}
+\rput[B](5,3){\Rnode{B}{$(Z,z_0)$}}
+\rput[B](2.5,0.2){\Rnode{C}{$(X,x_0)$}}
+
+\ncLine[nodesep=3pt]{->}{A}{B}
+\Aput{$g\circ h$}
+
+\ncLine[nodesep=3pt]{->}{B}{C}
+\Aput{$q$}
+
+\ncLine[nodesep=3pt]{->}{A}{C}
+\Bput{$q$}
+\end{pspicture}
+\end{center}
+Zeige $g\circ h$ ist Hochhebung von $q\Rightarrow g\circ h = \id$ wegen
+Eindeutigkeit der Hebung:
+\begin{align*}
+q\circ(g\circ h) = (q\circ g)\circ h = (\pp\circ\pp')\circ h =
+\pp\circ(\pp'\circ h) = \pp\circ f = q,
+\end{align*}
+also kommutiert das Diagramm und $g\circ h$ ist Hochhebung von $q: (Z,z_0)\to
+(X,x_0)$ zu $q: (Z,z_0)\to (X,x_0)$.
+
+Die Identität $\id: Z\to Z$ ist auch eine solche Hochhebung und aufgrund der
+Eindeutigkeit der Hochhebung folgt $g\circ h =\id_Z$.
+\begin{align*}
+(\pp\circ\pp')_*(\Pi(Y',y_0')) = H\leqslant G = \pp_*(Y,y_0).
+\end{align*}
+Nach \ref{prop:3.4.15} lässt sich $\pp\circ\pp'$ heben:
+\begin{center}
+\psset{unit=0.7cm}
+\begin{pspicture}(-1,0)(6,4.5)
+\rput[B](0,3){\Rnode{A}{$(Y',y_0')$}}
+\rput[B](5,3){\Rnode{B}{$(Y,y_0)$}}
+\rput[B](2.5,0.2){\Rnode{C}{$(X,x_0)$}}
+
+\ncLine[nodesep=3pt]{->}{A}{B}
+\Aput{$\pp'\circ h\circ g = f\circ g$}
+
+\ncLine[nodesep=3pt]{->}{B}{C}
+\Aput{$\pp$}
+
+\ncLine[nodesep=3pt]{->}{A}{C}
+\Bput{$\pp\circ\pp'$}
+\end{pspicture}
+\end{center}
+Also ist $h\circ g$ Hochhebung von $\pp'$ in die Überlagerung $\pp':
+(Y',y_0')\to (Y,y_0)$.
+
+Da die Hochhebung eindeutig ist, gilt $h\circ g = \id_{Y'}$.
+
+Also sind $h$ und $g$ inversehe Isomorphismen über $(X,x_0)$ und daher ist
+insbesondere $f: (Z,z_0)\to (Y,y_0)$ eine Überlagerung.
+\begin{center}
+\psset{unit=0.7cm}
+\begin{pspicture}(-1,0)(6,4.5)
+\rput[B](0,3){\Rnode{A}{$(Z,z_0)$}}
+\rput[B](5,3){\Rnode{B}{$(Y',y_0')$}}
+\rput[B](2.5,0.2){\Rnode{C}{$(Y,y_0)$}}
+
+\ncLine[nodesep=3pt]{->}{A}{B}
+\Aput{$h$}
+
+\ncLine[nodesep=3pt]{->}{B}{C}
+\Aput{$\pp'$}
+
+\ncLine[nodesep=3pt]{->}{A}{C}
+\Bput{$f$}
+\end{pspicture}
+\end{center}
+\hfill\qedhere
+\end{proof}
+Nun ernten wir:
+
+\begin{prop}[Zusammenfassung]
+\label{prop:3.5.16}
+Sei $(X,x_0)$ schön.
+\begin{enumerate}[label=\arabic{*}.)]
+  \item Sind die charakteristischen Untergruppen zweier (schöner)
+  Überlagerungen von $(X,x_0)$ ineinander enthalten, so überalgert die
+  Überlagerung mit der kleineren Gruppe kanonisch die andere und zwar so, dass
+  die drei Überlagerungen ein kommutatives Diagramm ergeben:
+\begin{center}
+\psset{unit=0.7cm}
+\begin{pspicture}(-1,0)(6,4.5)
+\rput[B](0,3){\Rnode{A}{$(Z,z_0)$}}
+\rput[B](5,3){\Rnode{B}{$(Y,y_0)$}}
+\rput[B](2.5,0.2){\Rnode{C}{$(X,x_0)$}}
+
+\ncLine[nodesep=3pt]{->}{A}{B}
+\Aput{$f=\tilde{q}$}
+
+\ncLine[nodesep=3pt]{->}{B}{C}
+\Aput{$\pp$}
+
+\ncLine[nodesep=3pt]{->}{A}{C}
+\Bput{$q$}
+\end{pspicture}
+\end{center}
+\item
+\begin{bemn}[Spezialfall:]
+Sei $(Z,z_0)\cong(Y_U,y_0)$, d.h. $\Pi(Y_U,y_0)=(1)$. Die universelle
+Überlagerung $(Y_U,y_0)$ überlagert alle andren Überlagerungen $(Y,y_0)$ von
+$(X,x_0)$, da $(1)$ in jeder Untergruppe von $\Pi(X,x_0)$ enthalten ist. Dies
+ist die \emph{universelle Eigenschaft der universellen Überlagerung}.
+\end{bemn}
+\item Wegen $G(Y_U,y_0) = (1) \ideal G = \Pi(X,x_0)$ ist die universelle
+Überlagerung normal. Nach \ref{defn:3.5.11} ist daher:
+\begin{align*}
+\Pi(X,x_0)\cong\Pi(X,x_0)/(1)=\Pi(X,x_0)/G(Y_U,y_0) = \DD.\fishhere
+\end{align*}
+\end{enumerate}
+\end{prop}

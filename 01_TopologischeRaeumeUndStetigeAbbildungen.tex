@@ -1,0 +1,1037 @@
+\section{Topologische Räume und stetige Abbildungen}
+
+\subsection{Topologische Räume}
+
+\begin{defnn}
+Sei $X$ ein topologischer Raum mit Topologie $\TT: X\to\PP\PP(X),\;x\mapsto
+U_x$. Sei $A\subseteq X$, dann heißt $A$ \emph{offen in $X$} (bezgl. $\TT$),
+falls $A$ Umgebung aller seiner Punkte ist.\fishhere
+\end{defnn}
+
+\begin{prop}
+\label{prop:1.1.1}
+$A$ ist offen in $X$ genau dann, wenn $A = A^\circ$.\fishhere
+\end{prop}
+
+\begin{prop}
+\label{prop:1.1.2}
+Sei $X$ topologischer Raum und sei $\OO_X\subseteq \PP(X)$ das System der
+offenen Teilmengen von $X$, dann gilt
+\begin{enumerate}[label=TOP \arabic{*}]
+  \item $\OO_X$ ist abgeschlossen gegenüber der Vereinigung, d.h. ist $\II$
+  Indexmenge, $\OO_i \in \OO_X,\;i\in \II$, so ist $\bigcup_{i\in\II}
+  \OO_i \in \OO_X$.
+  \item $\OO_X$ ist abgeschlossen gegenüber endlichen Durchschnitten,
+  d.h. ist $\OO_i \in \OO_X,\; 1\le i\le k$, so ist $\OO_1 \cap \ldots
+  \cap \OO_k \in \OO_X$.\fishhere
+\end{enumerate}
+\end{prop}
+
+\begin{bemn}
+Insbesondere sind $\bigcup_{i\in\varnothing} = \varnothing \in \OO_X$ und
+$\bigcap_{i\in\varnothing} \OO_i = X \in \OO_X$.\maphere
+\end{bemn}
+\begin{prop}
+\label{prop:1.1.3}
+Sei jetzt umgekehrt $\OO_X\subseteq \PP(X)$ ein System von Teilmengen von $X$
+(genannt ``offene Mengen''), das abgeschlossen gegenüber endlichen
+Durchschnitten und beliebigen Vereinigungen ist, d.h. TOP 1 und TOP 2 genügt.
+
+Für $x\in X$ und $U\subseteq X$ definieren wir: $U$ ist Umgebung von $X$, falls
+es ein $\OO\in\OO_X$ gibt mit $x\in\OO$ und $\OO\subseteq U$.
+
+Sei $U_x = \setdef{U\subseteq X}{U\text{ ist Umgebung von } X}$. Dann definiert
+\begin{align*}
+\TT: X\to\PP(X),\;x\mapsto U_X,
+\end{align*}
+eine Topologie $\TT$ auf $X$. Die offenen Mengen bezüglich $\TT$ sind exakt die
+Mengen in $\OO_X$.\fishhere
+\end{prop}
+
+\begin{defnn}
+Sei $X$ Menge, $\OO_X\subseteq \PP(X)$ ein System von Teilmengen von $X$, das
+TOP~1 und TOP~2 genügt, dann heißt $\OO_X$ \emph{Topologie auf $X$} und
+\emph{$(X,\OO_X)$ topologischer Raum}. Die Elemente von $\OO_X$ heißen
+\emph{offene Mengen}.\\
+Eine Teilmenge $\AA\subseteq X$, deren mengentheoretisches Komplement
+$X\setminus \AA$ offen ist, heißt
+\emph{abgeschlossen in $X$}.\fishhere
+\end{defnn}
+
+\begin{bemn}
+$\varnothing = X\setminus X \Rightarrow \varnothing$ ist abeschlossen.\\
+$X = X\setminus \varnothing \Rightarrow X$ ist abeschlossen.\maphere
+\end{bemn}
+
+\begin{prop}
+\label{prop:1.1.4}
+Sei $X$ Menge und $\AA_X\subseteq \PP(X)$ mit
+\begin{enumerate}[label=TOP \arabic{*}']
+  \item $\AA_X$ ist abgeschlossen gegenüber Durchschnitten,
+  \item $\AA_X$ ist abgeschlossen gegenüber endlichen Vereinigungen.
+\end{enumerate}
+Dann wird durch $\OO_X = \setdef{\OO\subseteq X}{X\setminus \OO\in \AA_X}$ eine
+Topologie auf $X$ definiert, deren System aus abgeschlossenen Teilmengen von $X$
+exakt $\AA_X$ ist.
+
+TOP 1' und TOP 2' sind in einem topologischen Raum mit offenen Mengen $\OO_X$
+und zugehörigen abgeschlossen Mengen $\AA_X$ immer erfüllt.\fishhere
+\end{prop}
+
+Die Möglichkeiten Topologien auf Mengen zu definieren sind zahlreich - vielmehr
+zahllos. Glücklicherweise sind die drei Definitionen die wir bereits gesehen
+haben äquivalent.
+
+\begin{prop}[Topologische Räume]
+\label{prop:1.1.5}
+Folgende Definitionen erzeugen äquivalente Topologien:
+\begin{enumerate}
+  \item $\TT: X\to\PP\PP(X), z\mapsto U_z$ \ref{defn:0.3.1},
+  \item $\OO_X\subseteq \PP(X)$ mit TOP 1 und TOP 2 \ref{prop:1.1.2},
+  \item $\AA_X \subseteq \PP(X)$ mit TOP 1' und TOP 2'
+  \ref{prop:1.1.4}.\fishhere
+\end{enumerate}
+\end{prop}
+
+Im Folgenden werden wir uns topologische Räume $X$ immer zusammen mit $\TT,
+\OO_X$ und $\AA_X$ denken.
+
+\begin{defnn}
+$(X,\OO_X)$ ist \emph{hausdorffsch}, falls gilt: Sind $x,y\in X$ mit $x\neq y$,
+so gibt es $U_1\in U_x$ und $U_2\in U_y$ mit $U_1,U_2$ offen und $U_1\cap U_2 =
+\varnothing$.
+\end{defnn}
+
+Selbstverständlich sind nicht alle topologischen Räume auch hausdorffsch. Dies
+ist eine Eigenschaft, die wir explizit fordern müssen. Die meisten
+topologischen Räume, mit denen wir arbeiten werden, sind es aber. Eine Ausnahme
+bildet beispielsweise die Zariski Topologie, die in der algebraischen Topologie
+eine große Rolle spielt.
+
+\begin{bsp}
+\label{prop:1.1.6}
+\begin{enumerate}[label=\arabic{*}.]
+  \item Sei $X$ Menge, dann wird durch $\OO_X$ = $\{\varnothing, X\}
+  \Rightarrow \AA_X = \OO_X$ die \emph{indiskrete} Topologie definiert. Sie ist
+  die gröbste Topologie auf $X$.
+  \item
+  Sei $X$ Menge, dann wird durch $\OO_X = \PP(X) = \AA_X = \setdef{U_x}{x\in X}$
+  die \emph{diskrete} Topologie definiert. Sie ist
+  die feinste Topologie auf $X$. 
+  \item Sei $(X,d)$ metrischer Raum und $x\in X$. Die ``offene Kugel''
+  $U_\delta(x)$ mit Radius $\delta> 0$ um $x$ ist $U_\delta(x) = \setdef{z\in
+  X}{d(x,z) < \delta}$. Dann sind die $\delta$-Kugeln um Elemente von $X$ die
+  offenen Mengen einer Topologie auf $X$. Diese nennt man die \emph{von $d$
+  induzierte} Topologie.
+\begin{proof}
+Beliebige Vereinigungen von $\delta$-Kugeln um Elemente von $X$ sind die
+offenen Mengen (TOP 1).
+
+Für TOP 2 genügt es zu zeigen, dass der Durchschnitt zweier offener Mengen
+wieder offen ist, denn seien $\bigcup\limits_\alpha
+U_{\delta_\alpha}(x_\alpha),\;\bigcup\limits_\beta
+U_{\delta_\beta}(x_\beta)$ zwei offene Mengen in $X$, dann gilt
+\begin{align*}
+\left(\bigcup\limits_\alpha U_{\delta_\alpha}(x_\alpha) \right) \cap \left(\bigcup\limits_\beta
+U_{\delta_\beta}(x_\beta) \right)
+ = \bigcap\limits_{\alpha,\beta} \left(\underbrace{U_{\delta_\alpha}(x_\alpha)
+ \cup U_{\delta_\beta}(x_\beta)}_{\text{Vereinigung offener Kugeln}}
+ \right).
+\end{align*}
+Sei nun $M = U_\delta(x)\cap U_\ep(z)$ mit $\delta, \ep >0,\;x,y\in X$ und
+\begin{align*}
+\rho_y = \min\{\delta - d(x,y),\ep - d(z,y)\},
+\end{align*}
+dann ist $U_{\rho_y}(y) \subseteq U_\delta(x)\cap U_\ep(z) = M$ und daher ist
+$M = \bigcup\limits_{y\in M} U_{\rho_y}(y)$.\qedhere
+\end{proof}
+\item
+\begin{defnn}
+Zwei Metriken $d_1$ und $d_2$ auf $X$ heißen \emph{topologisch äquivalent},
+falls sie dieselbe Topologie auf $X$ induzieren.\fishhere
+\end{defnn}
+Auf dem $\R^n$ sind die Metriken
+\begin{enumerate}
+  \item $d_p(x,y) = \sqrt[p]{ \sum\limits_{i=1}^n (x_i-y_i)^p}$ für $p\ge 2$
+  \item $d_\infty(x,y) = \max\limits_{i=1,\ldots,n} \abs{x_i-y_i}$.
+\end{enumerate}
+topologisch äquivalent. Ihre Umgebungen sind
+\begin{enumerate}
+  \item[$d_2$)] $U_\delta(x) := $ offene Kugel um $x$ mit Radius $\delta$,
+  \item[$d_\infty$)] $U_\delta(x) :=$ offener Würfel um $x$ mit Kantenlänge
+  $2\delta$.
+\end{enumerate}
+\item
+Auf $\R$ besteht $\OO\subseteq\PP(\R)$ aus Intervallen der Form
+$(-\infty,a), a\in\R$ zusammen mit $\varnothing,\R$.
+\begin{align*}
+\bigcap\limits_{i=1}^n (-\infty,a_i) = (-\infty,b), & b = \min\limits_{i} a_i,\\
+\bigcup\limits_{i\in \II} (-\infty,a_i) = (-\infty,b), & b = \sup\limits_i a_i.
+\end{align*}
+% TODO: Ich hab keinen Plan mehr, was Dipper mit folgendem sagen wollte \ldots
+
+\begin{align*}
+Y_a &= (-\infty,a]\\
+U_i &= \begin{cases}
+\R, & \text{ falls } a_i \text{ unbeschränkt},\\
+Y_b, & \text{ falls } b = \max_i a_i \text{ existiert},\\
+X_b = (-\infty,b), & \text{ sonst, mit } b = \sup a_i.
+\end{cases}
+\end{align*}
+\item
+\begin{defnn}
+Sei $X$ Menge, dann heißt $A\subseteq X$ \emph{kofinit}, falls
+$X\setminus A$ endlich ist.
+
+Sei $\OO$ die leere Menge zusammen mit der Menge der kofiniten Teilmengen auf
+$X$. Eine leichte Übung zeigt, dass $\OO$ wirklich eine Topologie auf $X$
+definiert. Diese Topologie heißt \emph{kofinite Topologie} auf $X$.\fishhere
+\end{defnn}
+\begin{bemn}
+Ist $X$ endlich, so ist die kofinite Topologie die diskrete.\maphere
+\end{bemn}
+\item
+Sei $(X,\le)$ linear geordnet. Für $a\in X$ seien
+\begin{align*}
+K_a = \setdef{x\in X}{x< a},\;G_a = \setdef{x\in X}{x > a}.
+\end{align*}
+$\BB$ bestehe aus endlichen Durchschnitten von
+Mengen $K_a$ und $G_b$. $\OO$ bestehe aus beliebigen Vereinigungen von Mengen
+aus $\BB$.\\
+Dann ist $\OO$ abgeschlossen gegenüber endlichen Durschnitten und beliebigen
+Vereinigungen, d.h. $\OO$ ist Topologie auf $X$, genannt
+\emph{Ordnungstopologie auf $X$}.
+\item 
+Sei $y = x^2$ die Normalparabel, die Gleichung lässt sich auch schreiben als
+$f(x,y) = y-x^2$. Dann ist die Parabel gerade die Nullstellenmenge von $f$.
+
+Sei $K$ Körper, $X = K^n = \setdef{(\alpha_1, \ldots, \alpha_n)\in K\times
+\ldots\times K}{\alpha_i\in K}$ und $f$ aus dem Polynomring $K[x_1, \ldots,
+x_n]$ in den Variablen $x_1, \ldots, x_n$.
+
+Dann definiert $f$ eine Abbildung $\tilde{f} : K^n\to K^n$ gegeben durch
+\begin{align*}
+&f = \sum_{\mui} \lambda_{\mui} x^{\mui},\quad \lambda_i \text{ fast alle 0},\\
+&\tilde{f}(\alpha_1, \ldots,\alpha_n) = \sum_{\mui} \lambda_{\mui}
+\alpha^{\mui} \in K.
+\end{align*}
+Solche Abbildungen von $K^n\to K^n$ heißen \emph{polynomial}. Die Menge
+\begin{align*}
+Y = (K)^{K^n} = \setdef{f:K^n\to K}{f \text{ ist Abbildung}},
+\end{align*}
+wird zur $K$-Algebra durch
+\begin{align*}
+&f,g\in Y : (f+g)(x) = f(x)+g(x),\\
+&(f\cdot g)(x) = f(x)\cdot g(x),\\
+&(\lambda f)(x) = \lambda f(x). 
+\end{align*}
+Man sieht leicht, dass
+\begin{align*}
+\sim :\;K[x_1, \ldots, x_n] \to Y,\;f\mapsto
+\tilde{f}\in Y
+\end{align*}
+ein $K$-Algebrahomomorphismus ist mit der Menge der
+polynomialen Abbildungen von $K^n\to K$ als Bild.
+\begin{propn}[Behauptung]
+Ist $K$ unendlich, dann ist $\sim$ injektiv, d.h.
+\begin{align*}
+\ker \sim = \setdef{f\in
+K[x_1, \ldots, x_n]}{f(\alpha_1, \ldots, \alpha_n) = 0, \forall \alpha_i \in
+K}.\fishhere
+\end{align*}
+\end{propn}
+\begin{proof}
+Der Beweis wird in der Algebra Vorlesung geführt.\qedhere
+\end{proof}
+
+Sei nun $K$ unendlich, $p\in K[x_1,\ldots,x_n]$. $(\alpha_1,\ldots,\alpha_n)\in
+K^n$ ist Nullstelle von $p$, falls $p(\alpha_1,\ldots,\alpha_n) = 0$. Sei
+\begin{align*}
+z(p) = \setdef{(\alpha_1,\ldots,\alpha_n)\in
+K^n}{p(\alpha_1,\ldots,\alpha_n) = 0},
+\end{align*}
+dann ist für $p(x,y) = y-x^2\in K[x,y]$ der Graph der Standardparabel gleich
+$z(p)$.
+
+Allgemeiner: Sei $Y \subseteq K[x_1,\ldots,x_n]$ eine Familie von Polynomen,
+dann ist
+\begin{align*}
+z(I) = \setdef{(\alpha_1, \ldots, \alpha_n)\in K^n}{f(\alpha_1,\ldots,\alpha_n)
+= 0 \forall f\in Y}\subseteq K^n.
+\end{align*}
+Solche Teilmengen des $K^n$ heißen \emph{algebraisch}.
+
+Umgekehrt: Sei $A\subseteq K^n$ algebraisch, $p\in K[x_1,\ldots,x_n]$, dann ist
+\begin{align*}
+\NN(A) &= \setdef{p}{p(\alpha_1,\ldots,\alpha_n) = 0,
+\forall \alpha_1,\ldots,\alpha_n \in A},\\
+\NN(A) &\ideal K[x_1,\ldots,x_n].
+\end{align*}
+Sei $A\subseteq B$ algebraische Teilmenge von $K^n$, dann gilt $\NN(B) \subseteq
+\NN(A)$.
+
+Seien $Y_1\subseteq Y_2$ Teilmenen von $K[x_1,\ldots,x_n]$, dann ist analog
+$z(Y_2)\subseteq z(Y_1)$.
+
+Sind $Y_i, i\in\II$ Teilmenen von $K[x_1,\ldots,x_n]$, so ist
+\begin{align*}
+\bigcap\limits_{i\in\II} z(Y_i) = z\left(\bigcup\limits_{i\in\II} Y_i \right), 
+\end{align*}
+also sind beliebige Durchschnitte von algebraischen Mengen algebraisch.
+
+Seien $Y_1,\ldots,Y_m\subseteq K[x_1,\ldots,x_n]$ wir definieren
+\begin{align*}
+\prod\limits_{i=1}^m Y_i = \setdef{p_1\cdot\cdot\cdot p_m}{p_i\in Y_i},
+\end{align*}
+dann ist das Nullstellengebilde $\bigcup\limits_{i=1}^m z(Y_i) = z(\prod_i
+Y_i)$, d.h. endliche Vereinigungen von algebraischen Mengen sind algebraisch.
+
+Also haben wir eine Topologie auf $K^n$. Die algebraischen Mengen mit
+$\varnothing$ und $K^n$ sind die abgeschlossenen Mengen dieser Topologie, diese
+wird \emph{Zariski Topologie} genannt, nach dem Erfinder.
+
+\begin{bemn}
+Die abgeschlossenen Mengen in der Zariski Topologie sind ``dünn'', die offenen
+``fett''. Eine offene Menge ist in keiner echten abgeschlossenen Teilmenge von
+$K^n$ enthalten.
+
+Zwei offene, nichtleere Teilmengen haben demnach nichtleeren Schnitt.
+Insbesondere ist die Zariski Topologie nicht hausdorffsch.\maphere
+\end{bemn}
+
+Die algebraische Geometrie studiert algebraische Teilmengen des $K^n$ mit Hilfe
+der Zariski Topologie, artet dabei aber schnell in Ringtheorie aus. Das ist
+auch der Grund dafür, dass viele Geometer behaupten, die algebraische Topologie
+sei keine Geometrie sondern Algebra.\bsphere
+\end{enumerate}
+\end{bsp}
+
+\begin{defn}
+\label{defn:1.1.7}
+Sei $X$ Menge und $\OO_X$ Topologie auf $X$.
+\begin{enumerate}
+  \item $\BB \subseteq \OO_X$ heißt \emph{Basis} von $\OO_x$, falls alle Mengen
+  in $\OO_X$ aus Vereinigungen von Mengen aus $\BB$ bestehen, d.h. $\forall
+  \OO\in\OO_X \exists \BB_i\in \BB, i\in\II : O = \bigcup_{i\in\II} \BB_i$.
+  \begin{bspn}
+  $\setdef{U_\delta(x)}{\delta > 0,\;x\in\R^n}$ ist eine Basis der
+  natürlichen Topologie des $\R^n$, ebenso die abzählbare Menge
+  $\setdef{U_\delta(x)}{0<\delta\in\Q,\ x\in\Q^n\subseteq\R^n}$.\bsphere
+  \end{bspn}
+  Der Begriff ``Basis'' ist hier nicht so scharf zu sehen, wie in der linearen
+  Algebra.
+  \item $S\subseteq \OO_X$ heiß \emph{Subbasis} von $\OO_X$, falls alle Mengen
+  in $\OO_X$ aus Vereinigungen von endlichen Durschnitten von Mengen in $S$
+  bestehen.\fishhere
+\end{enumerate}
+\end{defn}
+
+\begin{prop}
+\label{prop:1.1.8}
+Sei $X$ Menge, $\varnothing\neq S\subseteq \PP(X)$. Sei
+\begin{enumerate}
+  \item $\BB = \setdef{A\subseteq X}{\exists S_1,\ldots,S_n\in S,k\in\N : A =
+  \bigcap\limits_{i=1}^n S_i}$.
+  \item $\OO_x = \setdef{A\subseteq X}{\exists \BB_i\in\BB, i\in\II : A =
+  \bigcup\limits_{i\in\II} \BB_i}$.
+\end{enumerate}
+Dann ist $\OO_x$ Topologie auf $X$ mit Basis $\BB$ und Subbasis $S$, die von
+$S$ erzeugte Topologie auf $X$. Dabei ist $\OO_x$ eindeutig durch $S$
+bestimmt.\fishhere
+\end{prop}
+
+Insbesondere erzeugt jede nichtleere Teilmenge der $\PP(X)$ als Subbasis eine
+Topologie auf $X$.
+
+\begin{bspn}
+\begin{enumerate}[label=\arabic{*}.)]
+  \item $\OO_X$ ist für einen topologischen Raum Basis und Subbasis.
+  \item Offene Kugeln (Würfel) im $\R^n$ bilden eine Basis.
+  \item Offene Kugeln im $\R^n$ mit rationalem Radius bilden eine Basis.
+  \item Die Menge der offenen Kugeln im $\R^n$ deren Radius und
+  Mittelpunktskoordianten rational sind (das sind abzählbar viele) ist eine
+  Basis.
+  \item $S = \setdef{(-\infty,b)}{b\in\Q}\cup \setdef{(a,\infty)}{a\in\Q}$ ist
+  Subbasis von $\R$.\bsphere
+\end{enumerate}
+\end{bspn}
+
+\begin{defn}
+\label{defn:1.1.19}
+Seien $\OO_X$ und $\tilde{\OO}_X$ Topologien auf $X$, dann heißt
+$\tilde{\OO}_X$ \emph{feiner} als $\OO_X$ und $\OO_X$ \emph{gröber} als
+$\tilde{\OO}_X$, falls $\OO_X \subseteq \tilde{\OO}_X$ ist.\fishhere
+\end{defn}
+
+\begin{lem}
+\label{prop:1.1.10}
+Sei $X$ Menge
+\begin{enumerate}
+  \item Die indiskrete Topologie $\{\varnothing,X\}$ ist die eindeutig
+  bestimmte gröbste Topologie auf $X$ und die diskrete Topologie $\PP(X)$ ist
+  die eindeutig bestimmte feinste Topologie auf $X$.
+  $\{\varnothing,X\}\subseteq\OO_X\subseteq \PP(X)$.
+  \item Sei $S\subseteq \PP(X)$ und $\OO_X$ die von $S$ erzeugte Topologie auf
+  $X$, dann ist $\OO_X$ die gröbste Topologie, die $S$ als Teilmenge enthält.
+  \item Seien $S_1\subseteq S_2\subseteq \PP(X)$ und $\OO_1$ bzw. $\OO_2$ die
+  von $S_1$ bzw. $S_2$ erzeugte Topologie auf $X$. Dann ist $\OO_1$ gröber als
+  $\OO_2$. Ist $S_2\subseteq \OO_1$, so ist $\OO_1=\OO_2$.
+\end{enumerate}
+\end{lem}
+
+\begin{defn}
+\label{defn:1.1.11}
+Sei $X$ topologischer Raum, $A\subseteq X$, dann heißt $x\in X$,
+\begin{enumerate}
+  \item \emph{Berührpunkt (BP)} von $A$ ($\in\BP{A}$), falls gilt $U\cap A \neq
+  \varnothing,\forall U\in\UU_x$.
+  
+  Klar: $x\in A \Rightarrow x$ BP von $A$.
+  \item \emph{Häufungspunkt (HP)} von $A$ ($\in\HP{A}$), falls $(U\cap
+  A)\setminus\{x\} \neq \varnothing,\forall U\in\UU_x$.
+  
+  Klar:
+  \begin{enumerate}[label=\arabic{*}.)]
+    \item HPs sind BPs ($\HP{A}\subseteq\BP{A}$).
+    \item Jeder Punkt von $A$ ist BP von $A$ aber nicht notwendigerweise HP.
+    \item Ist $a\notin A$ aber ein BP von $A$, so ist $a$ ein HP von $A$.
+  \end{enumerate}
+  Also ist $\BP{A} = A\cup\HP{A}$.
+  \item \emph{isoliert} in $A$, falls $x\in A$ und $x\notin \HP{A}$.
+  \item \emph{innerer Punkt} von $A$, falls $A$
+  Umgebung von $x$ ist und damit $A$ eine offene Umgebung von $x$ enthält.
+  \item \emph{Randpunkt} von $A$, falls $x\in\BP{A}$und $A^c =
+  X\setminus A$.\\ $\{\text{Randpunkte von }A \} = \partial A = \text{Rand von
+  }A$.\fishhere
+\end{enumerate}
+\end{defn}
+
+\begin{defn}
+\label{defn:1.1.12}
+Sei $A\subseteq X$ und $X$ topologischer Raum
+\begin{enumerate}
+  \item Die Menge der inneren Punkte von $A$ heißt \emph{innerer Kern} von $A$
+  und wird mit $A^\circ$ bezeichnet. (Siehe \ref{defn:0.3.1}).
+  \item $A\cup\HP{A} = \BP{A} = \overline{A}$ heißt
+  \emph{abgeschlossene Hülle} von $A$.\fishhere
+\end{enumerate}
+\end{defn}
+
+\begin{lem}
+\label{prop:1.1.13}
+Sei $X$ topologischer Raum, $A\subseteq X$
+\begin{enumerate}
+  \item $\overline{A}$ ist der Durchschnitt aller abgeschlossenen Teilmengen von
+  $X$, die $A$ enthalten.
+\begin{align*}
+\overline{A} = \bigcap\limits_{\atop{A\subseteq B\subseteq X,}{B\in\AA_X}} B
+\end{align*}
+Insbesondere ist $\overline{A}\in\AA_X$. In der Tat ist $\overline{A}$ die
+eindeutig bestimmte kleinste abgeschlossene Teilmenge von $X$, die $A$ enthält.
+\item $A^\circ$ ist die eindeutig bestimmte größte offene Menge von $X$, die in
+$A$ enthalten ist und daher insbesondere offen.
+\begin{align*}
+A^\circ = \bigcup\limits_{\atop{C\subseteq A,}{C\in\OO_X}} C.
+\end{align*}
+\item $\overline{A} \setminus A^\circ = \partial A = \overline{A} \cap
+\overline{A}^c$.\fishhere
+\end{enumerate}
+\end{lem}
+\begin{proof}
+\begin{enumerate}
+  \item Sei $D= \bigcap\limits_{\atop{A\subseteq B\subseteq X,}{B\in\AA_X}} B$.
+  Wir wollen zeigen, dass $D=\overline{A}$. Dann ist $D\in\AA_X$ und damit die
+  kleinste abgeschlossene Teilmenge von $X$, die $A$ enthält. Somit folgt aus
+  $\overline{A} = D \Rightarrow $ Rest von 1) 
+  
+``$\supseteq$'': Sei also $a\in\overline{A}$. Ist $a\in A\Rightarrow a\in D$,
+  weil $A\subseteq D$. Sei $a\notin A$, dann ist $a$ ein HP von $A$ (nach
+  Definition).\\
+  Wäre $a\notin D$, so wäre $a\in X\setminus D = D^c$. Nun ist $D^c\in \OO_X$ als
+  Komplement einer abgeschlossenen Menge $D$. Also ist wegen $a\in D^c$, $D^c$
+  eine offene Umgebung von $a$ nach \ref{prop:1.1.1} und \ref{prop:1.1.3}. Dann
+  ist aber $A\cap D^c\subseteq D\cap D^c = \varnothing$ und $a$ wäre kein HP von
+  $A$.\dipper
+  
+  Also ist $a\in D$.
+  
+  ``$\subseteq$'': Sei $x\in D$, $x\notin A$, denn sonst ist $x\in\overline{A}$
+  so oder so. Sei $x$ kein BP von $A$ also $x\notin \overline{A}$, dann gibt es
+  eine Umgebung $U$ von $x$ mit $U\cap A = \varnothing$. Da nach
+  \ref{prop:1.1.3} jede Umgebung von $x$ eine offene Umgebung von $x$ enthält,
+  ist $U$ ohne Einschränkung offen und $A$ ist daher in der abgeschlossenen
+  Menge $U^c = X\setminus U$ enthalten. Also kommt $U^c$ als eine der Mengen $B$
+  im Durchschnitt $D=\bigcap_{\atop{A\subseteq B\subseteq X,}{B\in\AA_X}} B$
+  vor und ist $D\subseteq U^c$. Wegen $x\in U$ ist $x\notin U^c$ und daher
+  $x\notin D$.\dipper
+  
+  Also $x\in \overline{A}$.
+  \item Übung.
+  \item Nach Definition ist $\partial A = \{\text{BP von }A\}\cap \{\text{BP
+  von }A^c\}$, $A^c = X\setminus A$.
+  Sei $x\in \partial A$, dann ist $x\in\overline{A}$. Wäre $x\in A^\circ$, so
+  gäbe es eine offene Umgebung $U$ von $x$ mit $U\subseteq A^\circ\subseteq A$.
+  Dann ist aber $U\cap A^c=\varnothing$ und $x$ ist kein BP von $A^c$. Also ist
+  $x\notin A^\circ$.
+  
+  Also ist $\partial A \subseteq \overline{A}\setminus A^\circ = \setdef{a\in
+  A}{a\notin A^\circ}$. Sei $x\in \overline{A}\setminus A^\circ$. Dann ist
+  insbesondere $x\in \overline{A}$ und daher BP von $A$. Wir haben z.Z. dass
+  $x\in\overline{A}^c$.
+  
+  Sei $x\notin \overline{A}^c$. Dann gibt es eine Umgebung $U$ von $x$ mit
+  $U\cap A^c =\varnothing$. Dann ist $U\subseteq A$. Also ist $A\in U_x$ und
+  daher $x\in A^\circ$.\dipper
+  
+  Also ist $x\in\overline{A}^c$ und daher ist $x\in \overline{A}\cap
+  \overline{A}^c = \partial A$.\qedhere
+\end{enumerate}
+\end{proof}
+
+\begin{defn}
+\label{defn:1.1.14}
+Sei $X$ topologischer Raum, $A\subseteq X$
+\begin{enumerate}
+  \item $A$ heißt \emph{dicht} in $X$, falls $\overline{A} = X$ ist.
+  \item $A$ heißt \emph{nirgends dicht} in $X$, falls
+  $\left(\overline{A}\right)^\circ = \varnothing$.\fishhere
+\end{enumerate}
+\end{defn}
+
+\begin{bspn}
+\begin{enumerate}[label=(\alph{*})]
+\item $\Q$ und $\R\setminus \Q$ sind beide dicht in $\R$, da jedes offene
+  Intervall um eine rationale bzw. irrationale Zahl, irrationale bzw. rationale
+  Zahlen enthält. So sind die rationalen bzw. irrationalen Zahlen HP von
+  $\R\setminus \Q$ bzw. $\Q$ in $\R$.
+  
+  Dies ist ein Beispiel dafür, dass das Komplement einer dichten Teilmenge
+  nicht zwingend nirgends dicht ist.
+  \item In der Zariskitopologie auf $K^n$ ($K$ = unendlicher Körper) ist jede
+  offene Teilmenge $\neq \varnothing$ dicht in $K^n$ und jede abgeschlossene
+  Teilmenge $\neq X$ nirgends dicht in $X$.\bsphere
+\end{enumerate}
+\end{bspn}
+
+\begin{prop}
+Sei $X$ topologischer Raum und $A,B\subseteq X$, dann gilt
+\begin{align*}
+& (A\cap B)^\circ = A^\circ \cap B^\circ,\\
+& \overline{A\cup B} = \overline{A}\cup\overline{B}.\fishhere
+\end{align*}
+\end{prop}
+
+\subsection{Stetige Abbildungen}
+Seien $X,Y$ topologische Räume
+\begin{bemn}[Erinnerung an Definition \ref{defn:0.3.2}.]
+Eine Abbildung $f: X\to Y$ heißt stetig in $x\in X$, falls gilt $f^{-1}(V)\in
+\UU_x$ für alle $V\in \UU_{f(x)}$. $f$ heißt stetig, falls $f$ in allen Punkten
+$x\in X$ stetig ist.\maphere
+\end{bemn}
+
+\begin{lem}
+\label{prop:1.2.1}
+Sei $f: X\to Y$ Abbildung, dann sind folgende Aussagen äquivalent
+\begin{enumerate}
+  \item $f$ ist stetig.
+  \item $\forall x\in X, \forall V\in \UU_{f(x)} \exists U\in \UU_x : f(U) 
+  \subseteq V$.
+  \item Sei $V\in \OO_Y$, dann ist $f^{-1}(V)\in\OO_X$.
+  \item Sei $B\in \AA_Y$, dann ist $f^{-1}(B)\in \AA_X$.\fishhere
+\end{enumerate}
+\end{lem}
+
+\begin{bem}
+\label{bem:1.2.2}
+Seien $\OO_X,\OO_X'$ zwei Topologien auf $X$, dann ist
+\begin{align*}
+\id: (X,\OO_X) \to
+(X,\OO_X'),\;x\mapsto x,
+\end{align*}
+genau dann stetig, wenn $\OO_X'\subseteq \OO_X$, d.h.
+$\OO_X$ feiner als $\OO_X'$ ist.\maphere
+\end{bem}
+
+\begin{lem}
+\label{prop:1.2.3}
+Die Komposition zweier stetiger Abbildungen ist stetig.\fishhere
+\end{lem}
+\begin{proof}
+Seien $X,Y,Z$ topologische Räume, $f:X\to Y$, $g: Y\to Z$ stetige Abbildungen.
+Sei $V\in\OO_Z$, dann ist $g^{-1}(V) \in \OO_Y$ und damit ist
+$(f\circ g)^{-1}(V) = f^{-1}(g^{-1}(V)) \in \OO_X$. Also ist $g\circ f$
+stetig.\qedhere
+\end{proof}
+
+\begin{bemn}
+Sei $B\subseteq X$. In \ref{defn:0.3.4} definierten wir die Spurtopologie auf
+$B$ (über Umgebungen). Dann ist das System $\OO_B, \AA_B$ in der Spurtopologie
+auf $B$ gegeben durch
+\begin{align*}
+\OO_B &= \setdef{O\cap B}{O\in\OO_X},\\
+\AA_B &= \setdef{A\cap B}{A\in\AA_X}.\maphere
+\end{align*}
+\end{bemn}
+
+\begin{defn}[Bezeichnung]
+\label{defn:1.2.4}
+Sei $A\subseteq X$. Wir schreiben $A\le X$, wenn wir $A$ mit der Spurtopologe
+versehen und sagen $A$ ist \emph{Unterraum} von $X$.\fishhere
+\end{defn}
+
+\begin{lem}
+\label{prop:1.2.5}
+Sei $f: X\to Y$ stetig und $A\subseteq X$. Dann ist die Einschränkung
+\begin{align*}
+f\big|_A: A\to Y,
+\end{align*}
+stetig auf $A$.\fishhere
+\end{lem}
+\begin{proof}
+$f\big|_A^{-1}(V) = \setdef{x\in A}{f\big|_A(x) = f(x)\in V} = f^{-1}(V) \cap A
+\in \OO_A$.\qedhere
+\end{proof}
+
+\begin{bem}
+\label{bem:1.2.6}
+Die Umkehrabbildung ist Inklusionserhalten und daher gilt,
+\begin{align*}
+f^{-1}(A\cap B) &=
+f^{-1}(A)\cap f^{-1}(B),\\
+f^{-1}\left(\bigcup\limits_{i\in \II} A_i \right) &= \bigcup\limits_{i\in \II}
+f^{-1}(A_i).
+\end{align*}
+Daher muss man $f^{-1}(V)\in \OO_X$ lediglich für eine (Sub)-Basis der
+Topologie auf $Y$ nachprüfen, um die Stetigkeit von $f$ zu überprüfen.\maphere
+\end{bem}
+
+\begin{bemn}
+$f: X\to Y$ induziert $f^{-1}: \PP(Y) \to \PP(X),\; A\mapsto f^{-1}(A)$.
+Siehe Mengenlehre.\maphere
+\end{bemn}
+
+\begin{defn}
+\label{defn:1.2.7}
+$f: X\to Y$ heißt \emph{offen} bzw. \emph{abgeschlossen}, wenn gilt
+\begin{align*}
+f(A) \in \OO_Y \text{ bzw. } \in \AA_Y, \text{ für jedes }
+A\in\OO_Y\text{ bzw. }\in\AA_Y.\fishhere
+\end{align*}
+\end{defn}
+
+\begin{defn}
+\label{defn:1.2.8}
+Eine bijektive Abbildung heißt \emph{Homöomorphismus}, wenn $f: X\to Y$ und
+$f^{-1}: Y\to X$ stetig sind oder äquivalent, wenn $f$ stetig und offen bzw.
+abgeschlossen ist.
+
+Wir schreiben $X\cong Y$, falls ein Homöomorphismus von $X$ nach $Y$ existiert.
+$\cong$ ist eine Äquivalenzrelation auf der Klasse der topologischen
+Räume.\fishhere
+\end{defn}
+\begin{bemn}[Beachte:]
+Ist $f: (X,\OO_X)\to (Y,\OO_Y)$ ein Homöomorphismus, so ist eine Bijektion
+gegeben durch $f: \OO_X\to \OO_Y,\; U\mapsto f(U)$.\maphere
+\end{bemn}
+
+\subsection{Initiale und finale Topologien}
+
+Im Folgenden sei $\II$ stets Indexmenge und $i\in\II$.
+
+\begin{defn}[Definition/Lemma]
+\label{defn:1.3.1}
+\begin{enumerate}
+  \item Sei $X$ Menge, $(Y,\OO_Y)$ topologischer Raum und sei $f: X\to Y$
+  Abbildung. Dann ist durch
+  \begin{align*}
+  \OO_X = \setdef{f^{-1}(U)\subseteq X}{U\in \OO_Y},
+  \end{align*}
+  eine Topologie auf $X$ definiert. Diese ist die eindeutig bestimmte gröbste
+  Topologie auf $X$, so dass $f$ stetig ist und heißt \emph{Initialtopologie
+  auf $X$ bezüglich $f$}. Ist $f$ surjektiv, so ist $f$ offen bezüglich der
+  Initialtopologie auf $X$.
+  \item Sei $(X,\OO_X)$ topologischer Raum, $Y$ Menge und $f: X\to Y$ Abbildung.
+  Dann wird durch
+\begin{align*}
+\OO_Y = \setdef{U\subseteq Y}{f^{-1}(U)\in\OO_X},
+\end{align*}
+ eine Topologie auf $Y$ definiert. Sie ist die eindeutig bestimmte feinste
+ Topologie auf $Y$, so dass $f: (X,\OO_X)\to (Y,\OO_Y)$ stetig ist. Sei heißt die
+  \emph{finale Topologie auf $Y$ bezüglich $f$}. Ist $f$ injektiv, so ist $f$
+  offen bezüglich der finalen Topologie.\fishhere
+\end{enumerate}
+\end{defn}
+
+Natürlich kann man diese Definition noch verallgemeinern:
+
+\begin{defn}[Definition/Lemma]
+\label{defn:1.3.2}
+\begin{enumerate}
+  \item Sei $X$ Menge, $(Y_i, \OO_i)$ ein System von topologischen
+  Räumen und $f_i: X\to Y_i$ Abbildungen. Sei
+  $S_i = \setdef{f_i^{-1}(U)}{U\in\OO_i}$ die Menge der Urbilder offener Mengen
+  unter $f_i$ und $S = \bigcup\limits_{i\in\II} S_i$ die Vereinigung aller 
+  dieser Mengen, dann bildet $S$ eine Subbasis einer Topologie $\OO_X$. Diese
+  ist die gröbste Topologie für die alle $f_i : (X,\OO_X)\to (Y_{i}, \OO_i)$
+  stetig sind.
+  
+  $\OO_X$ heißt \emph{Initialtopologie bezüglich den Abbildungen $f_i$}. Sind
+  die $f_i$ alle surjektiv, dann sind sie auch offen.
+  \item Sei $Y$ Menge, $(X_i,\OO_i)$ ein System von topologischen
+  Räumen und seien $f_i: X_i\to Y$ Abbildungen. Die \emph{finale Topologie
+  $\OO_Y$ auf $Y$ bezüglich den Abbildungen $f_i$} ist definiert durch
+  $U\subseteq Y$ ist offen genau dann, wenn $f_i^{-1}(U)\in\OO_i$ für alle
+  $i\in\II$.\fishhere
+\end{enumerate}
+\end{defn}
+
+\begin{bsp}
+\label{bsp:1.3.3}
+Sei $X$ topologischer Raum mit Topologie $\OO_X$.
+\begin{enumerate}
+  \item Sei $A\subseteq X$, dann ist die Spurtopologie die Initialtopologe
+  auf $A$ bezüglich der natürlichen Inklusionsabbildung $\iota: A\to X$, denn
+  \begin{align*}
+  \OO_A = \setdef{\iota^{-1}(U)}{U\in \OO_X} = \setdef{U\cap A}{U\in\OO_X}.
+  \end{align*}
+  \item
+  \begin{defnn} Sei $\sim$ eine Äquivalenzrelation auf $X$. Für $x\in X$ sei
+  $\overline{x} = \setdef{z\in X}{z\sim x}$ die Äquivalenzklasse. Sei
+  $\overline{X} = \setdef{\overline{x}}{x\in X} = X/\sim$ und $\pi: X\to 
+  \overline{X},\;x\mapsto \overline{x}$ Abbildung von $X$ auf
+  $\overline{X}$. Wir versehen $\overline{X}$ mit der finalen Topologie
+  bezüglich $\pi$. Diese heißt dann \emph{Quotiententopologie} auf
+  $\overline{X}$ und $(\overline{X},\OO_{\overline{X}})$ heißt
+  \emph{Quotientenraum} von $X$ bezüglich $\sim$.
+\end{defnn}
+  \begin{bemn}[Beachte:]
+  $\OO_{\overline{X}} = \setdef{\overline{A}\subseteq \overline{X}}{\setdef{a\in
+  X}{\overline{a}\in\overline{A}}\in\OO_X} =
+  \setdef{\overline{A}\subseteq \overline{X}}{A\in\OO_X}$.
+  \end{bemn}
+  \item Sei $X=\R^2$ und $x\sim y \Leftrightarrow x-y \in \Z^2\subseteq \R^2$
+  % HA: Über dies nachdenken.
+  \bsphere
+\end{enumerate}
+\end{bsp}
+
+\subsection{Topologische Summen und Produkte}
+\begin{defn}
+\label{defn:1.4.1}
+Sei $\setdef{X_i}{i\in\II}$ Familie von topologischen Räumen
+$(X_i,\OO_i)$ und $\II$ Indexmenge. Sei $X=\prod\limits_{i\in\II} X_i$ das
+karthesische Produkt der Menge $X_i$,
+\begin{align*}
+\prod\limits_{i\in\II} := \setdef{f:I\to
+\bigcup_{i\in\II}X_i}{f(i)\in X_i}\footnote{Das Auswahlaxiom garantiert,
+dass diese Menge nicht leer ist.}.
+\end{align*}
+Die initiale Topologie $\OO_X$ auf $X$ bezüglich der
+Projektionen $p_i$,
+\begin{align*}
+p_i: X\to X_i,\;(x_j)_{j\in \II} \mapsto x_i,\quad i\in\II,
+\end{align*}
+mit $p_i$ surjektiv, heißt \emph{Produkttopologie}. Eine Basis von
+$\OO_X$ besteht aus karthesischen Produkten $\prod\limits_{i\in\II}\BB_i$ mit
+$\BB_i\in\OO_i$ und $\BB_i = X_i$ für fast alle $i\in\II$.\fishhere
+\end{defn}
+\begin{bemn}[Beachte:]
+Für $i\in\II$ und $\BB_i\in\OO_i = \OO_{X_i}$ ist,
+\begin{align*}
+p_i^{-1}(\BB_i) = \prod\limits_{j\in\II} C_j \text{ mit }
+C_j =\begin{cases}
+     X_j,& \text{für } i\neq j\in \II,\\
+     \BB_i, & \text{sonst}.
+     \end{cases} 
+\end{align*}
+\begin{align*}
+\prod\limits_{j\in\II} X_j \to X_i \supseteq \BB_i \in\OO_i,\; (x_j)_{j\in\II}
+\mapsto x_i,
+\end{align*}
+\begin{align*}
+p_i^{-1}(\BB_i) = \prod\limits_{j\in\II} C_j \supseteq \prod\limits_{j\in \II}
+X_j \text{ mit } C_j = \begin{cases}
+                       \BB_i,& i= j,\\
+                       X_j, & i\neq j.
+                       \end{cases}
+\end{align*}
+\begin{bemn}[Also:]
+Die offenen Mengen in der Produkttopologie $\OO_X$ auf
+$X=\prod\limits_{i\in\II} X_i$ bestehen aus Vereinigungen von endlichen
+Durchschnitten solcher Teilmengen * von $X$.
+%TODO: Was ist *?
+\begin{align*}
+\bigcap\limits_{k=1}^l A_{i_k} = A_{i_1}\cap \ldots\cap A_{i_l} =
+\prod\limits_{j\in\II} D_j,
+\end{align*}
+mit
+\begin{align*}
+D_j = \begin{cases}
+      \BB_{i_\nu}, & \text{ für } j=i_\nu,\\
+      X_j,&\text{für } j \neq i_\nu, \nu = 1,\ldots,l.\maphere
+      \end{cases}
+\end{align*}
+\end{bemn}
+\end{bemn}
+Die Produkttopologie $\OO_X$ auf $X=\prod\limits_{i\in\II} X_i$ besteht aus
+Vereinigungen von Mengen der Form $\prod\limits_{i\in\II}\BB_i$ mit
+$\BB_i\in\OO_i$ und $\BB_i =X_i$ für fast alle $i\in \II$.
+
+Die Topologie $\OO_X$ auf $X = \prod\limits_{i\in\II} X_i$ mit
+$B\in\tilde{\OO}_X$ $\Leftrightarrow$
+%TODO: Hä warum hier ein Leftrightarrow?
+$B$ ist Vereinigung von Mengen der Form $\prod\limits_{i\in\II} \BB_i$ mit
+$\BB_i\in\OO_i\forall i\in \II$ ist echt feiner als die Produkttopologie auf
+$X$, falls $\II$ unendlich ist.
+
+\begin{bsp}
+\label{bsp:1.4.3}
+\begin{enumerate}
+  \item $\R^n$ mit der natürlichen Topologe ist das topologische Produkt von $n$
+  Faktoren $\R$ mit natürlicher Topologie. (Basis ist $\prod\limits_{i=1}^n O_i$
+  mit $O_i$ offenem Intervall in $\R$ $\mathrel{\widehat{=}}$ inneres eines
+  $n$-dimensionalen Quaders)
+  \item Sei $f:\R\to\R$ Abbildung, schreibe
+  $f=(f(\alpha))_{\alpha\in\R}\in\R^\R$, d.h. als Element von
+  $\prod\limits_{\alpha\in\R} \R_\alpha$ mit $\R_\alpha = \R, \forall \alpha\in
+  \R$.
+  \begin{align*}
+  \R^\R &= \setdef{f:\R\to\R}{f \text{ ist Abbildung}} \\ &= \text{kartesisches
+  Produkt von $\abs{\R}$ vielen Kopien von $\R$}.
+  \end{align*}
+Versieht man die Faktoren $\R=\R_\alpha (\alpha\in\R)$ mit der natürlichen
+Topologie, so ist die Produkttopologe auf $\R^\R$ die der punktweisen
+Konvergenz.
+\begin{align*}
+(f\in\R^\R,\alpha\in\R, \ep > 0 : U_{\ep,\alpha}(f) &=
+\setdef{g:\R\to\R}{\abs{f(\alpha)-g(\alpha)}<\ep} \\ &= p_g^{-1}(U_\ep(\alpha)))
+\end{align*}
+für $p_x:\R^\R \mapsto \R_\alpha,\;f\mapsto f(\alpha)$ die natürliche
+Projektion.\bsphere
+\end{enumerate}
+\end{bsp}
+
+\begin{prop}
+\label{prop:1.4.3}
+Das topologische Produkt $(X,\OO_X)$ mit $X = \prod\limits_{i\in\II} X_i$,
+($X_i$ topologischer Raum mit Topologie $\OO_i, i\in\II$) und $\OO_X$
+der Produkttopologie auf $X$ erfüllt zusammen mit den natürlichen Projektionen
+$p_j: X= \prod\limits_{\in\in\II} X_i \to X_j$ die folgende universelle
+Eigenschaft:
+
+Sei $(Y,\OO_Y)$ topologischer Raum und $f_i: Y\to X_i, i\in\II$ seien
+Abbildungen. Dann gibt es genau eine Abbildung $f: Y\to X$ mit $f_i: p_i\circ
+f, \forall i\in\II$, d.h. folgendes Diagramm kommutiert:
+\begin{center}
+\psset{unit=0.7cm}
+\begin{pspicture}(-1,0)(6,4.5)
+\rput[B](0,3){\Rnode{A}{$Y$}}
+\rput[B](5,3){\Rnode{B}{$X$}}
+\rput[B](2.5,0.2){\Rnode{C}{$X_i$}}
+
+\ncLine[nodesep=3pt]{->}{A}{B}
+\Aput{$\exists ! f$}
+
+\ncLine[nodesep=3pt]{->}{B}{C}
+\Aput{$p_i$}
+
+\ncLine[nodesep=3pt]{->}{A}{C}
+\Bput{$f_i$}
+\end{pspicture}
+\end{center}
+Weiter ist $f$ stetig genau dann, wenn alle $f_i = p_i\circ f$ stetig
+sind.\fishhere
+\end{prop}
+\begin{proof}
+$f: Y\to X, y\mapsto (f_i(y))_{i\in\II}\in X$ (wegen $f_i(y)\in X_i$).
+
+Die Existenz und die Eindeutigkeit von $f$ ist die universelle Eigenschaft des
+karthesischen Produkts ist gerade die universelle Eigenschaft der
+Initialtopologe mit der wir hier $X$ versehen haben.
+(Produkttopologie = Initialtopologe bezüglich der $p_i,i\in\II$)\qedhere
+\end{proof}
+
+Finales Gegenstück zum topologischen Produkt ist die topologische Summe.
+
+\begin{defn}
+\label{defn:1.4.4}
+Seien $(X_i,\OO_i), i\in\II$ topologische Räume. Sei $X$ die disjunkte
+Vereinigung $\dot{\bigcup\limits_{i\in\II}} X_i$ (z.B. indem man $X_i$ mit
+$X\cup\{i\}$ identifiziert). Offene Mengen in $\tilde{X_i}$ haben die Form
+$O\times \{i\}$ mit $O\in\OO_i$.
+
+Für $i\in\II$ sei $j_i: X_i\to X = \dot{\bigcup}_{j\in \II} X_j$ die natürliche
+Einbettung.
+
+Die \emph{Summentopologie} auf $X$ ist die finale Topologie auf $X$ bezüglich
+der Einbettung $j_i: X_i\to X, (i\in\II)$. $(X,\OO_X)$ heißt topologische Summe der
+$X_i (i\in\II)$.
+
+Bezeichnung: $(X,\OO_X) = \sum\limits_{i\in\II} (X_i,\OO_i)$.
+
+Beachte: Für $i\in\II$ und $U\subseteq X$ ist $j_i^{-1}(U) = U\cap X_i$. Daher
+ist nach Definition \ref{defn:1.3.2} der finalen Topologie eine Menge
+$U\subseteq X$ offen in $(X,\OO_X)$ genau dann, wenn $j_i^{-1}(U) = U\cap
+X_i\in\OO_i, \forall i\in\II$.\fishhere
+\end{defn}
+
+\begin{prop}
+\label{prop:1.4.5}
+Sei $(X,\OO_X)$ topologische Summe der topologischen
+Räume $(X_i,\OO_i)$. Dann sind die Inklusionen $j_i: X_i\to X$ stetig und offen
+und $(X,O)$ hat die folgende universelle Eigenschaft:
+\begin{enumerate}
+  \item Jede Familie $f_i: X_i\to Y$ ($Y$ Menge) von Abbildungen induziert
+  eindeutig eine Abbildung $f: X\to Y$ mit $f_i = f\circ j_i$:
+\begin{center}
+\psset{unit=0.7cm}
+\begin{pspicture}(-1,0)(6,4.5)
+\rput[B](0,3){\Rnode{A}{$X$}}
+\rput[B](5,3){\Rnode{B}{$Y$}}
+\rput[B](2.5,0.2){\Rnode{C}{$X_i$}}
+
+\ncLine[nodesep=3pt]{->}{A}{B}
+\Aput{$\exists ! f$}
+
+\ncLine[nodesep=3pt]{->}{C}{B}
+\Aput{$f_i$}
+
+\ncLine[nodesep=3pt]{->}{C}{A}
+\Bput{$p_i$}
+\end{pspicture}
+\end{center}
+  \item $f$ ist stetig genau dann, wenn $f_i = f\circ j_i$ stetig ist $(f: X\to
+  Y, x\mapsto f_i(x) \Leftrightarrow x\in X_i \subseteq X)$. So ist klar warum
+  man die Vereinigung braucht, sonst wäre $X$ nicht eindeutig
+  platziert.\fishhere
+\end{enumerate}
+\end{prop}
+\begin{proof}
+Übung.\qedhere
+\end{proof}
+
+Die Summentopologie ist weniger interessant als die Produkttopologie, da sich
+für sie kaum allgemeine Sätze beweisen lassen.\footnote{Entweder sind diese
+trivial oder falsch.}
+\begin{bemn}[Pholosophische Bemerkung.]
+In der topologischen Summe stehen die Teile $X_i$ einfach nebeneinander, $X$
+ist ``unzusammenhängend'' (später). Erst wenn die Teile $X_i$ geeignet
+``zusammengenäht'' werden (\emph{Surgery}), d.h. an geeigneten Stellen
+identifiziert und dann zum 2. Mal die finale Topologie auf dem Quotienten
+(Quotiententopologie) genommen wird, entstehen interessante topologische
+Räume.\maphere
+\end{bemn}
+
+
+\subsection{Exkurs: Analysis ohne Metrik}
+Wir wollen kurz darauf eingehen, wie man den Begriff der Konvergenz in der
+Analysis topologisch begründen kann. Nicht alle Formen von Konvergenz lassen
+sich mithilfe von Metriken ausdrücken. Beispielsweise für die punktweise
+Konvergenz einer Funktion in einem Funktionenraum benötigen wir ein
+allgemeineres Konzept. Dieses liefert uns die Topologe.
+
+\begin{lem}[Definition/Lemma]
+\label{lem:1.5.1}
+\begin{enumerate}
+  \item Sei $X$ Menge, ein Mengensystem $\varnothing\neq \FF \subseteq \PP(X)$
+  heißt \emph{Filter}, falls es folgenden Eigenschaften genügt:
+  \begin{enumerate}[label=F\arabic{*})]
+    \item $\varnothing\notin \FF$.
+    \item $U_1,U_2\in\FF\Rightarrow U_1\cap U_2\in \FF$.\\
+     $\FF$ ist abgeschlossen gegenüber endlichen Durchschnitten.
+    \item $U\in \FF$ und $U\subseteq V\subseteq X \Rightarrow V\in \FF$.\\
+    Jede Obermenge von $U$ ist in $\FF$ enthalten.  
+\end{enumerate}
+\begin{bspn}
+$(X,\OO_X)$ topologischer Raum, $z\in X$, dann ist das System $\UU_z$ ein Filter
+auf $X$.\bsphere
+\end{bspn}
+\item Ein Mengensystem $\varnothing \neq \BB \subseteq \PP(X)$
+heißt \emph{Filterbasis}, falls gilt:
+\begin{enumerate}[label=FB\arabic{*})]
+  \item $\varnothing\notin \BB$,
+  \item $B_1,B_2\in\BB \Rightarrow \exists V\in\BB : V\subseteq B_1\cap B_2$.\\
+Endliche Durchschnitte von Mengen in $\BB$ enthalten eine Menge aus $\BB$.
+\end{enumerate}
+\item Ist $B\subseteq\PP(X)$ Filterbasis, so ist
+\begin{align*}
+\FF = \setdef{V\subseteq X}{\exists B\in \BB : B\subseteq V},
+\end{align*}
+Filter auf $X$, der \emph{von $\BB$ erzeugte Filter}. ($\FF$ beseteht aus der
+Menge der Obermengen von Elementen aus $\BB$).\fishhere
+\end{enumerate}
+\end{lem}
+\begin{proof}
+Klar!\qedhere
+\end{proof}
+
+\addtocounter{prop}{1}
+
+\begin{defn}
+\label{defn:1.5.3}
+Ein Filter $\FF$ auf dem topologischen Raum $X$ \emph{konvergiert} gegen den
+Punkt $z\in X$, falls $\FF$ feiner ist als der Umgebungsfilter $\UU_z$ von $z$,
+d.h. $\UU_z\subseteq \FF$.
+
+Insbesondere konvergiert $\UU_z\to z$.\fishhere
+\end{defn}
+
+\begin{bsp}
+\label{1.5.4}
+\begin{enumerate}
+  \item Sei $(X,\OO_X)$ ein topologischer Raum und sei $(a_n)_{n\in\N}$ ein
+  Folge in $X$. Für $m\in\N$ sei $M_m = \setdef{a_n}{n\ge m}$ das \emph{$m$-te
+  Endstück} der Folge,
+  \begin{align*}
+  \MM = \setdef{M_m}{m\in\N}\subseteq \PP(X).
+  \end{align*}
+Dann ist $\varnothing\neq \MM$, $\varnothing\notin\MM$ und $\MM$
+ist abgeschlossen über endlichen Durchschnitten, denn
+\begin{align*}
+(M_m\cap M_n) = M_{\max \{m,n\}}
+\end{align*}
+und erfüllt daher FB1 und FB2, d.h. $\MM$ erzeugt einen Filter,
+\begin{align*}
+\FF = \setdef{U\subseteq X}{\exists m\in\N : M_m \subseteq U}.
+\end{align*}
+Diesen Filter nennt man den \emph{Endstückfilter} der Folge $(a_n)_{n\in\N}$.
+
+\begin{propn}[Problem]
+Sei $X\subseteq \R$ mit natürlicher Topologie. Dann konvergiert der
+Endstückfilter einer Folge $(a_n)_{n\in\N}$ in $\R$ genau dann gegen $x\in\R$,
+wenn $(a_n)_{n\in\N}$ konvergiert mit $\lim\limits_{n\to\infty} a_n =
+x$.\fishhere
+\end{propn}
+
+\begin{defn}
+In $(X,\OO_X)$ \emph{konvergiert eine Folge} $(a_n)_{n\in\N}$ in $X$ gegen ein
+$x\in X$ genau dann, wenn der Endstückfilter der Folge $(a_n)_{n\in\N}$ gegen $x$
+konvergiert.\fishhere
+\end{defn}
+\item In der diskreten Topologie besteht der Umgebungsfilter von $x\in X$ aus
+allen Umgebungen von $x$, in der indiskreten Topologie nur aus $X$ selbst.
+
+In der indiskreten Topologie konvergiert daher jede Folge gegen jeden Punkt von
+$X$. In der diskreten Topologie konvergieren nur Umgebungsfilter.
+\item Sei $\varnothing\neq A\subseteq X$, so ist $\{A\}$ eine Filterbasis. Der
+davon erzeugte Filter besteht aus allen Obermengen von $A$. Er wird
+\emph{Hauptfilter} von $A$ genannt. Im Allgemeinen konvergiert er nicht, (aber
+z.B. für $A= \{X\},\;x\in X$.)
+\item Es kann durchaus vorkommen, dass ein Filter gegen mehrere Punkte eines
+topologischen Raumes konvergiert. (z.B. in der indiskreten Topologie)
+\item Sei $X$ topologischer Raum, dann ist $\FF = \setdef{A\subseteq
+X}{X\setminus A}$ mit $X\setminus A$ endlich bzw. abzählbar ein
+Filter, falls $X$ unendlich bzw. überabzählbar ist. Ob er konvergiert hängt von
+der Topologie ab.\bsphere
+\end{enumerate}
+\end{bsp}
+
+\begin{bemn}[Bemerkung zu $\R^\R$.]
+Man kann $\R^\R$ als Menge von Folgen $(x_\alpha)_{\alpha\in\R}$
+identifizieren. Mit der Produkttopologie erhalten wir die Umgebungen
+\begin{align*}
+U_{\ep,x} = \setdef{g:\R\to\R}{\abs{f(x)-g(x)}<\ep},
+\end{align*}
+für $\ep > 0, x\in\R$. Es gibt keine Metrik auf $\R^\R$, die diese Umgebungen so
+erzeugen könnte. Die Umgebungen sind die der punktweisen Konvergenz.\maphere
+\end{bemn}

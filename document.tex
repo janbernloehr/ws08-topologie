@@ -1,0 +1,125 @@
+% =============================================================================
+% Titel:	Topologie - Mitschrieb
+% Erstellt:	WS 08/09
+% Dozent:	Prof. Dr. R. Dipper
+% Autor:	Jan-Cornelius Molnar
+% =============================================================================
+\documentclass[paper=a5,parskip=half,fleqn,DIV=calc]{scrartcl}
+
+% =============================================================================
+% 					Benötigte Pakete
+% =============================================================================
+\usepackage{janmcommon}
+\usepackage{janmscript}
+
+% =============================================================================
+% 					Topo-Theorem-Style
+% =============================================================================
+% Theorem Umgebungen *MIT* Numerierung
+\theoremstyle{graymarginwithblueheader}
+\theorembodyfont{\itshape}
+\theoremseparator{}
+\theoremsymbol{}
+
+\newtheorem{prop}{Satz}[subsection]
+\newtheorem{lem}[prop]{Lemma}
+\newtheorem{defn}[prop]{Definition}
+\newtheorem{cor}[prop]{Korollar}
+
+\theoremstyle{graymarginwithyellowheader}
+\theorembodyfont{\normalfont}
+\theoremseparator{}
+\theoremsymbol{}
+
+\newtheorem{bsp}[prop]{Bsp}
+
+\theoremstyle{graymarginwithitblackheader}
+\theorembodyfont{\normalfont}
+\theoremseparator{}
+\theoremsymbol{}
+
+\newtheorem{bem}[prop]{Bemerkung.}
+
+% Theorem Umgebungen *OHNE* Numerierung
+\theoremstyle{graymarginwithblueheadern}
+\theorembodyfont{\itshape}
+\theoremseparator{}
+\theoremsymbol{}
+
+\newtheorem{propn}{Satz}
+\newtheorem{lemn}{Lemma}
+\newtheorem{defnn}{Definition}
+
+\theoremstyle{graymarginwithyellowheadern}
+
+\theorembodyfont{\normalfont}
+\theoremseparator{}
+\theoremsymbol{}
+
+\newtheorem{bspn}{Bsp}
+
+\theoremstyle{graymarginwithitblackheadern}
+\theorembodyfont{\normalfont}
+\theoremseparator{}
+\theoremsymbol{}
+
+\newtheorem{bemn}{Bemerkung.}
+
+\newcommand{\wzhk}{Wegzusammenhangskomponenten}
+
+% =============================================================================
+% 					Ana-Überschriften-Style
+% =============================================================================
+\renewcommand\thesection{\arabic{section}}
+\renewcommand\thesubsection{\arabic{section}.\arabic{subsection}}
+
+\titleformat{\section}%
+  {\normalfont\bfseries\Huge\color{darkblue}}%
+  {\thesection}%
+  {0.6em}%
+  {}%
+  
+\titleformat{\subsection}%
+  {\normalfont\bfseries\Large\color{darkblue}}%
+  {$\mathsection$\arabic{subsection}}%
+  {0.6em}%
+  {}%
+  
+\renewcommand{\labelenumi}{{\normalfont(\alph{enumi})}}
+
+\setcounter{section}{-1}
+
+% =============================================================================
+% 					Document-Body
+% =============================================================================
+\begin{document}
+
+% Titel
+\begin{center}
+{\huge\bf Topologie - Mitschrieb}
+
+bei Prof. Dr. R. Dipper
+
+Jan-Cornelius Molnar, Version: \today\ \thistime
+\end{center}
+
+% Inhaltsverzeichnis
+\tableofcontents
+
+% Inhalt
+\newpage
+\input{00_Grundlagen.tex}
+
+\newpage
+\input{01_TopologischeRaeumeUndStetigeAbbildungen.tex}
+
+\newpage
+\input{02_WeitereGrundbegriffe.tex}
+
+\newpage
+\input{03_HomotopieFundamentalgruppe.tex}
+
+\newpage
+\input{04_KompakteFlaechen.tex}
+
+\end{document}

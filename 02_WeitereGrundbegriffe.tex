@@ -1,0 +1,1591 @@
+\section{Weitere Grundbegriffe}
+
+\subsection{Trennungs- und Abzählbarkeitsaxiome}
+
+Sei nun $X$ topologischer Raum mit $\OO_X,\AA_X, \TT: X\to\PP\PP(X)$. Für
+$y\in X$ sei $U(y) \in\UU_y$.
+
+\begin{prop}[Fragen]
+\label{prop:2.1.2}
+\begin{enumerate}
+  \item Wann ist der Grenzwert eines konvergenten Filters auf $X$ eindeutig?
+  \item Wann kann man zwei Punkte $y,z\in X$ ($z\neq x$) durch Umgebungen
+  trennen?
+  \item Wann kann man Punkte $y,z\in Y$ durch eine stetige reelle Funktion
+  trennen, d.h. $f: X\to \R$ stetig und $f(z)\neq f(y)$?\fishhere
+\end{enumerate}
+\end{prop}
+Um diese Fragen zu beantworten brauchen wir einen Begriff der ``Nähe''. Dazu
+führen wir die Trennungsaxiome ein.
+
+\begin{defnn}
+Sei $(X,\OO_X)$ ein topologischer Raum mit $\AA_X$, dann ist $X$ ein
+$T_i$-Raum, falls $(X,\OO_X)$ das Axiom $T_i$ erfüllt:
+\begin{enumerate}
+  \item[$T_0$] Zu je zwei Punkten $z\neq y$ hat einer der Punkte eine
+  Umgebung, die den anderen Punkt nicht enthält.
+\begin{center}
+\psset{unit=1cm}
+\psset{linecolor=gdarkgray}
+\psset{fillcolor=glightgray}
+\begin{pspicture}(0,0)(5,4)
+
+ %\psgrid
+
+ % Kartoffel
+ \psccurve[fillstyle=none]%
+ (1,0.5)(1,3)(3,2.5)(4.5,3)(4.5,1)(3,1)
+ 
+ \psdot(1.8,1.8)
+ 
+ \psdot(3.4,1.8)
+ 
+ \pscircle[linestyle=dotted]%
+ (1.8,1.8){0.9}
+ 
+ \rput[lt](1.9,1.8){\color{gdarkgray}$z$}
+ \rput[lt](3.5,1.8){\color{gdarkgray}$y$}
+ \rput[lt](1.4,2.4){\color{gdarkgray}$U(z)$}
+ \rput[lt](1.4,2.4){\color{gdarkgray}$U(z)$}
+ \rput[lt](4.4,0.6){\color{gdarkgray}$X$}
+ 
+\end{pspicture}
+\end{center}
+  \item[$T_1$] Zu je zwei Punkten $z\neq y\in X$ gibt es Umgebungen $U(z)\in
+  \UU_z$ und $U(y)\in \UU_y$ mit $y\notin U(z)$ und $z\notin U(y)$.
+  \begin{center}
+\psset{unit=1cm}
+\psset{linecolor=gdarkgray}
+\psset{fillcolor=glightgray}
+\begin{pspicture}(0,0)(5,4)
+
+ %\psgrid
+
+ % Kartoffel
+ \psccurve[fillstyle=none]%
+ (1,0.5)(1,3)(3,2.5)(4.5,3)(4.5,1)(3,1)
+ 
+ \psdot(1.8,1.8)
+ 
+ \psdot(3.2,1.8)
+ 
+ \pscircle[linestyle=dotted]%
+ (1.8,1.8){0.9}
+ 
+ \pscircle[linestyle=dotted]%
+ (3.2,1.8){0.6}
+ 
+ \rput[lt](1.9,1.8){\color{gdarkgray}$z$}
+ \rput[lt](3.5,1.8){\color{gdarkgray}$y$}
+ \rput[lt](1.4,2.4){\color{gdarkgray}$U(z)$}
+ \rput[lt](3.8,2.4){\color{gdarkgray}$U(y)$}
+ \rput[lt](4.4,0.6){\color{gdarkgray}$X$}
+ 
+\end{pspicture}
+\end{center}
+  \item[$T_2$] Zu zwei Punkten $z\neq y$ in $X$ gibt es disjunkte Umgebungen,
+  d.h. es gibt $U(z)\in\UU_z$ und $U(y)\in\UU_y$ mit $U(z)\cap U(y)=\varnothing$.
+    \begin{center}
+\psset{unit=1cm}
+\psset{linecolor=gdarkgray}
+\psset{fillcolor=glightgray}
+\begin{pspicture}(0,0)(5,4)
+
+ %\psgrid
+
+ % Kartoffel
+ \psccurve[fillstyle=none]%
+ (1,0.5)(1,3)(3,2.5)(4.5,3)(4.5,1)(3,1)
+ 
+ \psdot(1.8,1.8)
+ 
+ \psdot(3.6,1.8)
+ 
+ \pscircle[linestyle=dotted]%
+ (1.8,1.8){0.9}
+ 
+ \pscircle[linestyle=dotted]%
+ (3.6,1.8){0.6}
+ 
+ \rput[lt](1.9,1.8){\color{gdarkgray}$z$}
+ \rput[lt](3.7,1.8){\color{gdarkgray}$y$}
+ \rput[lt](1.4,2.4){\color{gdarkgray}$U(z)$}
+ \rput[lt](4,2.6){\color{gdarkgray}$U(y)$}
+ \rput[lt](4.4,0.6){\color{gdarkgray}$X$}
+ 
+\end{pspicture}
+\end{center} 
+  Dieses Axiom ist äquivalent dazu, dass $X$ ein \emph{Hausdorffraum} ist.
+  \item[$T_3$] Zu jeder abgeschlossenen Menge $A\in\AA_X$ und jedem Punkt $z\in
+  X$ mit $z\notin A$ gibt es $U(A)\in\OO_X$, $U(x)\in\OO_X$ mit $x\in
+  U(x),\;A\subseteq U(A)$ so, dass $U(x)\cap U(A)=\varnothing$ ist.
+  \begin{center}
+\psset{unit=1cm}
+\psset{linecolor=gdarkgray}
+\psset{fillcolor=glightgray}
+\begin{pspicture}(0,0)(5,4)
+
+ %\psgrid
+
+ % Kartoffel
+ \psccurve[fillstyle=none]%
+ (1,0.5)(1,3)(3,2.5)(4.5,3)(4.5,1)(3,1)
+ 
+ \psdot(1.8,1.8)
+ 
+ \psdot(3.6,1.8)
+ 
+ \pscircle[linestyle=dotted]%
+ (1.8,1.8){0.9}
+ \pscircle[fillstyle=solid,
+ 		   fillcolor=darkblue,
+ 		   linestyle=none]%
+ (1.8,1.8){0.7}
+ 
+ \pscircle[linestyle=dotted]%
+ (3.6,1.8){0.6}
+ 
+ \rput[lt](1.1,2.9){\color{darkblue}$A$}
+ \rput[lt](3.7,1.8){\color{gdarkgray}$x$}
+ \rput[lt](1.1,0.8){\color{gdarkgray}$U(A)$}
+ \rput[lt](4,2.6){\color{gdarkgray}$U(x)$}
+ \rput[lt](4.4,0.6){\color{gdarkgray}$X$}
+ 
+\end{pspicture}
+\end{center}
+  \item[$T_4$] Zu je zwei disjunkten, abgeschlossenen Teilmengen $A,B\in\AA_X$
+   gibt es offene Mengen $U(A),U(B)\in\OO_X$ mit $A\subseteq
+  U(A),\;B\subseteq U(B)$ und $U(A)\cap U(B)=\varnothing$.
+    \begin{center}
+\psset{unit=1cm}
+\psset{linecolor=gdarkgray}
+\psset{fillcolor=glightgray}
+\begin{pspicture}(0,0)(5,4)
+
+ %\psgrid
+
+ % Kartoffel
+ \psccurve[fillstyle=none]%
+ (1,0.5)(1,3)(3,2.5)(4.5,3)(4.5,1)(3,1)
+ 
+ \psdot(1.8,1.8)
+ 
+ \psdot(3.6,1.8)
+ 
+ \pscircle[linestyle=dotted]%
+ (1.8,1.8){0.9}
+ \pscircle[fillstyle=solid,
+ 		   fillcolor=darkblue,
+ 		   linestyle=none]%
+ (1.8,1.8){0.7}
+ 
+ \pscircle[linestyle=dotted]%
+ (3.6,1.8){0.6}
+ 
+ \pscircle[fillstyle=solid,
+ 		   fillcolor=darkblue,
+ 		   linestyle=none]%
+ (3.6,1.8){0.5}
+ 
+ \rput[lt](1.1,2.9){\color{darkblue}$A$}
+ \rput[lt](4.2,1.4){\color{darkblue}$B$}
+ \rput[lt](1.1,0.8){\color{gdarkgray}$U(A)$}
+ \rput[lt](4,2.6){\color{gdarkgray}$U(B)$}
+ \rput[lt](4.4,0.6){\color{gdarkgray}$X$}
+ 
+\end{pspicture}
+\end{center} 
+  \item[$T_{3a}$] Zu jedem $z\in X$ und jeder offenen Umgebung $U(z)\in\UU_z$
+  von $z$ gibt es eine stetige Funktion $f:X\to[0,1]\subseteq \R$ mit $f(z)=0$
+  und $f(y)=1$ für alle $y\in X$ mit $y\notin U(z)$.
+    \begin{center}
+\psset{unit=1cm}
+\psset{linecolor=gdarkgray}
+\psset{fillcolor=glightgray}
+\begin{pspicture}(-1,-1)(4,2.5)
+
+ %\psgrid
+ 
+ \psaxes[labels=none,ticks=none]{->}%
+ (0,0)(-0.2,-0.5)(3.5,2)[\color{gdarkgray}$X$,0][\color{gdarkgray}$\R$,0]
+
+\psyTick(1){\color{gdarkgray}$1$}
+\psxTick(1.5){\color{gdarkgray}$z$}
+
+\psline[arrows=(-)](0.5,0)(2.5,0)
+
+\psplot[linewidth=1.2pt,%
+	     linecolor=darkblue,%
+	     algebraic=true]%
+	     {0.50001}{2.49999}{-(2.71828)^(-(x-1.5)^2/(1-(x-1.5)^2))+1}
+
+\psline[linecolor=darkblue,linewidth=1.2pt](0,1)(0.50002,1)
+\psline[linecolor=darkblue,linewidth=1.2pt](2.49998,1)(3.5,1)
+
+\rput(-0.4,0){\color{gdarkgray}$0$}
+\rput[lt](2.5,-0.3){\color{gdarkgray}$U(z)$}
+\end{pspicture}
+\end{center} 
+  \item[$T_5$] Zu je zwei Mengen $A,B\subseteq X$ mit $\overline{A}\cap B =
+  A\cap \overline{B} = \varnothing$ gibt es disjunkte offene
+  Obermengen.\fishhere
+\end{enumerate}
+\end{defnn}
+
+\begin{defn}
+\label{defn:2.1.2}
+$X$ ist \emph{hausdorffsch} bzw. \emph{Hausdorffraum}, wenn gilt
+\begin{align*}
+\forall y,z\in X : y\neq z \exists U(z)\in\UU_z, U(y)\in\UU_y : U(z)\cap U(y) =
+\varnothing.\fishhere
+\end{align*}
+\end{defn}
+
+\begin{defn}
+\label{defn:2.1.3}
+\begin{enumerate}
+  \item Ein topologischer Raum $(X,\OO_X)$ heißt $T_i$-Raum, falls $X$ eines
+  der Axiome $T_i, (i=0,1,2,3,3a,4,5)$ erfüllt.
+  \item $(X,\OO_X)$ heißt \emph{regulär}, wenn $X$ ein $T_1$ und $T_3$ Raum ist.
+  \item $(X,\OO_X)$ heißt \emph{vollständig regulär}, wenn $X$ ein $T_1$ und
+  $T_{3a}$ Raum ist.
+  \item $(X,\OO_X)$ heißt \emph{normal}, falls $X$ ein $T_1$- und ein
+  $T_4$-Raum ist.
+  \item $(X,\OO_X)$ heißt \emph{vollständig normal} oder \emph{normal erblich},
+  falls $X$ ein $T_1$- und ein $T_5$-Raum ist.\fishhere
+\end{enumerate}
+\end{defn}
+
+\begin{prop}
+\label{prop:2.1.4}
+$T_2\Rightarrow T_1\Rightarrow T_0$.\fishhere
+\end{prop}
+
+\begin{prop}
+\label{prop:2.1.5}
+$(X,\OO_X)$ ist ein $T_1$-Raum genau dann, wenn alle einelementigen Teilmengen
+von $X$ abgeschlossen sind (und damit auch alle endlichen Teilmengen von
+$X$).\fishhere
+\end{prop}
+\begin{proof}
+``$\Rightarrow$'': Sei $X$ ein $T_1$-Raum und sei $z\in X$. Dann gibt es zu
+jedem $y\in X\setminus\{z\}$ eine offene Umgebung $U(y)$ mit $z\neq U(y)$.
+Folglich ist $y\in X\setminus\{z\} = \bigcup\limits_{y\in X\setminus\{z\}}
+U(y)$. Also ist $\{x\} = X\setminus(X\setminus \{z\})$ abgeschlossen.
+
+``$\Leftarrow$'': Seien $z,y\in X$, $z\neq y$, $\{z\}, \{y\} \in \AA_X$. Dann
+sind $U(z) = X\setminus \{z\}$ und $U(y) = X\setminus\{y\}$ Umgebungen von $z$
+bzw. von $y$ und mit $y\notin U(z)$, $z\notin U(y)$. Also gilt $T_1$.\qedhere
+\end{proof}
+
+\begin{cor}
+\label{prop:2.1.6}
+normal $\Rightarrow$ regulär $\Rightarrow T_2 \Rightarrow T_1 \Rightarrow
+T_0$.\fishhere
+\end{cor}
+
+\begin{bem}
+\label{bem:2.1.7}
+Es gilt sogar vollständig normal $\Rightarrow$ normal $\Rightarrow$ vollständig
+regulär $\Rightarrow$ regulär.\maphere
+\end{bem}
+
+\begin{prop}
+\label{prop:2.1.8}
+Sei $(X,\OO_X)$ topologischer Raum.
+\begin{enumerate}
+  \item Ist $X$ normal und $A\in\AA_X$, so ist $(A, \text{Spurtopoloige})$
+  normal.
+  \item Ist $X$ ein $T_1$- und $T_5$-Raum, so ist jeder Unterraum von $X$ normal
+  (daher auch normal erblich).\fishhere
+\end{enumerate}
+\end{prop}
+\begin{proof}
+Hausaufgabe.\qedhere
+\end{proof}
+
+\begin{prop}
+\label{prop:2.1.9}
+$(X,\OO_X)$ ist hausdorffsch (d.h. $T_2$-Raum) genau dann, wenn jeder
+konvergente Filter in $X$ gegen genau einen Punkt von $X$ konvergiert.
+Insbesondere sind die Grenzwerte konvergenter Folgen in Hausdorffräumen
+eindeutig bestimmt.\fishhere
+\end{prop}
+\begin{proof}
+``$\Rightarrow$'': Sei $\FF$ Filter auf $X$ und konvergiere $\FF$ gegen die
+Punkte $z,y\in X$. D.h. $U_z\subseteq \FF$ und $U_y\subseteq \FF$.
+
+Angenommen $z\neq y$ seien $U(z)\in U_z, U(y)\in U_y$ mit $U(z)\cap
+U(y)=\varnothing$. (Existenz wegen $T_2$) Dann ist $U(z),U(y)\in\FF$ wegen
+$U_z,U_y\subseteq \FF$ aber dann ist auch $\varnothing\in \FF$, da $\FF$
+abgeschlossen gegenüber Durchschnitten.\dipper
+
+Also ist $z=y$.
+
+``$\Leftarrow$'': Sei das $T_2$ Axiom nicht erfüllt, dann gibt es Punkte
+$z,y\in X$, $z\neq y$ so, dass für alle $U(z)\in U_z, U(y)\in U_y$ gilt
+$U(z)\cap U(y)=\varnothing$.
+Das System aller dieser Teilmengen $U(z)\cap U(y)$ erfüllt FB1 und FB2. Sei
+$\FF$ der von diesen Mengen erzeugte Filter. $U(z)\in U_z, U(y)\in U_y:
+U(z)\supseteq U(z)\cap U(y)\subseteq U(y)$, also ist $U(z), U(y)\in \FF$, also
+ist $U_z,U_y\in\FF$.
+
+Damit konvergiert $\FF$ gegen $z$ und $y$, der Grenzwert ist also nicht
+eindeutig.\dipper\qedhere
+\end{proof}
+
+\begin{prop}
+\label{prop:2.1.10}
+Sei $f:(X,\OO_X)\to(Y,\OO_Y)$ stetig und sei $Y$ hausdorffsch. Dann ist der
+Graph $G(f) = \setdef{(x,y)\in X\times Y}{x\in X,y\in Y}$ abgeschlossen in der
+Produkttopologie $\OO_{X\times Y}$ auf $X\times Y$.\fishhere
+\end{prop}
+\begin{proof}
+Sei $(x,y)\in X\times Y$ mit $(x,y)\notin G$. Dann ist $y\neq f(x) = z\in Y$.
+$Y$ ist $T_2$ also gilt
+\begin{align*}
+\exists U(y), U(z) \text{ mit } U(y)\cap U(z) = \varnothing.
+\end{align*}
+Ohne Einschränkung können wir annehmen, dass $U(y),U(z)\in\OO_X$, da jede
+Umgebung eines Punktes eines topologischen Raumes eine offene Umgebung des
+Punktes enthält.
+
+Da $f$ stetig ist, existiert eine Umgebung $V(x)\in \UU_x$ mit 
+\begin{align*}
+f(V(x))\subseteq U(f(x)) = U(z),
+\end{align*}
+also ist auch $U(y)\cap f(V(x))=\varnothing$ und $V(x)\times U(y)$ ist eine
+offene Umgebung von $(x,y)\in X\times Y$ in der Produkttopologie, die $G$ nicht
+trifft. Daher ist das Komplement $(X\times Y)\setminus G$ offen in $X\times Y$
+und folglich ist $G$ abgeschlossen.\qedhere
+\end{proof}
+
+\begin{prop}
+\label{prop:2.1.11}
+Ein topologischer Raum $(X,\OO_X)$ ist hausdorffsch genau dann, wenn die
+Diagonale
+\begin{align*}
+\Delta = \setdef{(x,x)\in X\times X}{x\in X}\subseteq X\times X,
+\end{align*}
+eine abgeschlossene Teilmenge von $X\times X$ in der Produkttopologie
+ist.\fishhere
+\end{prop}
+\begin{proof}
+Die Diagonale ist der Graph der Identität und $\id$ ist Homöomorphismus, wenn
+die Topologien gleich sind.\qedhere
+\end{proof}
+
+Wie wir bereits gesehen haben, enthält jede Umgebung $U$ eines
+Punktes $x\in X$ eine nichtleere offene Umgebung $\OO_X\ni O\subseteq
+U$. Für abgeschlossene Umgebungen ist diese Aussage im Allgemeinen falsch.
+
+\begin{prop}
+\label{prop:2.1.12}
+Sei $(X,\OO_X)$ ein topologischer Raum. Dann sind folgende Aussagen äquivalent
+\begin{enumerate}[label=\roman{*})]
+  \item\label{prop:2.1.12:1} $X$ ist ein $T_3$-Raum.
+  \item\label{prop:2.1.12:2} Sei $x\in X$. Dann enthält jede offene Umgebung von
+  $x$ eine abgeschlossene Umgebung von $x$.
+\end{enumerate}
+\ref{prop:2.1.12:2} gilt insbesondere für normale Räume, da diese das $T_1$
+und das $T_3$ Axiom erfüllen.\fishhere
+\end{prop}
+\begin{proof}
+\ref{prop:2.1.12:1}$\Rightarrow$\ref{prop:2.1.12:2}: Sei $z\in X$ und sei
+$U(z)\in\UU_z\cap \OO_X$. Dann ist $A=X\setminus U(z) \in \AA_X$.
+
+Wegen $T_3$ gilt: Es gibt $V_A\in\OO_X,\;A\subseteq V_A$ und
+$W(z)\in\OO_X\cap\UU_z$ mit $W(z)\cap V_A = \varnothing$.
+
+$W(z)\subseteq X\setminus V_A\in \AA_X\Rightarrow \overline{W(z)} \subseteq
+X\setminus V_A$. Also ist $\overline{W(z)}$ eine abgeschlossene Umgebung von
+$z$, die $A$ nicht trifft (da sie $V(A)\supseteq A$ nicht trifft).
+
+($z\in W(z)\subseteq\overline{W(z)}\subseteq X\setminus V_A\subseteq X\setminus
+A = U(z)$)
+
+\ref{prop:2.1.12:2}$\Leftarrow$\ref{prop:2.1.12:1}: Sei $z\in X$,
+$A\in\AA_X$ mit $z\notin A$. Dann gilt $z\in X\setminus A = B\in\OO_X$. Nach
+Vorraussetzung \ref{prop:2.1.12:2} gibt es eine abgeschlossene Umgebung
+$V(z)\in \UU_z\cap \AA_z$ mit $z\in V(z)\subseteq B = X\setminus A$. In
+$V(z)$ gibt es aber eine offene Umgebung $U(z)$ von $z$ und wir haben:
+\begin{align*}
+z\in U(z)\subseteq \overline{U(z)}\subseteq V(z)\subseteq B = X\setminus A.
+\end{align*}
+Also ist $A\subseteq X\setminus V(z)\in\OO_X$ $z\in U(z)$ also gilt
+$U(z)\cap X\setminus V(z) = \varnothing$.\qedhere
+\end{proof}
+
+%Die folgenden Sätze spielen eine wichtige Rolle in der Analysis\ldots
+%TODO: Satz von Uryson, Satz von Tieze
+
+Motivation: Bisher haben wir den Konvergenzbegriff nur in Zusammenhang mit
+Folgen verwendet, dies sind jedoch abzählbare Mengen, denn die Menge der
+Endstückfilter besitzt eine abzählbare Basis. Aus der Analysis kennen wir einen
+weiteren Konvergenzbegriff, die Folgenstetigkeit. Diese ist nicht ohne Weiteres
+auf beliebige topologische Räume übertragbar.
+
+\begin{defn}
+\label{defn:2.1.13}
+\begin{enumerate}
+  \item Eine Filterbasis $U$ des Umgebungsfilters $\UU_x$ von $x\in X$ heißt
+  \emph{Umgebungsbasis von $X$}.
+  
+  So: $\varnothing\neq U\subseteq \PP(X)$, jedes Element von $U$ ist Umgebung
+  von $x$ und jede Umgebung von $x$ enthält ein Element von $U$ als Teilmenge.
+  \begin{bspn}
+  $\UU_x\cap \OO_X = \setdef{A\in \UU_x}{A \text{ ist offen}.} = \{\text{offene
+  Umgebungen von }X\}$ ist Umgebungsbasis von $\UU_x$.\bsphere
+  \end{bspn}
+  \item $X$ erfüllt das \emph{1. Abzählbarkeitsaxiom}, wenn jeder Punkt von $X$
+  eine abzählbare Umgebungsbasis besitzt.
+  
+  \begin{bspn}
+  Für den $\R^n$ mit der natürlichen Topologie und $z\in\R^n$ ist,
+  \begin{align*}
+  \setdef{U_\ep(z)}{0<\ep\in\Q},
+  \end{align*}
+  Umgebungsbasis.\bsphere
+  \end{bspn}
+  \item $X$ erfüllt das \emph{2. Abzählbarkeitsaxiom}, wenn $X$ eine abzählbare
+  Basis der Topologie $\OO_X$ besitzt.\fishhere
+\end{enumerate}
+\end{defn}
+
+\begin{bemn}
+Das 2. Abzählbarkeitsaxiom impliziert das 1., denn ist $\BB$ Basis von $\OO_X$,
+dann ist $\BB\cap\UU_x$ Umgebungsbasis von $z$.
+\end{bemn}
+
+\begin{bsp}
+\label{bsp:2.1.14}
+\begin{enumerate}
+  \item Jeder metrische Raum $X$ (mit induzierter Topologie) erfüllt das 1.
+  Abzählbarkeitsaxiom, da
+  \begin{align*}
+  U = \setdef{U_{\frac{1}{n}}(x)}{n\in\N},
+  \end{align*}
+  eine abzählbare Umgebungsbasis von $x\in X$ bildet.
+  \item Der $\R^n$ mit der natürlichen Topologie erfüllt das 2.
+  Abzählbarkeitsaxiom, denn
+  \begin{align*}
+  \setdef{U_{y_n}(x)}{n\in\N, x\in\Q^n\subseteq \R^n},
+  \end{align*}
+  ist Basis der Topologie auf dem $\R^n$.
+  \item
+  Ein überabzählbares topologisches Produkt $\prod\limits_{i\in\II} X_i$ ($\II$
+  überabzählbare Indexmenge, $(X_i,\OO_i)$ topologischer Raum für jedes
+  $i\in\II$) erfüllt das 1. Abzählbarkeitsaxiom nicht, es sei denn die 
+  $X_i$ tragen die indiskrete Topologie.\bsphere
+\end{enumerate}
+\end{bsp}
+\begin{proof}
+Hausaufgabe.\qedhere
+\end{proof}
+
+\begin{bemn}
+In einem $T_2$-Raum, der das 1. Abzählbarkeitsaxiom erfüllt, kann man
+Filterkonvergenz vollständig auf Konvergenz von Folgen zurückführen.\maphere
+\end{bemn}
+
+\begin{defn}
+\label{defn:2.1.15}
+Seien $X,Y$ topologische Räume und $f: X\to Y$ Abbildung. Dann heißt $f$
+\emph{folgenstetig}, falls gilt:
+
+Konvergiert die Folge $(x_n)$ in $X$ gegen $x\in X$, so konvergiert die Folge
+der Bilder $(f(x_n))$ in $Y$ gegen $f(x)\in Y$.
+
+Kurzform: $f\left(\lim\limits_{n\to\infty} x_n\right) =
+\lim\limits_{n\to\infty} f(x_n)$.\fishhere
+\end{defn}
+
+\begin{prop}
+\label{prop:2.1.16}
+Seien $X,Y$ topologische Räume, $f: X\to Y$ Abbildung, dann gilt
+\begin{enumerate}[label=\arabic{*}.)]
+  \item Ist $f$ stetig, so ist $f$ folgenstetig.
+  \item Erfüllt $X$ das 1. Abzählbarkeitsaxiom und ist $f$ folgenstetig, so ist
+  $f$ stetig.\fishhere
+\end{enumerate}
+\end{prop}
+
+%TODO: Folie 60
+
+\begin{prop}
+Seien $X,Y$ topologische Räume, $f: X\to Y$ Abbildung, $z\in X$, dann ist $f$
+stetig in $z$ genau dann, wenn $f(U_z)$ gegen $f(z)$ konvergiert.\fishhere
+\end{prop}
+\begin{proof}
+Übung.\qedhere
+\end{proof}
+
+%TODO: Folie 61
+
+\subsection{Zusammenhang und Wegzusammenhang}
+\begin{prop}
+\label{prop:2.2.1}
+Sei $(X,\OO_X)$ ein topologischer Raum und $A\subseteq X$ offen. Sei
+$\OO_A$ die Spurtopologie auf $A$ und sei $Y\subseteq A$, dann ist $Y\in\OO_A$
+genau dann, wenn $Y\in\OO_X$.\fishhere
+\end{prop}
+\begin{proof}
+``$\Rightarrow$'': Gilt für beliebige $A\subseteq X$ wegen $Y=A\cap Y$ nach
+\ref{prop:1.2.3}.
+
+``$\Leftarrow$'': $Y\in\OO_A\Rightarrow\exists Z\in\OO_X : Y = Z\cap A
+\Rightarrow Y\in\OO_X$.\qedhere
+\end{proof}
+
+\begin{prop}
+\label{prop:2.2.2}
+$A\in\OO_X \Rightarrow \OO_A = \OO_X\cap \PP(A)$.
+
+$A\in\AA_X \Rightarrow \AA_A = \AA_X \cap \PP(A)$.\fishhere
+\end{prop}
+
+Gibt es auch außer der leeren Menge und dem ganzen Raum $X$ Mengen $A$ mit
+$A\in \OO_X\cap \AA_X$?
+
+%TODO: Folie 63
+
+\begin{prop}
+\label{prop:2.2.3}
+Sei $(X,\OO_X)$ topologischer Raum, $A\subseteq X$ offen und abgeschlossen in
+$X$. Dann ist $A^c\in\OO_X\cap\AA_X$ und $A^c=X\setminus A$. Seien $\OO_A$ bzw.
+$\OO_B$ Spurtopologie von $A$ bzw. $A^c$ als Teilmengen von $X$. Dann ist $\OO_X$
+die Summentopologie auf der disjunkten Vereinigung $A\dcup A^c$.\fishhere
+\end{prop}
+
+\begin{proof}
+Sei $A\in\OO_X$, dann ist $A^c\in\AA_X$ und sei $A\in\AA_X$, dann ist
+$A^c\in\OO_X$, also ist $A^c\in\OO_X\cap\AA_X$. Nach \ref{prop:2.2.2} gilt
+\begin{align*}
+&\OO_A = \OO_X\cap \PP(A),\;\OO_{A^c} = \OO_X\cap \PP(A^c),\\
+&\AA_A = \AA_X \cap \PP(A),\;\AA_{A^c} = \AA_X \cap \PP(A^c).
+\end{align*}
+Sei $U\in\OO_X,\;U_1=U\cap A,\;U_2=U\cap A^c$ und
+\begin{align*}
+U_1\cap U_2 = (U\cap A)\cup(U\cap A^c) = U\cap(A\cup A^c) = U,
+\end{align*}
+also ist
+\begin{align*}
+\OO_X = \setdef{U_1\cup U_2}{U_1\in\OO_A,U_2\in\OO_B},
+\end{align*}
+und dies ist genau die Summentopologie der disjunkten Vereinigung $A\cup B$,
+wenn $A,\ A^c$ die Spurtopologie tragen.
+
+Also ist $X=A\dcup A^c$.\qedhere
+\end{proof}
+
+\begin{defn}
+\label{defn:2.2.4}
+Ein topologischer Raum $(X,\OO_X)$ heißt \emph{zusammenhängend}, wenn $X$ nicht
+als disjunkte Vereinigung zweier nichtleerer offener Teilmengen geschrieben werden
+kann.\fishhere
+\end{defn}
+
+\begin{bem}
+\label{bem:2.2.5}
+Der topologische Raum $(X,\OO_X)$ ist zusammenhängend genau dann, wenn
+$\OO_X\cap\AA_X = \{\varnothing,X\}$ und genau dann, wenn $(X,\OO_X)$ nicht als
+topologische Summe zweier echter Teilräume geschrieben werden kann.\maphere
+\end{bem}
+
+\begin{lem}
+\label{prop:2.2.6}
+Seien $A,B\le (X,\OO_X)$ und $A\subseteq B\Rightarrow A\le B$ bzw. $B\le A,
+A\le X \Rightarrow B\le X$.
+
+Sei $A\subseteq B\le X$ und $(X,\OO_X)$ topologischer Raum. Dann stimmt die
+Spurtopologie von $A$ als Teilmenge von $B$ mit $A$ als Teilmenge von $X$
+überein.\fishhere
+\end{lem}
+\begin{proof}
+Sei $\OO_A$ die Spurtopologie von $A$ als Teilmenge von $X$ und $\tilde{\OO}_A$
+die Spurtopologie $A$ also Teilmenge von $B$.
+
+Zu zeigen ist nun, dass $\OO_A = \tilde{\OO}_A$:
+\begin{align*}
+&U\in\tilde{\OO}_A\Leftrightarrow \exists W\in\OO_B : U = A\cap W,\\
+&W\in\OO_B \Leftrightarrow \exists Z\in\OO_X : W = Z\cap B,\\
+\Rightarrow\; &U = A\cap W = A\cap Z\cap B = A\cap Z\in \OO_A.
+\end{align*}
+Also ist $\tilde{\OO}_A \subseteq \OO_A$. Ist $U\in\OO_A$, so gibt es ein
+$V\in\OO_X$ mit
+\begin{align*}
+U=A\cap V = A\cap V\cap B\in\tilde{\OO}_A,
+\end{align*}
+da $V\cap B\in\OO_B$.\qedhere
+\end{proof}
+
+Das Bilden von Unterräumen ist also transitiv.
+
+\begin{defn}
+\label{defn:2.2.7}
+Eine Teilmenge $A$ von $(X,\OO_X)$ heißt
+\emph{zusammenhängend}, wenn $(A,\OO_A)$ zusammenhängend ist.\fishhere
+\end{defn}
+
+\begin{cor}[Korollar aus \ref{prop:2.2.6}]
+\label{prop:2.2.8}
+Seien $A,B\le X$ und $X$ topologischer Raum mit $A\subseteq B$, dann ist $A$
+als Unterraum von $B$ genau dann zusammenhängend, wenn $A$ als Unterraum von
+$X$ zusammenhängend ist.\fishhere
+\end{cor}
+
+\begin{prop}
+\label{prop:2.2.9}
+Sei $(X,\OO_X)$ topologischer Raum und sei $\setdef{A_i}{i\in\II}$ mit $\II$
+Indexmenge eine Familie zusammenhängender Teilräume von $X$.
+
+$A_i\le X$ mit Spurtopologie $O_i$ für $i\in\II$.
+
+Sei $\bigcap_{i\in\II} A_i \neq\varnothing$, dann ist $\bigcup_{i\in\II} A_i =
+A$ ebenfalls zusammenhängend.\fishhere
+\end{prop}
+\begin{proof}
+Ohne Einschränkung können wir $A$ gleich ganz $X$ setzen. Sind $U,V\in\OO_X$
+mit $U\cup V = X$ und $U\cap V =\varnothing$ und $i\in\II$, so ist $A_i\cap U,
+A_i\cap V\in\OO_i$ und
+\begin{align*}
+A_i = A_i\cap X = A_i \cap (U\cup V) = (A_i\cap U)\cup(A_i\cap V),\\
+(A_i\cap U)\cap(A_i\cap V) = A_i\cap (U\cap V) = A_i \cap \varnothing =
+\varnothing.
+\end{align*}
+Nach Voraussetzung ist $A_i$ zusammenhängend, es gilt also $A_i\cap
+U=\varnothing$ oder $A_i\cap V = \varnothing$ und $A_i\cap V = A_i$ oder
+$A_i\cap U = A_i$.
+
+Ohne Einschränkung sei $(A_i\cap U)=A_i,\;(A_i\cap V)=\varnothing$. Dann ist
+\begin{align*}
+\varnothing\neq \bigcap_{j\in\II} A_j \subseteq A_i \subseteq U,
+\end{align*}
+dann folgt,
+\begin{align*}
+\forall i\in\II : A_i\cap U \supseteq \bigcap_{j\in\II} A_j\neq \varnothing,
+\end{align*}
+wie oben gilt daher $\forall i\in\II : A_i\subseteq U$.
+
+$\Rightarrow \bigcup_{i\in\II} A_i\subseteq U \Rightarrow U=X\text{ und
+}V=\varnothing\Rightarrow A=X\text{ ist zusammenhängend}.$\qedhere
+\end{proof}
+
+\begin{lem}[Definition/Lemma]
+\label{prop:2.2.10}
+Sei $(X,\OO_X)$ ein topologischer Raum. Definiere $\sim$ auf $X$ durch $x\sim y
+\Leftrightarrow \exists A\le X : A \text{ ist zusammenhängend und } x,y\in A$.
+Dann ist $\sim$ eine Äquivalenzrelation.\fishhere
+\end{lem}
+\begin{proof}
+\begin{enumerate}
+  \item Sei $x\in X, A = \{x\}$, dann ist $\OO_A = \{\varnothing, \{x\}\}$ 
+  zusammenhängend, also ist $x\sim x$. (Reflexivität)
+  \item Die Symmetrie ist offensichtlich.
+  \item Sei $x\sim y$ und $y\sim z$ $(x,y,z\in X)$. Dann gibt es
+  zusammenhängende Unterräume $A,B\subseteq X$ mit $x,y\in A$ und $y,z\in B$.
+  
+  Da $A\cap B\ni y\Rightarrow A\cap B\neq \varnothing$. Also ist nach
+  \ref{prop:2.2.9} $A\cup B$ zusammenhängend aber $x,z\in A\cup B$ also gilt
+  $x\sim z$. (Transitivität)\qedhere
+\end{enumerate}
+\end{proof}
+
+\begin{defn}
+\label{defn:2.2.11}
+Die Äquivalenzklassen der Relation $\sim$ von \ref{prop:2.2.10} heißen
+\emph{Zusammenhangskomponenten}. Ist $x\in X$, so ist die
+Zusammenhangskomponente von $X$, die $x$ enthält, gerade die Vereinigung alle
+zusammenhängender Teilmengen von $X$, die $x$ enthalten. Diese ist nach
+\ref{prop:2.2.9} zusammenhängend und daher die eindeutig bestimmte maximale
+zusammenhängende Teilmenge von $X$, die $x$ als Element enthält.\fishhere
+\end{defn}
+
+\begin{prop}
+\label{prop:2.2.12}
+Sei $A$ zusammenhängende Teilmenge des topologischen Raumes $X$. Dann ist
+$\overline{A}$ zusammenhängend. Da Zusammenhangskomponenten maximale
+zusammenhängende Teilmengen von $X$ sind, sind sie insbesondere abgeschlossen
+in $X$.
+\end{prop}
+\begin{proof}
+Ohne Einschränkung können wir $\overline{A}=X$ annehmen. Seien $U,V\in\OO_X$
+mit $U\cup V= \overline{A} = X$ und $U\cap V = \varnothing$.
+
+Seien $U' = U\cap A$, $V' = V\cap A$. Dann sind $U', V'\in\OO_A$.
+\begin{align*}
+A = X\cap A = (U\cup V)\cap A = (U\cap A)\cup(V\cap A) = U'\cup V'.
+\end{align*}
+Klar: $U'\cap V' = \varnothing$.
+$A$ zusammenhängend $\Rightarrow$ $U' = \varnothing$ oder $V'=\varnothing$.
+
+Ohne Einschränkung können wir $U' = \varnothing$ annehmen. Sei $z\in U$. Dann
+ist $U\in\UU_z$, weil $U$ offen in $X$ ist. Wegen $z\in\overline{A}$ ist $z$ BP
+von $A$ und wir haben andererseits $U' = U\cap A=\varnothing$.\dipper wegen
+\ref{defn:1.1.12}. Also ist $A$ zusammenhängend.\qedhere
+%TODO: Prüfen, ob die Definition jetzt gefunden wird.
+\end{proof}
+\begin{cor}
+\label{prop:2.2.13}
+Sei $(X,\OO_X)$ topologischer Raum und $Z\subseteq X$ Zusammenhangskomponente,
+dann ist $Z\in A_X$.\fishhere
+\end{cor}
+
+Leider sind Zusammenhangskomponenten im Allgemeinen nicht offen, unter
+Zusatzvoraussetzungen erhalten wir jedoch ein positives Ergebnis.
+
+\begin{cor}
+\label{prop:2.2.14}
+Sei $(X,\OO_X)$ topologischer Raum mit nur endlich vielen
+Zusammenhangskomponenten. Dann ist $X$ die topologische Summe seiner
+Zusammenhangskomponenten.\fishhere
+\end{cor}
+\begin{proof}
+Seien $Z_1,\ldots,Z_k$ Zusammenhangskomponenten, dann ist $Z_2\cup\ldots\cup
+Z_k = X\setminus Z_1$ und daraus folgt, dass $Z_2\cup\ldots\cup
+Z_k$ abgeschlossen ist, also ist $Z_1\in\OO_X\cap\AA_X$ analog folgt dies für
+die $Z_i$.\qedhere
+\end{proof}
+
+\begin{defn}
+\label{defn:2.2.15}
+Ein topologischer Raum, dessen Zusammenhangskomponenten nur aus je einem Punkt
+bestehen heißt \emph{total unzusammenhängend}.\fishhere
+\end{defn}
+\begin{bspn}
+$\R$ ist zusammenhängend in jeder Topologie.\bsphere
+\end{bspn}
+%TODO: Peadische Zahlen \ldots
+
+\begin{bem}
+\label{bem:2.2.16}
+\begin{enumerate}
+  \item Diskrete Räume sind total unzusammenhängend.
+  \item $\Q\le\R$ mit Spurtopologie ist total unzusammenhängend.\maphere
+\end{enumerate}
+\end{bem}
+
+\begin{prop}[Übung]
+\label{prop:2.2.17}
+Ist $A\le\R$ zusammenhängend, $x,y\in A$, dann ist $[x,y]\subseteq A$.\fishhere 
+\end{prop}
+
+\begin{defn}
+\label{defn:2.2.18}
+Sei $(X,\OO_X)$ topologischer Raum. Ein \emph{Weg} $\ph$ in $X$ ist eine stetige
+Abbildung $\ph: [0,1]\to X$. Dabei heißet $\ph(0)$ \emph{Anfangs-} und $\ph(1)$
+\emph{Endpunkt} des Weges $\ph$. Man sagt $\ph$ ist Weg von $\ph(0)$ nach
+$\ph(1)$.\fishhere
+\end{defn}
+
+Es ist anschaulich klar was gemeint ist. Die uns bekannte Vorstellung eines
+``Weges'' ist jedoch mit Vorsicht zu genießen, da sich diese oft auf den $\R^2$
+bezieht und dieser nicht gerade der allgemeinste topologische Raum ist.
+
+\begin{defn}
+\label{defn:2.2.19}
+Ein topologischer Raum $(X,\OO_X)$ heißt \emph{wegzusammenhängend}, wenn zu je
+zwei Punkten $x,y\in X$ einen Weg von $x$ nach $y$ existiert, d.h. es gibt eine
+stetige Abbildung $\ph: [0,1]\to X$ mit $\ph(0) = x,\;\ph(1)=y$.\fishhere
+\end{defn}
+
+Sei nun die Situation folgende: $(X,\OO_X)$ und $(Y,\OO_Y)$ seien topologische
+Räume und $(A,\OO_A),(B,\OO_B)\le (X,\OO_X)$, sowie $f: A\to Y,\; g: B\to Y$
+stetige Abbildungen mit $f(\alpha) = g(\alpha), \forall \alpha\in A\cap B$.
+
+Sei nun
+\begin{align*}
+F: A\cup B \to Y,\; \alpha\mapsto\begin{cases}
+                                 f(\alpha),& \alpha\in A\\
+                                 g(\alpha),& \alpha\in B,
+                                 \end{cases}
+\end{align*}
+$C=A\cup B$ mit Spurtopologie $\OO_C$ in $X$.
+
+Offensichtlich ist $F$ wohldefiniert, die Frage nach der Stetigkeit erfordert
+jedoch eine nähere Betrachtung. Für $V\in\OO_Y$ gilt
+\begin{align*}
+F^{-1}(V) &= \setdef{\alpha\in C}{F(\alpha)\in V}
+\\ &= \setdef{\alpha\in A}{f(\alpha)\in V}\cup
+\setdef{\alpha\in A}{g(\alpha)\in V}
+\\ &= f^{-1}(V)\cup g^{-1}(V).
+\end{align*}
+Klar ist, dass $f^{-1}(V)\in\OO_A$ und $g^{-1}(V)\in\OO_B$, da $f$ und $g$
+stetig sind, damit ist $F^{-1}(V)$ offen in $C$.
+
+Im Allgemeinen müssen $f^{-1}(V)\in\OO_A$ und $g^{-1}(V)\in\OO_B$ aber nicht
+notwendigerweise offen in $C$ sein, denn
+\begin{align*}
+f^{-1}(V) = O_1\cap A,\\
+g^{-1}(V) = O_2\cap B.
+\end{align*}
+
+Sind aber $A,B\in\OO_X$, dann folgt $A\cup B\in\OO_X$ und mit \ref{prop:2.2.1}
+folgt, dass folgt $f^{-1}(V),g^{-1}(V)\in\OO_C$.
+
+Analog dazu argumentiert man für $A,B\in\AA_X$.
+
+Damit haben wir folgenden Satz gezeigt
+\begin{prop}
+\label{prop:2.2.20}
+Seien $X,Y$ topologische Räume, $A,B\le X$ beide offen bzw.
+abgeschlossen in $X$ und $f: A\to Y,\;g: B\to Y$ stetige Abbildungen mit
+$f(\alpha)=g(\alpha), \forall\alpha\in A\cap B$. Sei
+\begin{align*}
+F: A\cup B \to Y,\; \alpha\mapsto\begin{cases}
+                                 f(\alpha),& \alpha\in A\\
+                                 g(\alpha),& \alpha\in B,
+                                 \end{cases}
+\end{align*}
+dann ist $F$ stetig auf $A\cup B$.\fishhere
+\end{prop}
+
+\begin{cor}
+\label{prop:2.2.21}
+Sei $X$ topologischer Raum und $\alpha: [0,1]\to X,\;\beta: [0,1]\to X$ seien
+Wege mit $\alpha(1) = \beta(0)$. Dann wird durch folgende Regel,
+\begin{align*}
+\gamma: [0,1]\to X,\; t\mapsto \begin{cases}
+                               \alpha(2t),& 0\le t\le \frac{1}{2},\\
+                               \beta(2t-1),& \frac{1}{2}\le t\le 1,
+                               \end{cases}
+\end{align*}
+ein Weg von $\alpha(0)$ nach $\beta(1)$ definiert.\fishhere
+\end{cor}
+\begin{proof}
+Die Abbildungen
+\begin{align*}
+[0,\frac{1}{2}]\to[0,1],\; t\mapsto 2t \text{ und }
+[\frac{1}{2},1]\to[0,1],\; t\mapsto 2t-1,
+\end{align*}
+sind stetig. Also sind auch
+\begin{align*}
+\tilde{\alpha}:[0,\frac{1}{2}]\to X,\;t\mapsto \alpha(2t) \text{ und }
+\tilde{\beta}: [\frac{1}{2},1]\to[0,1],\;t\mapsto \beta(2t-1),
+\end{align*}
+stetig. Außerdem ist
+$\tilde{\beta}(\frac{1}{2}) = \beta(-1+2\frac{1}{2})=\beta(0) =
+\tilde{\alpha}(\frac{1}{2})$. Also stimmen $\tilde{\alpha}$ und $\tilde{\beta}$
+auf $\left\{\frac{1}{2}\right\} = [0,\frac{1}{2}]\cap [\frac{1}{2},1]$ überein.
+
+Somit ist nach \ref{prop:2.2.20} die Abbildung
+\begin{align*}
+\gamma: [0,\frac{1}{2}]\cup[\frac{1}{2},1] \to X,\; t\mapsto
+\begin{cases}
+\tilde{\alpha}(t)=\alpha(2t),&\text{für } 0\le t\le \frac{1}{2},\\
+\tilde{\beta}(t) = \beta(2t-1),&\text{für }\frac{1}{2}\le t\le 1, 
+\end{cases}
+\end{align*}
+stetig und daher Weg von $\alpha(0)$ nach $\beta(1)$.
+\end{proof}
+
+\begin{defn}[Definition/Lemma]
+\label{defn:2.2.22}
+Sei $X$ topologischer Raum. Definiere $x\sim y$ für $x,y\in X$, falls ein Weg
+von $x$ nach $y$ existiert. Dann ist $\sim$ eine Äquivalenzrelation. Die
+Äquivalenzklassen heißen \emph{\wzhk}, $X$ ist die
+disjunkte Vereinigung seiner \wzhk. Die Wegzusammenhangskomponente, die $x\in X$
+enthält besteht aus allen Punkten $z\in X$, die mit $x$ durch einen Weg in $X$
+verbindbar sind. Sie ist der größte wegzusammenhängende Teilraum von $X$, der
+$x\in X$ als Punkt enthält.\fishhere
+\end{defn}
+\begin{proof}
+$\sim$ ist eine Äquivalenzrelation, denn
+\begin{enumerate}
+  \item Sei $x\in X$. Dann ist die konstante Funktion $\alpha: [0,1]\to X,\;
+  t\mapsto x, \forall t\in[0,1]$ ein Weg von $x$ nach $x$ Also ist $x\sim x$.
+  (Reflexivität)
+  \item Sei $x\sim y$ mit $x,y\in X$ und $\alpha$ Weg von $x$ nach $y$. Dann
+  wird durch $\beta: [0,1]\to X,\;t\mapsto \alpha(1-t)$ ein Weg von $y$ nach
+  $x$ definiert, also ist $y\sim x$. (Symmetrie)
+  \item Dies ist gerade Korollar \ref{prop:2.2.21}.\qedhere
+\end{enumerate}
+\end{proof}
+
+\begin{bemn}[Warnung:]
+Im Gegensatz zu Zusammenhangskomponenten sind Wegzusammenhangskomponenten nicht
+zwingend abgeschlossen in $X$.\maphere
+\end{bemn}
+
+\begin{lem}
+\label{prop:2.2.23}
+Jedes Intervall $I\subseteq\R$ mit der natürlichen Topologie ist zusammenhängend
+bezüglich der Spurtopologie auf $I$.\fishhere
+\end{lem}
+\begin{proof}
+Angenommen $I=A\cup B$ mit $A\cap B = \varnothing$ und $A,B\in\OO_I$. Sei $a\in
+A$ und $b\in B$ und ohne Einschränkung sei $a<b$. Sei $s=\inf \setdef{x\in
+B}{a<x}$. Dann gibt es nach Definition des Infimums in jeder Umgebung von $s$
+Punkte von $B$. Wegen $I = A\cup B$ ist $s\in A$ oder $s\in B$. Ist $s\in A$,
+dann folgt $\exists V\in\UU_s : I\supseteq V$ und $V\subseteq A$. Aber dann ist
+$V\cap B = \varnothing$.\dipper\\
+Also ist $s\in B$ aber $(a,s)\subseteq A$, sonst wäre $s$ nicht Infimum. Da
+$B\in\OO_I$ enthält $B$ eine Umgebung $V$ von $s$, d.h. eine offene Umgebung
+der Form $(s-\ep,s+\ep)$ von $s\in \R\cap I$. Daher gibt es ein $x\in I: a<x<s$
+mit $x\in B$ im Widerspruch dazu, dass $s$ Infimum ist. Daraus folgt die
+Behauptung.\qedhere
+\end{proof}
+
+\begin{prop}
+\label{prop:2.2.24}
+Sei $X$ topologischer Raum, ist $X$ wegzusammenhängend, so ist $X$
+zusammenhängend.\fishhere
+\end{prop}
+\begin{proof}
+Seien $\varnothing\neq A,B\in\OO_X$ gegeben mit $A\cup B = X$ und $A\cap B =
+\varnothing$, $x\in A,\;y\in B$ und $\alpha:[0,1]\to X$ Weg von $x$ nach
+$y$. Dann ist 
+\begin{align*}
+\varnothing = \alpha^{-1}(A\cap B) = \alpha^{-1}(A)\cap
+\alpha^{-1}(B),
+\end{align*}
+sowie
+\begin{align*}
+\alpha^{-1}(A)\cup\alpha^{-1}(A\cup B) = \alpha^{-1}(X) =
+[0,1].
+\end{align*}
+Weil $\alpha$ stetig ist, sind $\alpha^{-1}(A)$ und $\alpha^{-1}(B) \in
+\OO_I$. Wegen $x\in A,\;y\in B$ sind $\alpha^{-1}(A)$ und $\alpha^{-1}(B)\neq
+\varnothing$. Also lässt sich $I$ in eine disjunkte Vereinigung zweier
+nichtleerer offener Teilmengen zerlegen.\dipper\qedhere 
+\end{proof}
+
+\begin{bem}[Bemerkungen.]
+\label{bem:2.2.25}
+\begin{enumerate}[label=\arabic{*}.)]
+  \item Da Homöomorphismen offene (abgeschlossene) Mengen bijektiv übertragen,
+  ist klar, dass Zusammenhang eine topologische Invariante ist. Ebenso ist
+  Wegzusammenhang eine topologische Invariante, denn sei $\alpha: [0,1]\to X$
+  ein Weg und $f: X\to Y$ ein Homöomorphismus, so ist $f\circ\alpha: [0,1]\to
+  Y$ ein Weg in $Y$ von $f\circ\alpha(0)$ nach $f\circ\alpha(1)$.
+  \item Es gilt sogar: Ist $f: X\to Y$ stetige Abbildung und ist $X$
+  zusammenhängend, so ist $\im f = f(X)$ zusammenhängend. Unter stetigen
+  Abbildungen sind Bilder von zusammenhängenden Räumen zusammenhängend.
+  \item Damit folgt mit \ref{prop:2.2.17} sofort der
+  \begin{propn}[Zwischenwertsatz]
+  Sei $(X,\OO_X)$ zusammenhängender topologischer Raum, $f:X\to\R$ stetig und
+  $a,b\in\im f$ mit $a<b$, dann ist $[a,b]\subseteq \im f$, d.h. $f$ nimmt
+  jeden Wert zwischen $a$ und $b$ an.\fishhere
+  \end{propn}
+  \item Die Umkehrung von \ref{prop:2.2.24} ist im Allgemeinen falsch. Hier ist
+  ein Beispiel für einen zusammenhängenden Raum, der nicht wegzusammenhängend
+  ist:
+  
+  Sei $X = f((0,\infty))$ mit $f:(0,\infty)\to\R^2,\;x\mapsto (x,\sin 1/x)$. $X$
+  ist als Bild der stetigen Abbildung $f$ definiert und auf dem Intervall
+  $(0,\infty)\subseteq \R$ zusammenhängend, also auch
+  $\overline{X} = X\cup\setdef{(0,y)\in\R^2}{-1\le y\le 1}$.
+  
+  $\overline{X}$ ist nicht wegzusammenhängend, denn sei $\alpha: [0,1]\to
+  \overline{X}$ ein Weg von $(0,0)\in\R^2$ nach $(\frac{1}{\pi},0) = \alpha(1)$.
+  
+  Die Projektionen $p_1: \R^2\to\R,\;(a,b)\mapsto a$ und
+  $p_2:\R^2\to\R,\;(a,b)\mapsto b$ sind stetig, also auch die Kompositionen
+  $p_1\circ\alpha$ und $p_2\circ\alpha$ von $[0,1]\to\R$.
+  
+  Nach dem Zwischenwertsatz nimmt daher $p_1\circ\alpha$ alle Werte zwischen
+  $0$ und $1/\pi$ an, also insbesondere die Werte $\frac{2}{(2n+1)\pi}$ für
+  $n=2,3,\ldots$
+  
+  Daher nimmt dort $p_2\circ\alpha$ die Werte
+  $\sin\left(\frac{(2n+1)\pi}{2}\right)$ und somit die Werte $\pm 1$ in jeder
+  Umgebung von $(0,0)\in\R^2$ an.
+  
+  Es gibt also kein $\delta > 0$ so, dass $[0,\delta)$ durch $p_2\circ\alpha$
+  ganz in $(-\frac{1}{2},\frac{1}{2})$ abgebildet wird. Alle offenen Umgebungen
+  von $(0,0)$ in $\overline{X}$ sind aber von der Form $[0,\delta)$ mit $\delta
+  > 0$ und somit ist $p_2\circ\alpha$ nicht stetig.\dipper
+\end{enumerate}
+\end{bem}
+
+\begin{prop}
+\label{prop:2.2.26}
+Seien $(X,\OO_X)$ und $(Y,\OO_Y)$ topologische Räume, $f: X\to Y$ stetig und
+ist $X$ wegzusammenhängend, so auch $\im f = f(X)$.\fishhere
+\end{prop}
+\begin{proof}
+\begin{enumerate}[label=\arabic{*}.)]
+  \item Sei $X$ wegzusammenhängend und $a,b\in Y$. Ohne Einschränkung ist $\im
+  f = Y$. Dann folgt $\exists u,v\in X$ mit $f(u) = a$ und $f(v) = b$ und
+  $\alpha: [0,1]\to X$ stetig mit $\alpha(0) = u$ und $\alpha(1) = v$. Dann ist
+  $f\circ\alpha:[0,1]\to Y$ stetig und daher Weg von $f\circ\alpha(0) = f(0) =
+  a$ nach $f\circ\alpha(1) = f(v) = b$. Also ist $Y$ wegzusammenhängend.
+  \item Sei $Y$ nicht zusammenhängend, $Y=A\dot{\cup} B$ mit $A,B\in\OO_Y$,
+  dann ist
+  \begin{align*}
+    X = f^{-1}(A)\dot{\cup}f^{-1}(B) = f^{-1}(A\cup B) = f^{-1}(Y),
+  \end{align*}
+  disjunkte Vereinigung der offenen, nichtleeren Mengen $f^{-1}(A)$ und
+  $f^{-1}(B)$. Also ist auch $X$ nicht zusammenhängend.
+  %TODO: Warum zeigen wir das überhaupt?
+  \dipper\qedhere
+\end{enumerate}
+\end{proof}
+
+\begin{bsp}
+\label{bsp:2.2.27}
+Da $\R$ mit der natürlichen Topologie zusammenhängend ist, gilt der
+Zwischenwertsatz. Dann ist $f: X\to Y$ stetig, $X$ zusammenhängend und seien
+$x,y\in X$ mit $f(x) = a,\;f(y)=b$ mit $a<b$. Sei $a<c<b$. Angenommen $c\notin
+\im f$, dann ist
+\begin{align*}
+\underbrace{f^{-1}(-\infty,c)}_{\in\OO_X}\cap
+\underbrace{f^{-1}(c,\infty)}_{\in\OO_X}=\varnothing \text{ und }
+f^{-1}(-\infty,c)\cup f^{-1}(c,\infty) \supseteq f^{-1}(\im f) = X.
+\end{align*}
+Also haben wir eine disjunkte Zerlegung von $X$ in nichtleere offene
+Teilmengen.\dipper
+
+Versieht man dagegen $\R$ mit der von den Intervallen $[a,b)$ erzeugten
+Topologie. Dann ist $f:\R\to\R$ mit $f(x)=1$ für $x\ge 0$ und $f(x) = 0$ für
+$x<0$ stetig, da $f^{-1}(0) = (-\infty,0)$ und $f^{-1}(1) = [0,\infty)$ beide
+offen und abgeschlossen sind.
+\begin{align*}
+\ [0,\infty)&= \bigcup_{b>0} [0,b) \Rightarrow [0,\infty) \text{ offen},\\
+\Rightarrow & (-\infty,0) = \R\setminus[0,\infty) \text{ ist abgeschlossen},\\
+(-\infty,0) &= \bigcup_{a<} [a,0) \text{ ist offen}.\bsphere
+\end{align*}
+\end{bsp}
+
+\begin{defn}
+\label{defn:2.2.28}
+Sei $(X,\OO_X)$ topologischer Raum, dann heißt $X$ \emph{lokal zusammenhängend
+(lokal wegzusammenhängend)}, falls jede offene Umgebung eines Punktes $x\in X$
+eine zusammenhängende (wegzusammenhängende) Umgebung von $x$ enthält.\fishhere
+\end{defn}
+
+\subsection{Kompaktheit}
+
+\begin{defn}
+\label{defn:2.3.1}
+Sei $(X,\OO_X)$ ein topologischer Raum. Eine \emph{offene Überdeckung}
+einer Teilmenge $A\subseteq X$ ist ein System $\left(U_i\right)_{i\in\II}\subseteq \OO_X$ von offenen Teilmengen $U_i$ von
+$X$, so dass $A\subseteq \bigcup_{i\in\II} U_i$.\fishhere
+\end{defn}
+
+\begin{bemn}
+Die obige Definition ist äquivalent zu $A=\bigcup_{i\in\II} (U_i\cap A)$, da
+$U_i\cap A\in\OO_A$ und $(A,\OO_A)\le (X,\OO_X)$.\maphere
+\end{bemn}
+
+\begin{defn}
+\label{defn:2.3.2}
+Eine Teilmenge $A\subseteq X$ heißt \emph{quasikompakt}, wenn es zu jeder
+offenen Überdeckung $\left(U_i\right)_{i\in\II}$ von $A$ eine endliche Auswahl
+$V_1,\ldots,V_k$ mit $V_j\in\left(U_i\right)_{i\in\II}$ gibt, so dass
+$A\subseteq\bigcup_{j=1}^k V_j$.
+
+In diesem Fall sagen wir auch, dass $A$ die \emph{Heine-Borellsche
+Überdeckungseigenschaft} besitzt.
+
+Ein quasikompakter $T_2$-Raum heißt \emph{kompakt}.\fishhere
+\end{defn}
+
+\begin{bemn}
+Ob $A$ als Teilmenge von $X$ oder als topologischer Raum mit Spurtopologie
+$\OO_A = \setdef{U\cap A}{U\in\OO_X}$ quasikompakt ist, ist ein und
+dasselbe.\maphere
+\end{bemn}
+
+\begin{prop}
+\label{prop:2.3.3}
+(Quasi-)Kompaktheit ist eine topologische Invariante.\fishhere
+\end{prop}
+\begin{proof}
+Trivial.\qedhere
+\end{proof}
+
+Damit kommen wir unserem Ziel, der Unterscheidung zweier topologischer Räume
+bis auf Homöomorphie, ein ganzes Stück näher, denn es stellt sich äußerst
+schwierig heraus, direkt zu zeigen, dass es keinen Homöomorphismus zwischen
+zwei Räumen gibt, unterscheiden sich die Räume jedoch bezüglich
+(Quasi-) Kompaktheit, dann sind sie nicht homöomorph.
+
+\begin{prop}
+\label{prop:2.3.4}
+\begin{enumerate}
+  \item\label{prop:2.3.4:1} Sei $X$ kompakt und $X\supseteq A\in\AA_X$, dann ist
+  $A$ kompakt.
+  \item\label{prop:2.3.4:2} Sei $X$ ein topologischer $T_2$-Raum und $A$
+  kompakte Teilmenge von $X$, dann ist $A\in\AA_X$.
+\end{enumerate}
+
+Eine Teilmenge eines kompakten Raumes ist also genau dann kompakt, wenn sie
+abgeschlossen ist.\fishhere
+\end{prop}
+
+\begin{proof}
+\begin{enumerate}
+  \item Sei $A\subseteq X$ abgeschlossen und $X$ kompakt, dann folgt
+  $X\setminus A \in\OO_X$. Sei nun $\left(U_i\right)_{i\in\II}\subseteq \OO_X$
+  eine offene Überdeckung von $A$, dann ist
+\begin{align*}
+X=A\cup (X\setminus A)\subseteq   \left(U_i\right)_{i\in\II} \cup (X\setminus A) 
+\end{align*}  
+eine offene Überdeckung von $X$, also gibt es $V_1,\ldots,V_k\in
+\left(U_i\right)_{i\in\II}$, so dass $X=\left(\bigcup_{j=1}^k V_j \right)\cup
+X\setminus A$. Wegen $A\subseteq X$ und $A\cap (X\setminus A) = \varnothing$ folgt, dass $A\subseteq
+  \bigcup_{j=1}^k V_j$. Also ist $A$ kompakt.
+  \item Sei $X$ topologischer $T_2$-Raum und $A\subseteq X$ kompakt. Sei $x\in
+  X\setminus A$ und $y\in A$, dann existieren offene Umgebungen $U_y(x)$ und
+  $U(y)$ von $x$ bzw. $y$ mit $U_y(x)\cap U(y) = \varnothing$.
+  
+  Dabei bildet $\bigcup_{y\in A} U(y)$ eine offene Überdeckung von $A$ und da
+  $A$ kompakt ist, existieren somit endlich viele $y_1,\ldots,y_k$, sodass
+  $A\subseteq \bigcup_{i=1}^k U(y_i)$. Sei $U_{y_j}(x) = V_j\in
+  \UU_x\cap\OO_X$, dann ist $V_j$ offene Umgebung von $x$ mit $V_j\cap U(y_j) =
+  \varnothing$ und damit ist $U=\bigcap_{j=1}^k V_j$ eine offene Umgebung von
+  $x$ und $U\cap U(y_j) = (\bigcap_{j=1}^k V_j)\cap U(y_j) =\varnothing$ für
+  $j=1,\ldots,k$. Also gilt
+  \begin{align*}
+  U\cap A \subseteq U\cap \left(\bigcup_{j=1}^k U(y_j) \right) =
+  \bigcup_{j=1}^k \underbrace{\left(U\cap U(y_j)\right)}_{=\varnothing}  =
+  \varnothing.
+  \end{align*}
+$U$ ist also eine Teilmenge von $X\setminus A$, somit enthält $X\setminus A$
+mit jedem Punkt $x\in X\setminus A$ auch eine Umgebung von $x$ und ist daher
+offen in $X$, also ist $A$ abgeschlossen.\qedhere
+\end{enumerate}
+\end{proof}
+
+\begin{prop}
+\label{prop:2.3.5}
+Ein kompakter Raum ist normal.\fishhere
+\end{prop}
+\begin{proof}
+Hausaufgabe (siehe \ref{prop:2.3.4}).\qedhere
+\end{proof}
+
+\addtocounter{prop}{1}
+
+\begin{prop}[Satz von Tychonoff]
+\label{prop:2.3.7}
+Ein topologisches Produkt von beliebig vielen (quasi-) kompakten Räumen ist
+(quasi-) kompakt.\fishhere
+\end{prop}
+\begin{proof}
+\begin{enumerate}[label=\arabic{*}.)]
+  \item Das topologische Produkt von Hausdorffräumen $X_\alpha (\alpha\in\AA)$
+  mit $\AA$ Indexmenge ist ein $T_2$-Raum. Denn seien $x=(x_\alpha)$ und
+  $y=(y_\alpha)$ Elemente von $X = \prod\limits_{\alpha\in\AA} X_\alpha$ mit
+  $x\neq y$, dann gibt es ein $\beta\in\AA$ mit $x_\beta\neq y_\beta$ und
+  $x_\beta,y_\beta \in X_\beta$. Weil $X_\beta$ ein $T_2$-Raum ist, finden wir
+  offene disjunkte Umgebungen $U$ von $x_\beta$ und $V$ von $y_\beta$. Dann
+  sind $p_\beta^{-1}(U)$ und $p_\beta^{-1}(V)$ offene Umgebungen von $x$ bzw.
+  $y$ mit $p_\beta^{-1}(U) \cap p_\beta^{-1}(V) = p_\beta^{-1}(U\cap V) =
+  p_\beta^{-1}(\varnothing) = \varnothing$, also ist $X$ ein $T_2$-Raum.
+  \item Wir zeigen nun, dass das topologische Produkt zweier (quasi-)kompakter
+  Räume (quasi-)kompakt ist. Per Induktion folgt dann der Satz für endliche
+  topologische Produkte.
+  
+  Seien also $X,Y$ topologische Räume und $Z=X\times Y$ ihr topologisches
+  Produkt.
+  Sei $\left(U_i\right)_{i\in\II}\subseteq \OO_Z$ eine offene Überdeckung von
+  $Z$. Da jede offene Menge von $Z$ eine Vereinigung von offenen Mengen einer
+  Basis der Topologie $\OO_Z$ sind, können wir annehmen, dass die $U_i$
+  Elemente einer Basis von $\OO_Z$ sind, d.h. $U_i = A_i\times B_i$ mit
+  $A_i\in\OO_X$ und $B_i\in\OO_Y$ für $i\in\II$.
+  
+  Sei $x\in X$. Wir betrachten
+  $\{x\}\times Y = \setdef{(x,y)\in Z}{y\in y}\le Z$. Eine leichte Übung zeigt,
+  dass die Abbildung $p_Y\big|_{\{x\}\times Y}: \{x\}\times Y\to Y$ ein
+  Homöomorphismus ist.
+  
+  Da $Y$ kompakt ist, ist $\{x\}\times Y$ ebenfalls kompakte Teilmenge von $Z$
+  und $\left(U_i\right)_{i\in\II} $ überdeckt ganz $X\times Y$, also auch die
+  kompakte Teilmenge $\{x\}\times Y$. Wir finden daher $U_1^{x},\ldots,U_k^{x}$
+  in dem System der $\setdef{U_i}{i\in\II}$ mit $k=k_x\in\N$ so, dass gilt
+  $\{x\}\times Y\subseteq \bigcup_{\nu=1}^k U_\nu^x$.
+  
+  Ohne Einschränkung ist für $1\le \nu\le k$ der Durchschnitt
+  $U_\nu^x\cap\left(\{x\}\times Y\right)\neq\varnothing$, sonst kann $U_\nu^x$
+  aus der endlichen Überdeckung entfernt werden.
+\begin{align*}
+U_\nu^x = A_\nu\times B_\nu,\
+A_\nu = A_{j\nu},\ U_\nu^x = U_{j\nu}\text{ mit } A_\nu\in\OO_X \text{ und }B_\nu\in\OO_Y.
+\end{align*}
+  Dann ist $x\in A_\nu, \forall \nu=1,\ldots,k$, also ist $\bigcap_{\nu=1}^k
+  A_\nu$ eine offene Überdeckung von $X$.
+  
+  Nach Konstruktion der Produkttopologie ist $A^x\times Y = \bigcup_{\nu=1}^k
+  U_\nu^x$. Nun ist $x\in A^x\in\OO_X$ und daher ist $X=\bigcup_{x\in X} A^x$
+  eine offene Überdeckung von $X$. Es gibt also ein $n\in\N$ und
+  $x_1,\ldots,x_n\in X$, sodass $X=\bigcup_{j=1}^n A^{x_j}$ ist.
+  
+  Wir haben daher $X\times Y = \left(A^{x_1}\times Y\right) \cup \ldots\cup
+  \left(A^{x_n}\times Y \right)$ und daraus folgt, dass
+  $X\times Y = \bigcup_{j=1}^n\bigcup_{\nu=1}^n A_\nu^{x_j}\times B_\nu^{x_j} =
+  \bigcup_{j=1}^n\bigcup_{\nu=1}^k U_\nu^{x_j}$.
+  
+  Wir haben daher endlich viele $U_i$ mit $i\in\II$ gefunden, die ganz $X\times
+  Y$ überdecken, d.h. $X\times Y$ ist quasikomapkt.
+  \item Der Fall für topologische Produkte von endlich vielen (quasi-)kompakten
+  topologischen Räumen folgt per Induktion wegen $(X\times Y)\times Z = X\times
+  (Y\times Z) = X\times Y\times Z$ für topologische Produkte.
+  \item Für unendliche topologische Produkte (quasi-)kompakter Räume ist das
+  Ergebnis kontraintuitiv und äquivalent zum Zorn'schen Lemma. Wir verschieben
+  den Beweis auf das Ende der Vorlesung.\qedhere
+\end{enumerate}
+\end{proof}
+
+Die Umkehrung von Satz \ref{prop:2.3.7} gilt ebenfalls und folgt leicht aus
+folgendem Satz:
+\begin{prop}
+\label{prop:2.3.8}
+Seien $X,Y$ topologische Räume und $f:X\to Y$ stetig. Ist $X$ quasikompakt, so
+auch $f(X)=\im f$. Ist $Y$ darüber hinaus $T_2$-Raum, so ist $f(X)$
+kompakt.\fishhere
+\end{prop}
+\begin{proof}
+Sei $\left(U_i\right)_{i\in\II}$ eine offene Überdeckung von $f(X)$. Wegen
+$f^{-1}(f(X)) = X$ ist dann $X=\bigcup_{i\in\II} f^{-1}(U_i)$ ebenfalls offene
+Überdeckung von $X$.
+
+Also gibt es $V_1,\ldots,V_k\in\setdef{U_i}{i\in\II}$ mit $X=\bigcup_{\nu=1}^k
+f^{-1}(V_\nu)$ also ist $f(X)\subseteq \bigcup_{\nu=1}^k V_\nu$ und damit ist
+$f(X)$ quasikompakt.
+
+Ist $Y$ ein $T_2$-Raum, so auch der Unterraum $f(X)$ und daher ist $f(X)$
+kompakt.\qedhere
+\end{proof}
+
+\begin{cor}
+\label{prop:2.3.9}
+\begin{enumerate}
+  \item Sei das topologische Produkt $X=\prod\limits_{i\in\II} X_i$ der
+  topologischen Räume $X_i$ quasikompakt, dann ist $X_i$ quasikompakt für alle
+  $i\in\II$.
+  \item Sei das topologische Produkt $X=\prod\limits_{i\in\II} X_i$ der
+  topologischen Räume $X_i$ ein $T_2$-Raum, dann ist $X_i$ ein $T_2$-Raum für
+  alle $i\in\II$.\fishhere
+\end{enumerate}
+\end{cor}
+\begin{proof}
+\begin{enumerate}
+  \item Sei $i\in\II$, dann ist $p_i: X\to X_i$ stetig und surjektiv, also ist
+  $p_i(X) = X_i$ quasikompakt (nach \ref{prop:2.3.8}).
+  \item Hausaufgabe.\qedhere
+\end{enumerate}
+\end{proof}
+
+\begin{cor}
+\label{prop:2.3.10}
+Ein topologisches Produkt ist genau dann quasikompakt, wenn es alle Faktoren
+sind.\fishhere
+\end{cor}
+
+\addtocounter{prop}{1}
+
+\begin{prop}
+\label{prop:2.3.12}
+Eine Teilmenge $X$ des $\R^n$ ist genau dann kompakt, wenn sie abgeschlossen
+und beschränkt ist.\fishhere
+\end{prop}
+\begin{proof}
+``$\Leftarrow$'': Dies ist gerade der Überdeckungssatz von Heine-Borell aus der
+Analysis.
+
+``$\Rightarrow$'': Sei $X$ kompakt. Nach \ref{prop:2.3.4} ist $X$ abgeschlossen
+in $\R^n$. Betrachte die offenen Kugeln um $0$ mit Radius $k\in\N$
+\begin{align*}
+B(k) = \setdef{x\in\R^n}{\abs{x}<k},
+\end{align*}
+dann ist $X\subseteq \R^n=\bigcup_{k\le1} B(k)$ eine offene Überdeckung von
+$X$. Da $X$ kompakt ist, genügen endlich viele dieser Kugeln. Da diese
+ineinanderliegen, finden wir ein $k\in\N$ so, dass $X\subseteq B(k)$ ist. Dann
+ist $X$ beschränkt.\qedhere
+\end{proof}
+
+\begin{cor}
+\label{prop:2.3.13}
+Sei $X$ kompakt und $f:X\to\R$ stetig. Dann ist $f(X)$ beschränkt und nimmt
+sein Minimum und Maximum an.\fishhere
+\end{cor}
+\begin{proof}
+$f(X)\subseteq\R$ ist das Bild einer kompakten Menge unter einer stetigen
+Abbildung, also kompakt und damit nach
+\ref{prop:2.3.12} abgeschlossen und beschränkt. Daher sind $\sup f(X),\inf
+f(X)\in f(X)$.\qedhere
+\end{proof}
+
+\begin{prop}
+\label{prop:2.3.14}
+Sei $f:X\to Y$ stetig und bijektiv, $X$ kompakt und $Y$ ein $T_2$-Raum, dann
+ist $f$ ein Homöomorphismus.\fishhere
+\end{prop}
+\begin{proof}
+$Y=f(X)$ ist kompakt nach \ref{prop:2.3.8}. Zu zeigen ist, dass $g = f^{-1}:
+Y\to X$ stetig ist. Sei also $B\subseteq X$ offen. Zu zeigen ist, dass
+$g^{-1}(B)\in\OO_Y$. Nun ist $A=X\setminus B$ abgeschlossen und daher kompakt
+nach \ref{prop:2.3.4}. Also ist auch
+\begin{align*}
+f(A) = g^{-1}(A) = g^{-1}(X\setminus B) =
+Y\setminus g^{-1}(B)
+\end{align*}
+kompakt und daher abgeschlossen in $Y$. Also ist
+$g^{-1}(B)$ offen in $Y$ und $g$ ist stetig.\qedhere
+\end{proof}
+
+\begin{defn}
+\label{defn:2.3.15}
+Sei $X$ ein $T_2$-Raum, $Y$ ein topologischer Raum. Für eine kompakte Teilmenge
+$K$ von $X$ und $U\in\OO_Y$ sei,
+\begin{align*}
+M(K,U) = \setdef{f\in C(X,Y)}{f(K)\subseteq U}.
+\end{align*}
+Die von $\setdef{M(K,U)}{K\subseteq X\text{ kompakt}, U\in\OO_Y}$ erzeugte
+Topologie der Menge
+\begin{align*}
+C(X,Y) = \setdef{f:X\to Y}{f\text{ ist stetig}},
+\end{align*}
+heißt \emph{kompakt offene Topologie}. $C(X,Y)$ zusammen mit dieser Topologie wird
+mit \emph{$C_{C,O}(X,Y)$} bezeichnet.\fishhere
+\end{defn}
+
+\begin{prop}[Probleme]
+\label{prop:2.3.16}
+\begin{enumerate}
+  \item Seien $U_1,\ldots,U_n\in\OO_Y$, $K\subseteq Y$ kompakt, dann ist
+  \begin{align*}
+  M(K,U_1)\cap\ldots\cap M(K,U_k) = M(K,U_1\cap\ldots\cap U_k).
+  \end{align*}
+  \item Sei $K\subseteq X$ kompakt, $U_i$ mit $i\in\II$ offene Mengen in $Y$,
+  dann ist
+  \begin{align*}
+  \bigcup_{i\in\II} M(K,U_i) \subseteq M(K,\bigcup_{i\in\II} U_i).
+  \end{align*}
+  \item Sei $K\subseteq L\subseteq X$ kompakt, $U\in\OO_Y$,
+  dann ist $M(L,U)\subseteq M(K,U)$.\fishhere
+\end{enumerate}
+\end{prop}
+
+\begin{prop}[Probleme]
+\label{prop:2.3.17}
+Sei $X$ kompakt und $Y=\R$.
+\begin{enumerate}
+  \item Eine Subbasis der kompakt offenen Topologie auf $C(X,\R)$ ist gegeben
+  durch
+  \begin{align*}
+   \setdef{M(K,(a,b))}{K\subseteq X\text{ kompakt}, a,b\in\R}.
+  \end{align*}
+\item Ist $f:X\to\R$ stetig, dann bilden die Mengen
+\begin{align*}
+\setdef{f+\ph}{\ph\in M(X,(-\ep,\ep))},
+\end{align*}
+eine Basis des Umgebungsfilters $\UU_f$.\fishhere
+\end{enumerate}
+\end{prop}
+\begin{proof}
+\begin{enumerate}[label=\arabic{*}.)]
+  \item\label{proof:2.3.17:1} Es genügt zu zeigen, dass für $K\subseteq X$
+  kompakt und $O\in\OO_\R$, $M(K,O)$ Vereinigung von endlichen Schnitten von Mengen aus der Subbasis ist
+  oder äquivalent dazu, dass für $f\in M(K,O)$ eine kompakte Menge $K_i\subseteq
+  X$ und $a_i,b_i\in\R$ für $i=1,\ldots,k$ existiert, so dass 
+  \begin{align*}f\in
+  \bigcup_{i=1}^k M(K_i,(a_i,b_i))\subseteq M(K,O).
+  \end{align*}
+$O$ ist offen in $\R$, also gibt es $a_i,b_i\in\R\cup\{\pm\infty\}$ mit
+\begin{align*}
+O = \bigcup_{i\in\II} (a_i,b_i)\text{ und }K\subseteq f^{-1}(O) =
+f^{-1}(\bigcup_{i\in\II}(a_i,b_i)) = \bigcup_{i\in\II} f^{-1}(a_i,b_i).
+\end{align*}
+Nun ist $f^{-1}(a_i,b_i)\in\OO_X$, also gibt es eine endliche Anzahl von
+Intervallen mit $K\subseteq \bigcup_{i=1}^N f^{-1}(a_i,b_i)$, da $K$ kompakt
+ist.
+
+Es folgt, dass $f(K)\subseteq \bigcup_{i=1}^k (a_i,b_i)$ und wir können
+annehmen, dass
+\begin{itemize}
+  \item die Intervalle paarweise disjunkt sind.
+  \item $a,b\in\R$ existieren mit $a_i,b_i\in[a,b]$, da $f(K)$ kompakt ist.
+\end{itemize}
+$f(K)$ ist abgeschlossen in $\R$, da kompakt, also gibt es ein $\ep >0$ mit
+\begin{align*}
+f(K)\subseteq \bigcup_{i=1}^k [a_i+\ep,b_i-\ep].
+\end{align*}
+Sei $K_i = f^{-1}([a_i+\ep,b_i-\ep])\cap K$. $f^{-1}([a_i+\ep,b_i-\ep])$ ist
+abgeschlossen in $X$, also ist $K_i$ abgeschlossen in $K$ und es gilt
+$K=\bigcup_{i=1}^k K_i$.
+\begin{align*}
+\bigcap_{i=1}^k M(K_i,(a_i,b_i)) \subseteq M(K,O),\\
+f(K_i)\subseteq (a_i,b_i), \forall i=1,\ldots,k,\\
+\Rightarrow f(\bigcup_{i=1}^k K_i) \subseteq \bigcup_{j=1}^k (a_j,b_i)\subseteq
+O.
+\end{align*}
+Weiter ist $f(K_i)\subseteq [a_i+\ep,b_i-\ep]\subseteq (a_i,b_i)$, d.h. $f\in
+M(K_i,(a_i,b_i))$ für alle $i=1,\ldots,k$.
+\item Wir wollen nun zeigen, dass die $\ep$-Schläuche um $f$ eine Basis
+des Umgebungsfilters um $f$ bilden. Dazu zeigen wir
+\begin{enumerate}[label=(\alph{*})]
+  \item Ist $U\in U_f$ in $C_{C,O}(X,\R)$, dann gibt es $\ep >0$, sodass der
+  $\ep$-Schlauch um $f$ Teilmenge von $U$ ist.
+  \item Alle $\ep$-Schläuche um $f$ sind Umgebungen von $f$.
+\end{enumerate}
+
+\begin{enumerate}[label=(\alph{*})]
+  \item Sei $f\in C(X,\R)$ und $U\in U_f$, dann gibt es kompakte Mengen $K_i$
+  und $a_i,b_i\in\R$ mit
+  \begin{align*}
+  f\in\bigcap_{i=1}^k M(K_i,(a_i,b_i))\subseteq U.
+  \end{align*}
+Sei also $\ep >0$ wie in \ref{proof:2.3.17:1} gewählt so, dass $f(K_i)\subseteq
+[a_i+\ep,b_i-\ep]$, dann ist der $\ep$-Schlauch um $f$ in $\bigcap_{i=1}^k
+M(K_i,(a_i,b_i))\subseteq U$ enthalten.
+\item Wir suchen $K_i\in X$ kompakt und $O_i\in\OO_\R$ mit
+\begin{align*}
+f\in\bigcap_{i=1}^k M(K_i,O_i) \subseteq \setdef{f+\ph}{\ph\in M(X,(-\ep,\ep))},
+\end{align*}
+Sei also $x\in X$. Dann ist $O(x) := f^{-1}(f(x)-\frac{\ep}{3},
+f(x)+\frac{\ep}{3})$ offen und es gilt $X=\bigcup_{x\in X} O(x)$. Da $X$
+kompakt ist, gibt es $x_1,\ldots,x_n\in X$ mit $X=\bigcup_{i=1}^n O(x_i)$. Sei
+$A(x) = f^{-1}([f(x)-\frac{\ep}{3}, f(x)+\frac{\ep}{3}])$, dann ist $A(x)$
+abgeschlossen in $X$, also kompakt.
+
+Behauptung: $f\in\bigcup M(A(x_i),(f(x)-\frac{\ep}{3}, f(x)+\frac{\ep}{3}))$
+ist eine Teilmenge des $\ep$-Schlauchs, dann sind wir fertig.
+
+\begin{align*}
+f(A(x_i))\subseteq [f(x)-\frac{\ep}{3}, f(x)+\frac{\ep}{3}] \subseteq
+(f(x)-\frac{\ep}{2}, f(x)+\frac{\ep}{2})
+\end{align*}
+für alle $i=1,\ldots,n$, also gilt $f\in M(A(x_i), (f(x)-\frac{\ep}{2},
+f(x)+\frac{\ep}{2}))$. Sei $g\in \bigcup_{i=1}^N M(A(x_i), (f(x)-\frac{\ep}{2},
+f(x)+\frac{\ep}{2}))$ und $x\in X$.
+
+Zu zeigen ist nun, dass $\abs{g(x)-f(x)}<\ep$.
+
+Wegen $X=\bigcup_{i=1}^N A(x_i)$ ist $x\in A(x_i)$ für ein $i$, also
+\begin{align*}
+f(x)\in [f(x)-\frac{\ep}{3}, f(x)+\frac{\ep}{3}],
+\end{align*}
+also ist
+\begin{align*}
+\abs{f(x)-f(x_i)} < \frac{\ep}{3}\text{ und } \abs{g(x)-f(x_i)} < \frac{\ep}{2},
+\end{align*}
+da $g\in M(A(x_i), (f(x)-\frac{\ep}{2},
+f(x)+\frac{\ep}{2}))$, also gilt
+\begin{align*}
+\abs{f(x)-g(x)} \le \frac{\ep}{3} + \frac{\ep}{2} < \ep.\qedhere
+\end{align*}
+\end{enumerate}
+\end{enumerate}
+\end{proof}
+
+\begin{defn}
+\label{defn:2.3.18}
+Ein $T_2$-Raum heißt \emph{lokal kompakt}, wenn jeder Punkt eine kompakte
+Umgebung besitzt.\fishhere
+\end{defn}
+
+Es ist offensichtlich, dass lokale Kompaktheit ebenfalls eine topologische
+Invariante ist.
+
+\begin{prop}[Probleme]
+\label{prop:2.3.19}
+\begin{enumerate}
+  \item Lokal kompakte Räume sind regulär. (vgl. \ref{prop:2.3.4} und
+  \ref{prop:2.1.12})
+  \item In einem lokal kompakten Raum enthält jede Umgebung eines Punktes eine
+  abgeschlossene und daher kompakte Umgebung.
+  \item Eine offene bzw. abgeschlossene Teilmenge eines lokal kompakten Raumes
+  ist wieder lokal kompakt.
+  \item Der Unterraum $X = \setdef{(x,y)\in\R^2}{x^2+y^2<1} \cup
+  \{(1,0)\}\subseteq \R^2$ ist  nicht lokal kompakt bezüglich der Spurtopologie
+  als Unterraum des lokal kompakten $\R^2$, denn $(1,0)\in X$ hat keine kompakte
+  Umgebung.\fishhere
+\end{enumerate}
+\end{prop}
+
+\begin{bsp}
+\label{bsp:2.3.20}
+$\Q\leqslant \R$ ist nicht lokal kompakt.
+
+Sei $n\in\N$, dann sind $\Q\cap(1,\sqrt{2}-\frac{1}{n})$ und
+$\Q\cap(\sqrt{2}+\frac{1}{n},2)$ offen in der Spurtopologie von $\Q$. Die
+Vereinigung dieser Intervalle überdeckt $\Q\cap[1,2]$ aber jede endliche
+Vereinigung spart ein Intervall
+$\left(\sqrt{2}-\frac{1}{N},\sqrt{2}+\frac{1}{M}\right)$ für $N,M\in\N$ aus, das
+auch rationale Zahlen enthält, also enthält diese Überdeckung keine endliche
+Überdeckung von $\Q\cap[1,2]$.
+
+Ähnlich kann man zeigen, dass kein rationales Intervall kompakt in $\Q$ sein
+kann und daher keine kompakte Teilmenge von $\Q$ ein rationales Intervall
+enthalten kann. Daraus folgt die Behauptung.\bsphere
+\end{bsp}
+
+\begin{prop}[Ein-Punkt-Kompaktifizierung]
+\label{prop:2.3.21}
+Sei $(X,\OO_X)$ ein lokalkompakter aber nicht kompakter Raum. Sei $X_\infty =
+X\cup\{\infty\}$, wobei $\infty$ lediglich ein Symbol $\notin X$ bezeichnet.
+
+Definiert man $\UU_\infty = \setdef{X_\infty\setminus K}{K\subseteq X,\;K\text{
+kompakt}}$ und $\OO_\infty=\OO_X\cup\UU_\infty$, dann gilt
+\begin{enumerate}
+  \item 
+$\OO_\infty$ definiert eine Topologie auf $X_\infty$ und $X\subseteq X_\infty$
+trägt die Spurtopologie $\OO_X$.
+\item $X$ liegt dicht in $X_\infty$.
+\item $X_\infty$ ist kompakt.\fishhere
+\end{enumerate}
+\end{prop}
+\begin{proof}
+\begin{enumerate}
+  \item Wegen \ref{prop:2.3.4} \ref{prop:2.3.4:2} gilt für $K$ kompakt 
+%TODO:   Prüfen, ob die Referenz jetzt aufgelöst wird. 
+\begin{align*}
+&K\in\AA_X\Rightarrow U = X\setminus K \in \OO_X,\\
+\Rightarrow\;& X_\infty\setminus K = U\cap \{\infty\}.
+\end{align*}
+$\OO_\infty$ entsteht also, indem man zu den schon in $X$ offenen Mengen noch
+Komplemente kompakter Mengen von $X$ unter Hinzufügung des Punktes $\infty$
+hinzufügt.
+\begin{bemn}[Klar:]
+\begin{enumerate}[label=(\alph{*})]
+\item Ist $U\in\OO_\infty$, so folgt $U\cap X\in\OO_X$.
+\item $\OO_\infty$ ist abgeschlossen gegenüber endlichen Durchschnitten und
+beliebigen Vereinigungen.
+\end{enumerate}
+\end{bemn}
+
+Also ist $\OO_X$ eine Topologie auf $X_\infty$ und $X\subseteq X_\infty$ trägt
+die Spurtopologie von $(X_\infty,\OO_\infty)$.
+\item Sei $\AA_\infty$ das Mengensystem der abgeschlossenen Teilmengen von
+  $X_\infty$, dann gilt
+  \begin{align*}
+  A\in\AA_\infty &\Rightarrow U=X_\infty \setminus A \in\OO_\infty,\\
+  &\Rightarrow U\in\OO_X \lor U\in\UU_\infty.
+  \end{align*}
+Ist $U\in\OO_X$, dann folgt $A=X_\infty\setminus U = \underbrace{X\setminus
+U}_{\in\AA_X} \cup \{\infty\}$
+
+Ist $U\in\OO_\infty$, dann existiert eine kompakte Menge
+$K\subseteq X$, sodass $U=(X\setminus K)\cup\{\infty\}$, also ist
+$A = X_\infty\setminus U = X_\infty \setminus (X\K \cup \{\infty\}) = K$.
+
+Daher ist
+\begin{align*}
+\AA_\infty = \setdef{A\cup\{\infty\}}{A\in \AA_X}\cup \setdef{K\subseteq
+X}{K\text{ kompakt}}.
+\end{align*}
+Also besteht $\AA_\infty$ aus allen kompakten Teilmengen von $X$ und aus den
+Teilmengen von $X_\infty$, die man erhält, wenn man zu abgeschlossenen
+Teilmengen von $X$ den Punkt $\{\infty\}$ hinzufügt.
+
+Also ist insbesondere $X\notin \AA_\infty$ und daher $\overline{X}=X_\infty$,
+d.h. $X$ ist dicht in $X_\infty$.
+
+\item
+Beachte, dass eine kompakte Teilmenge von $X$ auch als Teilmenge von $X_\infty$
+kompakt ist, da $\OO_X$ die Spurtopologie von $X$ in $X_\infty$ ist.
+
+Wegen $\infty\in X_\infty$ gibt es mindestens ein $i_o\in\II$, mit $U_{i_0} =
+X_\infty \setminus K$ für eine kompakte Teilmenge $K$ von $X_\infty$. Da $K$
+kompakt ist, gibt es auch ein $n\in\N$, so dass $K\subseteq U_{i_1}\cup \ldots
+U_{i_n}$.
+\begin{align*}
+&\Rightarrow X_\infty \setminus K \cup K \subseteq U_{i_1}\cup \ldots
+U_{i_n}\\
+&\Rightarrow X_\infty \text{ ist kompakt}.\qedhere
+\end{align*}
+\end{enumerate}
+\end{proof}

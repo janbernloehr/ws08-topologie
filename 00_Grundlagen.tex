@@ -1,0 +1,360 @@
+\section{Motivation}
+
+\subsection{Euler's Polyedersatz}
+\label{subsec:0.1}
+
+\begin{prop}[Vermutung]
+\label{VermPolyedersatz}
+%TODO: Bild, Polyedertypen
+Sei $\PP$ ein Polyeder, dann gilt $v-e+f =2$, wobei $v$ (vertex) die Anzahl der Ecken, $e$
+(edge) die Anzahl der Kanten und $f$ (face) die Anzahl der Flächen ist.\fishhere
+\end{prop}
+
+\ref{VermPolyedersatz} ist sicher falsch, wenn $\PP$  aus mehreren
+Stücken (nicht zusammenhängend) zusammengesetzt ist. Von jedem Stück erhält man
+einen Beitrag $2$ zur Formel $v-e+f$.
+
+\begin{bspn}
+Ein Würfel, aus dessen Innerem ein kleiner Würfel entfernt wurde (keine
+zusammenhängende Fläche)\bsphere
+%TODO: Bild, Würfel ohne kleinen Würfel.
+\end{bspn}
+
+Nehmen, wir also an, dass $\PP$ zusammenhängend ist. Reicht das aus?
+
+\begin{bspn}
+%TODO: Polyeder \PP6
+$\PP_6$ ist zusammenhängend aber es gibt eine geschlossene Kurve auf der
+Oberfläche von $\PP_6$, die diese nicht in zwei separate Flächen teilt. $\PP_6$
+ist vergleichbar mit einem Torus (``Autoreifen'').\bsphere
+\end{bspn}
+
+\begin{prop}[Satz (Euler 1750)]
+\label{prop:Polyedersatz}
+Sei $\PP$ ein Polyeder mit folgenden Eigenschaften
+\begin{enumerate}
+  \item Je zwei Ecken von $\PP$ können durch eine Folge von Kanten verbunden
+  werden.
+  \item Jeder geschlossene Streckenzug auf der Oberfläche von $\PP$ teilt
+  dieselbe in mindestens zwei getrennte Flächen.
+\end{enumerate}
+Dann ist $v-e+f=2$ für $\PP$.\fishhere
+\end{prop}   
+Euler bewies diesen Satz 1750 für konvexe Polyeder, Lhuilies 1813 zusätzlich
+für Polyeder vom Typ $\PP_5,\PP_6$ und schließlich Staudt 1847 die oben
+stehende Proposition.
+
+Hier soll zunächst eine Beweisskizze genügen, dafür benötigen wir noch zwei
+Definitionen
+
+\begin{defnn}
+\begin{enumerate}[label=(\roman{*})]
+  \item Ein \emph{Graph} sind Ecken und Kanten, die die Ecken verbinden.
+  \item \emph{Wege} sind Ketten von Kanten so, dass aufeinanderfolgende Glieder der
+Kette eine gemeinsame Ecke besitzten.
+\item  Ein Graph heißt \emph{zusammenhängend}, wenn je zwei Ecken durch einen Weg
+verbunden werden können.
+\item Ein \emph{Baum} ist ein zusammenhängender Graph, der keine geschlossenen
+Wege enthält.\fishhere
+\end{enumerate}
+\end{defnn}
+
+\begin{proof}
+Man sieht leicht, dass für einen Baum $T$ gilt $v(T) - e(T)=1$.
+
+Für einen Polyeder $\PP$, sei $G = \{\text{Ecken}\}\cup \{\text{Kanten}\}$.
+Entfernen wir in $G$ aus geschlossenen Wegen Kanten, erhalten wir einen Baum
+$T\subseteq G$.
+
+Sei $\Gamma(T)$ der duale Graph von $T$, d.h. die Ecken von $\Gamma$ sind die
+Seitenflächen von $\PP$, dann gelten die folgenden Fakten:
+\begin{enumerate}
+  \item $\Gamma$ ist zusammenhängend (zwei Ecken von $G$ könnten nur durch
+  einen geschlossenen Weg in $T$ getrennt werden, aber $T$ ist Baum).
+  \item $\Gamma$ ist Baum, denn ein geschlossener Weg in $\Gamma$ würde wegen
+  Bedingung b) in \ref{prop:Polyedersatz} $\PP$ in mindestens zwei Teile
+  teilen. Diese könnten dann nicht durch einen Weg in $T$ verbunden werden,
+  weil sie durch den geschlossenen Weg in $\Gamma$ gehen müssen. Aber $T$ ist
+  zusammenhängend.
+\end{enumerate}
+Es gilt also,
+\begin{align*}
+&v(T) = v,\quad v(\Gamma) = f\\
+&v(\Gamma)-e(\Gamma) = 1,\quad v(T)-e(T) = 1,\quad e(T)+e(\Gamma) = e\\
+\Rightarrow & v-e+f = v(T)-e(T)-e(\Gamma)+v(\Gamma) = 1 + 1 = 2.\qedhere
+\end{align*}
+\end{proof}
+
+\subsection{Topologische Äquivalenz}
+\label{subsec:0.2}
+
+\begin{defn}
+Ein \emph{Homöomorphismus} von einer Oberfläche $O_1$ auf eine Oberfläche $O_2$
+(in $\R^3$) ist eine bijektive, stetige Abbildung $h: O_1\to O_2$, deren Inverse
+ebenfalls stetig ist.\fishhere
+\end{defn}
+
+\begin{propn}[Intuitive Idee]
+Wir ''deformieren'' Oberflächen stetig. Wir dehnen und stauchen sie aber wir
+reißen sie niemals und wir identifizieren nie verschiedene Punkte.\fishhere
+\end{propn}
+
+\begin{defn}
+Zwei Oberflächen $O_1$ und $O_2$ in $\R^3$ heißen \emph{topologisch äquivalent}
+oder homöomorph, wenn es einen Homöomorphismus von $O_1$ auf $O_2$ gibt. In
+diesem Fall schreiben wir $O_1\cong O_2$.\fishhere
+\end{defn}
+
+Offensichtlich ist $\cong$ eine Äquivalenzrelation.
+
+Nun können wir Euler's Satz allgemeiner formulieren
+\begin{lem}
+Ein Polyeder $\PP$, der die Bedingungen a) und b) in \ref{prop:Polyedersatz}
+erfüllt, ist topologisch äquivalent zur $\S^3$ (Kugeloberfläche).\fishhere
+\end{lem}
+
+Später zeigen wir die Umkehrung des obigen Satzes und erhalten damit
+den folgenden:
+\begin{prop}
+Ein Polyeder $\PP$ ist genau dann topologisch äquiavlent zu $\S^3$
+wenn $\PP$ zusammenhängend ist und jeder geschlossene Streckenzug auf der
+Obefläche von $\PP$ diese in mindestens zwei Teile teilt.\fishhere
+\end{prop}
+
+\begin{defn}
+Die Zahl $v-e+f$ für einen Polyeder $\PP$ mit $v$ Ecken und $e$ Kanten und $f$
+Seiten ist die \emph{Eulerzahl} von $\PP$.
+\end{defn}
+
+Folgender Satz ist der Beginn der modernen Topologie.
+\begin{prop}
+Topologisch äquivalente Polyeder haben dieselbe Eulerzahl.\fishhere
+\end{prop}
+
+Die Eulerzahl ist ein Beispiel für eine \emph{topologische Invariante}, d.h.
+eine Größe, die für homöomorphe Räume gleich ist. Mit Hilfe von topologischen
+Invarianten kann man Räume unterscheiden.
+
+Später werden wir die Eulerzahl für weitaus mehr topologische Räume definieren.
+Dazu sollten wir aber erst einmal definieren, was ein topologischer Raum
+überhaupt ist.
+
+\subsection{Topologische Räume}
+\label{subsec:0.3}
+
+%TODO: Bild, Standardflächen
+
+Wir wollen Oberflächen ''abgesehen von stetigen Deformationen'' klassifizieren.
+Wir denken uns Oberflächen aus dehnbarem Material, das aufgeblasen, eingebeult,
+gedreht und verzwirbelt werden kann.
+
+Betrachten wir das Möbiusband eingebettet in $\R^3$ stellen wir fest, dass  
+kein Homöomorphismus von $\R^3$ in sich existiert, der das einfach getwistete
+Möbiusband auf das mehrfach getwistete Möbiusband homöomorph abbildet, obwohl
+diese sehrwohl - als topologische Räume - homöomorph sind.
+
+%TODO: Bild, Möbiusband
+
+Daher sind wir daran interessiert, Oberflächen unabhängig von der Einbettung
+in den euklidischen $\R^3$ als topologische Räume durch interne Eigenschaften zu
+definieren. So sind einfach und mehrfach getwistete Möbuisbänder derselbe
+topologische Raum, nur verschieden eingebettet in den $\R^3$.
+
+Dafür benötigen wir eine abstrakte Definition eines topoligschen Raumes. Mit
+``abstrakt'' ist eine Definition gemeint, die alle Fälle umfasst, jedoch nicht
+zu abstrakt ist, sondern noch genügend Informationen enthält, so dass
+Stetigkeit definiert werden kann.
+
+\begin{defn}[Vorläufige Definition]
+\label{defn:0.3.1}
+Ein \emph{topologischer Raum} ist eine Menge $X$, so dass für jedes $x\in X$ ein
+nichtleeres System $\UU_x \subseteq \PP(X)$ von Teilmengen von $X$ existiert,
+dessen Elemente \emph{Umgebungen von $x$ in $X$} heißen und folgenden Axiomen
+genügen:
+\begin{enumerate}
+  \item $A\in \UU_x \Rightarrow x\in A$
+  \item $A,B\in \UU_x \Rightarrow A\cap B \in \UU_x$
+  
+Endlich viele Durchschnitte von Umgebungen von $x$ sollen wieder Umgebungen von
+$x$ sein.
+  \item $A\in \UU_x, B\subseteq X : A\subseteq B \Rightarrow B\in \UU_x$
+  
+  Obermengen von Umgebungen sind Umgebungen.
+  \item $A\in \UU_x \Rightarrow A^\circ = \setdef{z\in A}{A\in \UU_z}\in \UU_x$.
+\end{enumerate}
+
+Die Menge $A^\circ = \setdef{z\in A}{A\in \UU_z}$ heißt \emph{Inneres} oder
+\emph{offener Kern} von $A$. Die Abbildung $\TT: X\to \PP\PP(X),\;x\mapsto
+\UU_x$ heißt \emph{Topologie} auf $X$.\fishhere
+\end{defn}
+
+\begin{bemn}
+$\UU_x\subseteq \PP(X)$, d.h. $\UU_x\in \PP\PP(X)$.\maphere
+\end{bemn}
+
+Nun wollen wir Abbildungen zwischen topologischen Räumen betrachten. Damit wir
+Umgebungen in Bild- und Urbildraum unterscheiden können, bezeichnen wir das
+Umgebungssystem $\UU_x$ in $X$ im Folgenden mit $\UU_x(X)$.
+
+\begin{defn}
+\label{defn:0.3.2}
+Seien $X,Y$ topologische Räume, $f: X\to Y$ eine Abbildung, dann heißt $f$
+\emph{stetig} in $x\in X$, falls
+\begin{align*}
+f^{-1}(N)\in \UU_x(X),\quad \forall N\in \UU_{f(x)}(Y).\fishhere
+\end{align*}
+\end{defn}
+
+\begin{bsp}
+\label{bsp:0.3.3}
+\begin{enumerate}
+  \item Sei $X$ Menge, dann ist $\UU_x = \{X\}\subseteq \PP(X)$ die
+  \emph{gröbste} Topologie, die $X$ hat.
+  \item Sei $X$ Menge, dann ist $\UU_x = \setdef{A\subseteq X}{x\in A}$ die
+  \emph{feinste} Topologie, die $X$ hat.\bsphere
+\end{enumerate}
+\end{bsp}
+
+\begin{defn}
+\label{defn:0.3.4}
+Sei $X$ ein topologischer Raum, $Y\subseteq X$. Wir machen $Y$ zum
+topologischen Raum durch folgenden Regel:
+
+Sei $y\in Y$, dann ist $\UU_y(Y) = \setdef{A\cap Y}{A\in \UU_y(X)}$.\fishhere
+\end{defn}
+
+Umgebungen in $Y$ entstehen als Schnitt von Umgebungen in $X$ mit $Y$. Dass wir
+hier überhaupt von einem topologischen Raum sprechen können, zeigt das folgende
+Lemma
+
+\begin{lem}
+\label{prop:0.3.5}
+Sei $X$ topologischer Raum, $Y\subseteq X$. Dann definiert $\UU_y(Y)$ für $y\in
+Y$ eine Topologie auf $Y$, die \emph{Unterraum-} oder \emph{Spurtopologie von
+$y$ in $X$} gennant wird.
+
+Trägt $Y\subseteq X$ die Spurtopologie bzgl. $X$, so heißt $Y$
+\emph{(topologischer) Unterraum} von $X$.\fishhere
+\end{lem}
+
+\begin{bspn}
+\begin{enumerate}
+  \item Sei $Q$ ein Quader, der aus der $\S^3$ Spähre herausragt,
+  dann ist $\UU_y(\R^3)$ 3-dimensional aber $\UU_y(\S^2)$ nur noch
+  2-dimensional.
+  \item Es gilt $A\in \UU_x$ genau dann, wenn $x\in A^\circ$. Für den $\R^n$
+  ist
+  \begin{align*}
+  A^\circ = \setdef{z\in\R^3}{\exists \delta > 0 : U_\delta(z)\subseteq A}
+  \end{align*}
+  und $U_\delta = \setdef{y\in\R^n}{\norm{x-y} < \delta}$ der bekannte
+  $\delta$-Ball.\bsphere
+\end{enumerate}
+\end{bspn}
+
+\begin{bemn}[Vorsicht:]
+Ist $Y\subseteq X$ ein Unterraum, dann ist $U\in \UU_y(Y) \Rightarrow U\in
+\UU_y(X)$ im Allgemeinen falsch. Die Umkehrung $U\in \UU_y(X), U\subseteq Y
+\Rightarrow U\in \UU_y(Y)$ gilt aber.\maphere
+\end{bemn}
+
+\begin{lem}
+\label{prop:0.3.6}
+Sei $X$ ein topologischer Raum, $Y\subseteq X$ Unterraum, dann ist die
+natürliche Inklusion $\iota: Y\to X$ von $Y$ in $X$ stetig.
+
+In der Tat ist die Spurtopologie die gröbste Topologie (d.h. die Topologie mit
+den wenigsten Umgebungen) für die die Einbettung von $\iota$ stetig
+ist.\fishhere
+\end{lem}
+
+\begin{propn}
+Jede Oberfläche im $\R^3$ ist ein topologischer Raum, wenn wir sie mit der
+Spurtopologie versehen.\fishhere
+\end{propn}
+
+\begin{defn}
+\label{prop:0.3.7}
+Zwei topologische Räume $X$ und $Y$ heißen \emph{topologisch äquivalent}, falls
+ein Homöomorphismus $f: X\to Y$ existiert.\fishhere
+\end{defn}
+
+\begin{defn}
+\label{prop:0.3.8}
+Eine \emph{Fläche} (``Oberfläche'') ist ein topologischer Raum in welchem jeder
+Punkt (= Element) eine zum Einheitsvollkreis $D^2 = \setdef{x\in\R^n}{\norm{x} \le
+1}$ homöomorphe Umgebung besitzt und für die je zwei Punkte auch verschiedene
+Umgebungen haben.\fishhere
+\end{defn}
+
+\subsection{Klassifikation von Flächen}
+\label{subsec:0.4}
+
+Wir wollen eine Liste von Prototypen von Flächen angeben, die paarweise nicht
+homöomorph sind, so dass jede Fläche homöomorph zu genau einem dieser
+Prototypen ist.
+
+Dabei beschränken wir uns auf Flächen mit den Eigenschaften
+\begin{enumerate}
+  \item zusammenhängend,
+  \item kompakt,
+  \item randlos.
+\end{enumerate}
+
+Es gibt genau zwei Prototypen
+
+\begin{enumerate}[label=\arabic{*}. Typ]
+  \item Eine Spähre mit $n$ Henkeln $(n\in\N)$
+  (orientierbare Flächen).
+  \item Schneide aus einer Spähre $n$-Scheiben $(n\in\N)$ und
+  ersetzte die entstehenden Löcher durch Möbiusbänder, indem der Rand eines Möbiusbandes mit
+  dem Rand eines Loches identifiziert wird (nicht orientierbare Flächen).
+  
+  $n=1$ projektive Ebene,
+  
+  $n=2$ kleinsche Flasche
+\end{enumerate}
+
+\begin{prop}
+\label{prop:0.4.1}
+Jede zusammenhängende kompakte Fläche ohne Rand ist homöomorph zu einer Fläche
+vom Typ 1 (orientierbar) oder Typ 2 (nicht orientierbar).\fishhere
+\end{prop}
+
+Möbius hat diese Aussage für Typ 1 bereits 1861 bewiesen.
+
+\subsection{Philosophischer Exkurs}
+\label{subsec:0.5}
+
+Das höchste Ziel wäre eine Klassifikation aller topologischer Räume, doch dies
+ist hoffnungslos. Zwar ist es möglich, ein Konstruktionsverfahren anzugeben mit
+dem man alle nicht homöomophen topologischen Räume erhält. Es stellt sich
+jedoch oft als äußert kompliziert heraus, zwei topologische Räume auf
+Homöomorphie zu vergleichen. Später werden wir sehen, dass wir dieses Problem
+auf Invarianten zurückführen können aber auch hier ist es oft schwierig, diese
+für einen konkret gegebenen Raum zu bestimmen.
+
+Wir sind also mit zwei Problemen konfrontiert
+\begin{enumerate}[label=\arabic{*}.)]
+  \item Finde alle nichthomöomorphen topologischen Räume. (Prototypen)
+  \item Gegeben ist ein topologischer Raum $X$, zu welchem Prototyp ist dieser
+  homöomoph? (Wiedererkennungsproblem)
+\end{enumerate}
+
+Um diese Probleme zu lösen geht man wie folgt vor
+\begin{enumerate}[label=zu \arabic{*}.)]
+  \item Einschränkungen (kompakte Räume, kompakte bzw. zusammenhängende
+  Flächen) können die Schwierigkeit alle zu finden reduzieren.
+  \item Topologische Invarianten, d.h. Größen, die unter Homöomorphismen
+  erhalten bleiben z.B. Eulerzahl, Zusammenhang oder Fundamentalgruppen.\\
+  Wesentliche Eigenschaften der Räume lassen sich durch die Struktur der
+  Gruppen beschreiben. Homoemorphe, zusammenhängende Räume haben beispielsweise
+  isomorphie Fundamentalgruppen.
+\end{enumerate}
+
+Folgenden Satz werden wir später beweisen:
+\begin{prop}
+\label{prop:0.5.1}
+Die Flächen von Typ 1 und Typ II in \ref{subsec:0.4} haben alle verschiedene
+Fundamentalgruppen und sind daher paarweise nicht homöomorph.\fishhere
+\end{prop}
